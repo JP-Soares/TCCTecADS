@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HelpOlder||Cadastro</title>
+
+    </head>
+    <body>
+        <h1>Cadastro</h1>
+
+        <div>
+            <form>
+                <h3>Preencha os campos abaixo</h3>
+                
+                <div>
+                    <label>Nome:</label>
+                    <input type="text" name="nome" placeholder="Digite seu nome completo" required /><br><br>
+                    <label>CPF:</label>
+                    <input type="text" id="txtCpf" name="cpf" placeholder="___.___.___-__" maxlength="14" oninput="formatCpf();" required /><br><br>
+                    <label>Registro Profissional (Exemplo: CRM):</label>
+                    <input type="text" name="registroProfissional" placeholder="Digite os números aqui" required /><br><br>
+                    <label>Sexo:</label><br>
+                    <label>Masculino</label><input type="radio" name="sexo" value="Masculino" checked required />
+                    <label>Feminino</label><input type="radio" name="sexo" value="Feminino" required /><br><br>
+                    <label>Data de nascimento:</label>
+                    <input type="date" name="dtNasc" required /><br><br>
+                    <label>Telefone:</label>
+                    <input type="tel" id="txtTel" name="telefone" oninput="formatTel();" onclick="formatTel();" placeholder="()____-____" maxlength="13" required /><br><br>
+                </div>
+
+                <div>
+                    <h3>Preencha seus dados de endereço:</h3>
+                    <label>Estado:</label><select id="estado" name="estadoPaciente">
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                        <option value="EX">Estrangeiro</option>
+                    </select><br><br>
+
+                    <label>Cidade:</label>
+                    <input type="text" name="cidade" placeholder="Digite a cidade aqui"/><br><br>
+                    <label>Rua:</label>
+                    <input type="text" name="rua" placeholder="Digite a rua aqui"/><br><br>
+                    <label>Número:</label>
+                    <input type="text" name="numero" placeholder="Digite o núermo da residência aqui"/><br><br>
+                    <label>completo:</label>
+                    <input type="text" name="complemento" placeholder="Digite o complemento aqui"/><br><br>
+
+                </div>
+
+                <div>
+                    <h3>Estamos Terminando!</h3>
+                    <h3>Preencha seus dados de login:</h3>
+
+                    <label>E-mail:</label>
+                    <input type="email" name="email" placeholder="Digite o E-mail aqui"/><br><br>
+                    <label>Senha:</label>
+                    <input type="password" name="senha" placeholder="Digite uma senha forte aqui"/><br><br>
+                    <label>Confirme a senha:</label>
+                    <input type="password" name="confirmaSenha" placeholder="Confirme a senha aqui"/><br><br>
+                </div>
+
+                <input type="submit" value="Cadastrar!" />
+            </form>
+        </div>
+
+        <script src="assets/js/formato.js"></script>
+
+    </body>
+</html>

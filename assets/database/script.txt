@@ -1,0 +1,90 @@
+CREATE TABLE responsavel(
+  id_responsavel int AUTO_INCREMENT,
+  nome varchar(150) NOT NULL,
+  cpf varchar(14) NOT NULL,
+  sexo varchar(10) NOT NULL,
+  dtNasc date NOT NULL,
+  telefone varchar(13) NOT NULL,
+  email varchar(150) NOT NULL,
+  senha varchar(150) NOT NULL,
+  estado varchar(2) NOT NULL,
+  cidade varchar(50) NOT NULL,
+  bairro varchar(50) NOT NULL,
+  rua varchar(50) NOT NULL,
+  numero varchar(5) NOT NULL,
+  complemento varchar(30) NOT NULL,
+  PRIMARY KEY(id_responsavel)
+);
+
+CREATE TABLE idoso(
+  id_idoso int AUTO_INCREMENT,
+  id_responsavel int NOT NULL,
+  nome varchar(150) NOT NULL,
+  cpf varchar(14) NOT NULL,
+  sexo varchar(10) NOT NULL,
+  dtNasc date NOT NULL,
+  descricao text,
+  telefone varchar(13),
+  estado varchar(2),
+  cidade varchar(50) NOT NULL,
+  bairro varchar(50) NOT NULL,
+  rua varchar(50) NOT NULL,
+  numero varchar(5) NOT NULL,
+  complemento varchar(20),
+  enfermidades varchar(180),
+  PRIMARY KEY(id_idoso),
+  FOREIGN KEY(id_responsavel) REFERENCES responsavel(id_responsavel)
+);
+
+CREATE TABLE cuidador(
+  id_cuidador int AUTO_INCREMENT,
+  nome varchar(150) NOT NULL,
+  cpf varchar(14) NOT NULL,
+  registroProfissional varchar(20) NOT NULL,
+  sexo varchar(10) NOT NULL,
+  dtNasc date NOT NULL,
+  descricao text,
+  telefone varchar(13) NOT NULL,
+  email varchar(150) NOT NULL,
+  senha varchar(150) NOT NULL,
+  estado varchar(2) NOT NULL,
+  cidade varchar(50) NOT NULL,
+  bairro varchar(50) NOT NULL,
+  rua varchar(50) NOT NULL,
+  numero varchar(5) NOT NULL,
+  complemento varchar(30) NOT NULL,
+  PRIMARY KEY(id_cuidador)
+);
+
+CREATE TABLE agenda(
+  id_agenda int AUTO_INCREMENT,
+  id_cuidador int NOT NULL,
+  hora time NOT NULL,
+  data date NOT NULL,
+  PRIMARY KEY(id_agenda),
+  FOREIGN KEY(id_cuidador) REFERENCES cuidador(id_cuidador)
+);
+
+CREATE TABLE consulta(
+  id_consulta int AUTO_INCREMENT,
+  id_cuidador int NOT NULL,
+  id_responsavel int NOT NULL,
+  id_idoso int NOT NULL,
+  id_agenda int NOT NULL,
+  PRIMARY KEY(id_consulta),
+  FOREIGN KEY(id_cuidador) REFERENCES cuidador(id_cuidador),
+  FOREIGN KEY(id_responsavel) REFERENCES responsavel(id_responsavel),
+  FOREIGN KEY(id_idoso) REFERENCES idoso(id_idoso),
+  FOREIGN KEY(id_agenda) REFERENCES agenda(id_agenda)
+);
+
+CREATE TABLE avaliacao(
+  id_avaliacao int AUTO_INCREMENT,
+  id_cuidador int NOT NULL,
+  id_responsavel int NOT NULL,
+  qtde_estrela int,
+  comentario text,
+  PRIMARY KEY(id_avaliacao),
+  FOREIGN KEY(id_cuidador) REFERENCES cuidador(id_cuidador),
+  FOREIGN KEY(id_responsavel) REFERENCES responsavel(id_responsavel)
+);
