@@ -17,6 +17,11 @@
             }else{
                 exit();
             }
+
+            if($_SESSION["situacaoLogin"]){
+                header('Loation: index.php');
+                exit();
+            }
         ?>
 
     </head>

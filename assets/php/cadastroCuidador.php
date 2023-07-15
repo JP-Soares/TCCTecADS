@@ -8,7 +8,7 @@ $nome = mysqli_real_escape_string($con, trim($_POST['nome']));
 $cpf = mysqli_real_escape_string($con, trim($_POST['cpf']));
 $registroProfissional = mysqli_real_escape_string($con, trim($_POST['registroProfissional']));
 $sexo = mysqli_real_escape_string($con, trim($_POST['sexo']));
-$dtNasc = $_POST['dtNasc'];
+$dtNasc = mysqli_real_escape_string($con, trim($_POST['dtNasc']));
 $telefone = mysqli_real_escape_string($con, trim($_POST['telefone']));
 $descricao = mysqli_real_escape_string($con, trim($_POST['descricao']));
 
@@ -44,15 +44,16 @@ if(mysqli_num_rows($verificar) == 0){
         '$numero', '$complemento')";
     }
 
-    // if($con->query($sql) == true){
-    //     $_SESSION["situacaoLogin"] = true;
-    //     header('Location: ../../index.php');
-    // }
+    if($con->query($sql) == true){
+        $_SESSION["situacaoLogin"] = true;
+
+        header('Location: ../../login.php');
+    }
 
     
 }else{
     $_SESSION['msgErro'] = "E-mail OU CPF já cadastrados!";
-    //header('Location: ../../index.html');
+    header('Location: ../../cadastro.php');
 }
 
 ?>

@@ -4,7 +4,6 @@
 
         <?php
             session_start();
-            $_SESSION["situacaoLogin"] = false;
         ?>
 
         <meta charset="UTF-8">
@@ -14,7 +13,7 @@
     <body>
         <?php
             if($_SESSION["situacaoLogin"]){
-                ?><p><a href="#">Perfil</a></p><?php
+                ?><p><a href="perfilPessoal.php">Perfil</a></p><?php
             }else{
                 ?>
                 <p><a href="opUsuario.php?tipo=login">Login</a></p>
