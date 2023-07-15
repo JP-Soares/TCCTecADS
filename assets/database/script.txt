@@ -40,6 +40,7 @@ CREATE TABLE cuidador(
   id_cuidador int AUTO_INCREMENT,
   nome varchar(150) NOT NULL,
   cpf varchar(14) NOT NULL,
+  foto blob,
   registroProfissional varchar(20) NOT NULL,
   sexo varchar(10) NOT NULL,
   dtNasc date NOT NULL,
