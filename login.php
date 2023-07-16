@@ -10,7 +10,7 @@
 
             $_SESSION["usuario"] = $_GET['usuario'];
 
-            if($_SESSION["usuario"] == "cuidador"){
+            if(isset($_SESSION["usuario"]) == "cuidador"){
                 $enviaForm = "assets/php/loginCuidador.php";
             }else if($_SESSION["usuario"] == "responsavel"){
                 $enviaForm = "assets/php/loginResponsavel.php";
@@ -18,7 +18,7 @@
                 exit();
             }
 
-            if($_SESSION["situacaoLogin"]){
+            if(isset($_SESSION["situacaoLogin"])){
                 header('Loation: index.php');
                 exit();
             }

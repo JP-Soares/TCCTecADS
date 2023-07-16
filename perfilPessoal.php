@@ -24,6 +24,8 @@
     <body>
         <div>
             <?php echo"".$nome."<br><br>".$dtNasc."<br><br>".$descricao.""; ?>
+
+            <p><a href="updatePerfil.php">Editar Dados do Perfil</a></p>
         </div>
     </body>
 </html>

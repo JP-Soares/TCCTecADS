@@ -12,7 +12,7 @@
     </head>
     <body>
         <?php
-            if($_SESSION["situacaoLogin"]){
+            if(isset($_SESSION["situacaoLogin"])){
                 ?><p><a href="perfilPessoal.php">Perfil</a></p><?php
             }else{
                 ?>
