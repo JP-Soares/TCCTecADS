@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HelpOlder||Cadastro</title>
+        <title>HelpOlder||Dados</title>
 
         <?php
             session_start();
@@ -143,7 +143,7 @@
                     <p id="msgErro"><?php echo isset($_SESSION['msgErro']); ?></p>
                 </div>
 
-                <input type="submit" value="Cadastrar!" />
+                <input type="submit" value="Atualizar!" />
             </form>
         </div>
 

@@ -9,7 +9,17 @@
             include_once("assets/php/conexao.php");
             session_start();
 
-            $sqlVerify = mysqli_query($con,"SELECT * FROM cuidador WHERE id_cuidador='".$_SESSION["id_cuidador"]."'");
+            if($_SESSION["situacaoLogin"] != true){
+                exit();
+            }
+
+            if(isset($_SESSION["usuario"]) == "cuidador"){
+                $idComand =  "id_cuidador";
+            }else if(isset($_SESSION["usuario"]) == "responsavel"){
+                $idComand =  "id_responsavel";
+            }
+
+            $sqlVerify = mysqli_query($con,"SELECT * FROM ". $_SESSION["usuario"]." WHERE ".$idComand."='".$_SESSION["id_cuidador"]."'");
             echo$_SESSION["id_cuidador"];
 
             while($dadosUsuario = mysqli_fetch_assoc($sqlVerify)){

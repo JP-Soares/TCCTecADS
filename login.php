@@ -8,15 +8,7 @@
         <?php
             session_start();
 
-            $_SESSION["usuario"] = $_GET['usuario'];
-
-            if(isset($_SESSION["usuario"]) == "cuidador"){
-                $enviaForm = "assets/php/loginCuidador.php";
-            }else if($_SESSION["usuario"] == "responsavel"){
-                $enviaForm = "assets/php/loginResponsavel.php";
-            }else{
-                exit();
-            }
+            $_SESSION["usuario"] = $_GET["usuario"];
 
             if(isset($_SESSION["situacaoLogin"])){
                 header('Loation: index.php');
@@ -29,7 +21,7 @@
         <h1>LOGIN</h1>
 
         <div>
-            <form name="" method="POST" action="<?php echo$enviaForm; ?>">
+            <form name="" method="POST" action="assets/php/login.php?<?php echo$_SESSION["usuario"]; ?>">
                 <label>E-mail:</label>
                 <input type="email" name="email" placeholder="Digite o e-mail de login" required /><br><br>
                 <label>Senha:</label>

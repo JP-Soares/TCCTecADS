@@ -2,6 +2,7 @@ CREATE TABLE responsavel(
   id_responsavel int AUTO_INCREMENT,
   nome varchar(150) NOT NULL,
   cpf varchar(14) NOT NULL,
+  foto blob,
   sexo varchar(10) NOT NULL,
   dtNasc date NOT NULL,
   telefone varchar(13) NOT NULL,
