@@ -12,30 +12,23 @@
             if($_SESSION["situacaoLogin"] != true){
                 exit();
             }
-
-            if(isset($_SESSION["usuario"]) == "cuidador"){
-                $idComand =  "id_cuidador";
-            }else if(isset($_SESSION["usuario"]) == "responsavel"){
-                $idComand =  "id_responsavel";
-            }
-
-            $sqlVerify = mysqli_query($con,"SELECT * FROM ". $_SESSION["usuario"]." WHERE ".$idComand."='".$_SESSION["id_cuidador"]."'");
-            echo$_SESSION["id_cuidador"];
-
-            while($dadosUsuario = mysqli_fetch_assoc($sqlVerify)){
-                $nome = $dadosUsuario["nome"];
-                $dtNasc = $dadosUsuario["dtNasc"];
-                $descricao = $dadosUsuario["descricao"];
-
-            }
         ?>
 
     </head>
     <body>
         <div>
-            <?php echo"".$nome."<br><br>".$dtNasc."<br><br>".$descricao.""; ?>
+            <p><?php echo$_SESSION["id"]; ?></p>
+            <p><?php echo$_SESSION["nome"]; ?></p>
+            <p><?php echo$_SESSION["dtNasc"]; ?></p>
+            
+            <?php //se for cuidador mostrará os seguintes dados
+                if($_SESSION["usuario"] == "cuidador"){
+                    ?> <p><?php echo$_SESSION["registroProfissional"]; ?></p>
+                    <p><?php echo$_SESSION["descricao"]; ?></p>
+                <?php } ?>
 
             <p><a href="updatePerfil.php">Editar Dados do Perfil</a></p>
+            <p><a href="assets/php/logOut.php">Sair</a></p>
         </div>
     </body>
 </html>

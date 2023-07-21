@@ -9,16 +9,6 @@
             session_start();
 
             $_SESSION["usuario"] = $_GET['usuario'];
-
-            if($_SESSION["usuario"] == "cuidador"){
-                $enviaForm = "assets/php/cadastroCuidador.php";
-            }else if($_SESSION["usuario"] == "responsavel"){
-                $enviaForm = "assets/php/cadastroResponsavel.php";
-            }else if($_SESSION["usuario"] == "idoso"){
-                $enviaForm = "assets/php/cadastroIdoso.php";
-            }else{
-                exit();
-            }
         ?>
 
     </head>
@@ -26,7 +16,7 @@
         <h1>Cadastro</h1>
 
         <div>
-            <form method="POST" name="" action="<?php echo$enviaForm; ?>">
+            <form id="form" method="POST" name="" action="assets/php/cadastro.php">
                 <h3>Preencha os campos abaixo</h3>
                 
                 <div id="container-dados-pessoais">
@@ -115,7 +105,8 @@
                     <p id="msgErro"><?php echo isset($_SESSION['msgErro']); ?></p>
                 </div>
 
-                <input type="submit" value="Cadastrar!" />
+                <button id="btnEnviar" type="submit" onclick="enviarForm();">Cadastrar!</button>
+
             </form>
         </div>
 

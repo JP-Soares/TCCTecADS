@@ -1,3 +1,6 @@
+let valida;
+const form = document.getElementById("form");
+
 function validarSenha(){
     const senha = document.getElementById("txtSenha");
     const spSenha = document.getElementById("spSenha");
@@ -9,6 +12,8 @@ function validarSenha(){
     }else if(senhaLength == 8){
         spSenha.style.display = "none";
     }
+
+    
 }
 
 function confirmarSenha(){
@@ -21,6 +26,8 @@ function confirmarSenha(){
     }else{
         spConfirmaSenha.style.display = "none";
     }
+
+    
 }
 
 function validarDtNasc(){
@@ -37,5 +44,16 @@ function validarDtNasc(){
         spDtNasc.style.display = "none";
     }else{
         spDtNasc.style.display = "block";
-    }   
+    }
+}
+
+function enviarForm(){
+
+    form.addEventListener('submit', (event)=>{
+        event.preventDefault();
+        validarSenha();
+        confirmarSenha();
+        validarDtNasc();
+    });
+
 }

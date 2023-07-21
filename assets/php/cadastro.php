@@ -78,7 +78,7 @@ if(mysqli_num_rows($verificar) == 0){
     if($con->query($sql) == true){
         $_SESSION["situacaoLogin"] = true;
 
-        header('Location: ../../cadstro.php');
+        header('Location: ../../index.php');
     }
 
     
