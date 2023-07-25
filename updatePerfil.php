@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HelpOlder||Dados</title>
+        <title>HelpOlder||Atualizar</title>
 
         <?php
             session_start();
@@ -21,7 +21,7 @@
         <h1>Atualizar Perfil</h1>
 
         <div>
-            <form method="POST" name="" action="assets/php/update.php">
+            <form id="form" method="POST" name="" action="assets/php/update.php">
                 <h3>Preencha os campos abaixo</h3>
                 
                 <div id="container-dados-pessoais">
@@ -83,13 +83,13 @@
                     </select><br><br>
 
                     <label>Cidade:</label>
-                    <input type="text" name="cidade" placeholder="Digite a cidade aqui" value="<?php echo$_SESSION["cidade"]; ?>" /><br><br>
+                    <input type="text" name="cidade" placeholder="Digite a cidade aqui" value="<?php echo$_SESSION["cidade"]; ?>" required/><br><br>
                     <label>Bairro:</label>
-                    <input type="text" name="bairro" placeholder="Digite o bairro aqui" value="<?php echo$_SESSION["bairro"]; ?>" /><br><br>
+                    <input type="text" name="bairro" placeholder="Digite o bairro aqui" value="<?php echo$_SESSION["bairro"]; ?>" required/><br><br>
                     <label>Rua:</label>
-                    <input type="text" name="rua" placeholder="Digite a rua aqui" value="<?php echo$_SESSION["rua"]; ?>" /><br><br>
+                    <input type="text" name="rua" placeholder="Digite a rua aqui" value="<?php echo$_SESSION["rua"]; ?>" required/><br><br>
                     <label>Número:</label>
-                    <input type="text" name="numero" placeholder="Digite o número da residência aqui" value="<?php echo$_SESSION["numero"]; ?>" /><br><br>
+                    <input type="text" name="numero" placeholder="Digite o número da residência aqui" value="<?php echo$_SESSION["numero"]; ?>" required/><br><br>
                     <label>Completo:</label>
                     <input type="text" name="complemento" placeholder="Digite o complemento aqui" value="<?php echo$_SESSION["complemento"]; ?>" /><br><br>
 
@@ -100,18 +100,18 @@
                     <h3>Preencha seus dados de login:</h3>
 
                     <label>E-mail:</label>
-                    <input type="email" name="email" placeholder="Digite o E-mail aqui" value="<?php echo$_SESSION["email"]; ?>" /><br><br>
+                    <input type="email" name="email" placeholder="Digite o E-mail aqui" value="<?php echo$_SESSION["email"]; ?>" required/><br><br>
                     <label>Senha:</label>
-                    <input type="password" id="txtSenha" name="senha" oninput="validarSenha();" placeholder="Digite uma senha forte aqui"  value="<?php echo$_SESSION["senha"]; ?>" /><br>
+                    <input type="password" id="txtSenha" name="senha" oninput="validarSenha();" placeholder="Digite uma senha forte aqui"  value="<?php echo$_SESSION["senha"]; ?>" required/><br>
                     <span id="spSenha">A senha deve conter no mínimo 8 caracteres!</span><br>
                     <label>Confirme a senha:</label>
-                    <input type="password" id="txtConfirmaSenha" name="confirmaSenha" oninput="confirmarSenha();" placeholder="Confirme a senha aqui"/><br>
+                    <input type="password" id="txtConfirmaSenha" name="confirmaSenha" oninput="confirmarSenha();" placeholder="Confirme a senha aqui" required/><br>
                     <span id="spConfirmaSenha">As senhas precisam ser iguais!</span><br><br>
 
                     <p id="msgErro"><?php echo isset($_SESSION['msgErro']); ?></p>
                 </div>
 
-                <input id="btnEnviar" type="submit" value="Atualizar!" />
+                <button id="btnEnviar" type="submit">Atualizar!</button>
             </form>
         </div>
 

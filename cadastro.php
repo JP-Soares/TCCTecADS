@@ -77,13 +77,13 @@
                     </select><br><br>
 
                     <label>Cidade:</label>
-                    <input type="text" name="cidade" placeholder="Digite a cidade aqui"/><br><br>
+                    <input type="text" name="cidade" placeholder="Digite a cidade aqui" required/><br><br>
                     <label>Bairro:</label>
-                    <input type="text" name="bairro" placeholder="Digite o bairro aqui"/><br><br>
+                    <input type="text" name="bairro" placeholder="Digite o bairro aqui" required/><br><br>
                     <label>Rua:</label>
-                    <input type="text" name="rua" placeholder="Digite a rua aqui"/><br><br>
+                    <input type="text" name="rua" placeholder="Digite a rua aqui" required/><br><br>
                     <label>Número:</label>
-                    <input type="text" name="numero" placeholder="Digite o número da residência aqui"/><br><br>
+                    <input type="text" name="numero" placeholder="Digite o número da residência aqui" required/><br><br>
                     <label>completo:</label>
                     <input type="text" name="complemento" placeholder="Digite o complemento aqui"/><br><br>
 
@@ -94,18 +94,18 @@
                     <h3>Preencha seus dados de login:</h3>
 
                     <label>E-mail:</label>
-                    <input type="email" name="email" placeholder="Digite o E-mail aqui"/><br><br>
+                    <input type="email" name="email" placeholder="Digite o E-mail aqui" required/><br><br>
                     <label>Senha:</label>
-                    <input type="password" id="txtSenha" name="senha" oninput="validarSenha();" placeholder="Digite uma senha forte aqui"/><br>
+                    <input type="password" id="txtSenha" name="senha" oninput="validarSenha();" placeholder="Digite uma senha forte aqui" required/><br>
                     <span id="spSenha">A senha deve conter no mínimo 8 caracteres!</span><br>
                     <label>Confirme a senha:</label>
-                    <input type="password" id="txtConfirmaSenha" name="confirmaSenha" oninput="confirmarSenha();" placeholder="Confirme a senha aqui"/><br>
+                    <input type="password" id="txtConfirmaSenha" name="confirmaSenha" oninput="confirmarSenha();" placeholder="Confirme a senha aqui" required/><br>
                     <span id="spConfirmaSenha">As senhas precisam ser iguais!</span><br><br>
 
                     <p id="msgErro"><?php echo isset($_SESSION['msgErro']); ?></p>
                 </div>
 
-                <button id="btnEnviar" type="submit" onclick="enviarForm();">Cadastrar!</button>
+                <button id="btnEnviar" type="submit">Cadastrar!</button>
 
             </form>
         </div>

@@ -1,4 +1,7 @@
-let valida;
+let valida = [];
+
+console.log(valida[0], valida[1], valida[2]);
+
 const form = document.getElementById("form");
 
 function validarSenha(){
@@ -9,8 +12,10 @@ function validarSenha(){
 
     if(senhaLength < 8){
         spSenha.style.display = "block";
+        valida[0] = false;
     }else if(senhaLength == 8){
         spSenha.style.display = "none";
+        valida[0] = true
     }
 
     
@@ -23,8 +28,10 @@ function confirmarSenha(){
 
     if(senha.value != confirmaSenha.value){
         spConfirmaSenha.style.display = "block";
+        valida[1] = false;
     }else{
         spConfirmaSenha.style.display = "none";
+        valida[1] = true
     }
 
     
@@ -42,18 +49,20 @@ function validarDtNasc(){
     
     if (dataNascimento <= dataAtual){
         spDtNasc.style.display = "none";
+        valida[2] = true;
     }else{
         spDtNasc.style.display = "block";
+        valida[2] = false;
     }
 }
 
-function enviarForm(){
+form.addEventListener('submit', (event)=>{
+    event.preventDefault();
+    validarSenha();
+    confirmarSenha();
+    validarDtNasc();
 
-    form.addEventListener('submit', (event)=>{
-        event.preventDefault();
-        validarSenha();
-        confirmarSenha();
-        validarDtNasc();
-    });
-
-}
+    if(valida[0] == true && valida[1] == true && valida[2] == true){
+        form.submit();
+    }
+});
