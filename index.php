@@ -21,7 +21,14 @@
                 <?php
             }
         ?>
+        <?php
+            if(isset($_SESSION["usuario"]) == "responsavel"){
+        ?>
+
         <p><a href="pesquisa.php">Pesquisa</a></p>
+
+        <?php } ?>
+
         <p><a href="#">Ajuda</a></p>
 
     </body>

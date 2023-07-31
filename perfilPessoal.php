@@ -29,6 +29,13 @@
 
             <p><a href="updatePerfil.php">Editar Dados do Perfil</a></p>
             <p><a href="assets/php/logOut.php">Sair</a></p>
+
+            <?php
+                if($_SESSION["usuario"] == "cuidador"){
+                    ?> <p><a href="agendaPessoal.php">Editar Agenda</a></p> 
+                <?php }
+            ?>
+
         </div>
     </body>
 </html>
