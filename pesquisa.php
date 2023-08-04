@@ -89,24 +89,26 @@ if(isset($_POST['nome']) && isset($_POST['cidade']) && isset($_POST['estado'])){
 
     }
 
-    for($i = 0; $i < count($id); $i++){
-        //Seleciona os dados do usuário
-        $sqlDados = mysqli_query($con, "SELECT nome, email FROM cuidador WHERE id_cuidador='$id[$i]'");
-
-        while($dadosUsuario = mysqli_fetch_assoc($sqlDados)){
-
-            $nome = $dadosUsuario['nome'];
-            $email = $dadosUsuario['email'];
-
-            ?> 
-            <div>
-                <p>Nome: <?php echo$nome; ?></p>
-                <p>E-mail: <?php echo$email; ?></p>
-                <p><a href="perfilBusca.php?idCuidador=<?php echo$id[$i]; ?>">Contratar!</a></p><br><br>
-            </div>
-            <?php
-
+    if(isset($id)){
+        for($i = 0; $i < count($id); $i++){
+            //Seleciona os dados do usuário
+            $sqlDados = mysqli_query($con, "SELECT nome, email FROM cuidador WHERE id_cuidador='$id[$i]'");
+    
+            while($dadosUsuario = mysqli_fetch_assoc($sqlDados)){
+    
+                $nome = $dadosUsuario['nome'];
+                $email = $dadosUsuario['email'];
+    
+                ?> 
+                <div>
+                    <p>Nome: <?php echo$nome; ?></p>
+                    <p>E-mail: <?php echo$email; ?></p>
+                    <p><a href="perfilBusca.php?idCuidador=<?php echo$id[$i]; ?>">Contratar!</a></p><br><br>
+                </div>
+                <?php
+    
+            } 
         } 
-    }   
+    }  
 }
 ?>

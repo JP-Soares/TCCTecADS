@@ -61,8 +61,12 @@ CREATE TABLE cuidador(
 CREATE TABLE agenda(
   id_agenda int AUTO_INCREMENT,
   id_cuidador int NOT NULL,
-  hora time NOT NULL,
-  data date NOT NULL,
+  hora_inicio time NOT NULL,
+  hora_saida time NOT NULL,
+  turno varchar(1) NOT NULL,
+  dia_semana varchar(3) NOT NULL,
+  preco_turno varchar(6) NOT NULL,
+  status boolean,
   PRIMARY KEY(id_agenda),
   FOREIGN KEY(id_cuidador) REFERENCES cuidador(id_cuidador)
 );
