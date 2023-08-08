@@ -27,7 +27,8 @@
                 <label>Senha:</label>
                 <input type="password" name="senha" placeholder="Digite a senha" required /><br><br>
 
-                <input type="submit" value="Entrar!" />
+                <input type="submit" value="Entrar!" /><br>
+                
             </form>
         </div>
     </body>

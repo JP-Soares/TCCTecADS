@@ -9,7 +9,8 @@
     $sqlVerify = mysqli_query($con,"SELECT * FROM ". $_SESSION["usuario"]." WHERE email='$email' AND senha='$senha'");
 
     if(mysqli_num_rows($sqlVerify) == 0){
-        echo"ERROR (NÃO CADASTRADO)";
+        $_SESSION["msgError"] = "E-mail ou senha incorretos!";
+        header('Location: ../../opUsuario.php');
     }else{
         echo"EXISTE";
 

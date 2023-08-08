@@ -6,145 +6,183 @@
         <title>HelpOlder||AgednaPessoal</title>
     </head>
     <body>
-    <button onclick="goBack();">Voltar</button>
+        <button onclick="goBack();">Voltar</button>
+
+        <?php
+            session_start();
+            include_once("assets/php/conexao.php");
+
+            $sqlVerifyAgenda = mysqli_query($con, "SELECT * FROM agenda WHERE id_cuidador = ".$_SESSION["id"]);
+
+            while($dadosAgenda = mysqli_fetch_assoc($sqlVerifyAgenda)){
+                echo"<br>Dia: ".$dadosAgenda["dia_semana"];
+                echo"<br>Turno: ".$dadosAgenda["turno"];
+                echo"<br>Hora Inicio: ".$dadosAgenda["hora_inicio"];
+                echo"<br>Hora Saida: ".$dadosAgenda["hora_saida"];
+                echo"<br>Preco: ".$dadosAgenda["preco_turno"];
+
+            }
+        ?>
+
         <div id="container-agenda">
             <form id="form" name="" method="POST" action="assets/php/cadastrarAgenda.php">
                 <h1>Faça sua programação semanal</h1>
 
                 <table border="1">
                     <tr>
-                        <td><input type="checkbox" value="domingo" name="diaSemana" onclick="dia_semana(this);" id="dom"/><p>Domingo</p></td>
-                        <td><input type="checkbox" value="segunda" name="diaSemana" onclick="dia_semana(this);" id="seg"/><p>Segunda-Feira</p></td>
-                        <td><input type="checkbox" value="terca" name="diaSemana" onclick="dia_semana(this);" id="ter"/><p>Terça-Feira</p></td>
-                        <td><input type="checkbox" value="quarta" name="diaSemana" onclick="dia_semana(this);" id="qua"/><p>Quarta-Feira</p></td>
-                        <td><input type="checkbox" value="quinta" name="diaSemana" onclick="dia_semana(this);" id="qui"/><p>Quinta-Feira</p></td>
-                        <td><input type="checkbox" value="sexta" name="diaSemana" onclick="dia_semana(this);" id="sex"/><p>Sexta-Feira</p></td>
-                        <td><input type="checkbox" value="sabado" name="diaSemana" onclick="dia_semana(this);" id="sab"/><p>Sábado</p></td>
+                        <td><input type="checkbox" value="domingo" name="diaSemana[]" onclick="dia_semana(this);" id="dom"/><p>Domingo</p></td>
+                        <td><input type="checkbox" value="segunda" name="diaSemana[]" onclick="dia_semana(this);" id="seg"/><p>Segunda-Feira</p></td>
+                        <td><input type="checkbox" value="terca" name="diaSemana[]" onclick="dia_semana(this);" id="ter"/><p>Terça-Feira</p></td>
+                        <td><input type="checkbox" value="quarta" name="diaSemana[]" onclick="dia_semana(this);" id="qua"/><p>Quarta-Feira</p></td>
+                        <td><input type="checkbox" value="quinta" name="diaSemana[]" onclick="dia_semana(this);" id="qui"/><p>Quinta-Feira</p></td>
+                        <td><input type="checkbox" value="sexta" name="diaSemana[]" onclick="dia_semana(this);" id="sex"/><p>Sexta-Feira</p></td>
+                        <td><input type="checkbox" value="sabado" name="diaSemana[]" onclick="dia_semana(this);" id="sab"/><p>Sábado</p></td>
                     </tr>
 
                     <tr>
                         <!--Domingo-->
-                        <td id="domingo"><label>Manhã<label><input type="checkbox" class="m" id="manhaCheck0" value="manha0" onclick = "turno(this);"/>
-                            <div id="manha0"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicioManhaDom"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaidaManhaDom"></select>
-                            <input type="number" name="precoDomM"/></div><br>
+                        <td id="domingo"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" class="m" id="manhaCheck0" value="manha0" onclick = "turno(this);"/>
+                            <div id="manha0"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
+                            <input type="number" class="precoTurno" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div><br>
                         <br>
-                        <label>Tarde<label><input type="checkbox" value="tarde0" id="tardeCheck0" class="t" onclick = "turno(this);"/>
-                        <div id="tarde0"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicioTardeDom"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaidaTardeDom"></select>
-                            <input type="number" name="precoDomT"/></div>
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde0" id="tardeCheck0" class="t" onclick = "turno(this);"/>
+                        <div id="tarde0"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input type="checkbox" value="noite0" id="noiteCheck0" class="n" onclick = "turno(this);"/>
-                            <div id="noite0"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicioNoiteDom"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaidaNoiteDom"></select>
-                        <input type="number" name="precoDomN"/></div>
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite0" id="noiteCheck0" class="n" onclick = "turno(this);"/>
+                            <div id="noite0"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
+                        <input type="number" class="preco" name="preco[]"/>
+                        <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         </td>
 
                         <!--Segunda-->
-                        <td id="segunda"><label>Manhã<label><input type="checkbox" class="m" id="manhaCheck1" value="manha1" onclick = "turno(this);"/>    
-                        <div id="manha1"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicioManhaSeg"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaidaManhaSeg"></select>
-                            <input type="number" name="precoSegM"/></div>
+                        <td id="segunda"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" class="m" id="manhaCheck1" value="manha1" onclick = "turno(this);"/>    
+                        <div id="manha1"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input type="checkbox" value="tarde1" id="tardeCheck1" class="t" onclick = "turno(this);"/>    
-                            <div id="tarde1"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicioTardeSeg"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaidaTardeSeg"></select>
-                            <input type="number" name="precoSegT"/></div>
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde1" id="tardeCheck1" class="t" onclick = "turno(this);"/>    
+                            <div id="tarde1"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input type="checkbox" value="noite1" id="noiteCheck1" class="n" onclick = "turno(this);"/>    
-                            <div id="noite1"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicioNoiteSeg"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaidaNoiteSeg"></select>
-                            <input type="number" name="precoSegN"/></div>
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite1" id="noiteCheck1" class="n" onclick = "turno(this);"/>    
+                            <div id="noite1"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
                         
                         <!--Terca-->
-                        <td id="terca"><label>Manhã<label><input type="checkbox" id="manhaCheck2" value="manha2" class="m" onclick = "turno(this);"/>    
-                        <div id="manha2"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicioManhaTer"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaidaManhaTer"></select>
-                            <input type="number" name="precoTerM"/></div>
+                        <td id="terca"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck2" value="manha2" class="m" onclick = "turno(this);"/>    
+                        <div id="manha2"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input type="checkbox" value="tarde2" id="tardeCheck2" class="t" onclick = "turno(this);"/>    
-                        <div id="tarde2"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicioTardeTer"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaidaTardeTer"></select>
-                            <input type="number" name="precoTerT"/></div>
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde2" id="tardeCheck2" class="t" onclick = "turno(this);"/>    
+                        <div id="tarde2"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input type="checkbox" value="noite2" id="noiteCheck2" class="n" onclick = "turno(this);"/>    
-                        <div id="noite2"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicioNoiteTer"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaidaNoiteTer"></select>
-                            <input type="number" name="precoTerN"/></div>
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite2" id="noiteCheck2" class="n" onclick = "turno(this);"/>    
+                        <div id="noite2"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
 
                         <!--Quarta-->
-                        <td id="quarta"><label>Manhã<label><input type="checkbox" id="manhaCheck3" value="manha3" class="m" onclick = "turno(this);"/>    
-                        <div id="manha3"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicioManhaQua"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaidaManhaQua"></select>
-                            <input type="number" name="precoQuaM"/></div>
+                        <td id="quarta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck3" value="manha3" class="m" onclick = "turno(this);"/>    
+                        <div id="manha3"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input type="checkbox" value="tarde3" id="tardeCheck3" class="t" onclick = "turno(this);"/>    
-                        <div id="tarde3"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicioTardeQua"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaidaTardeQua"></select>
-                            <input type="number" name="precoQuaT"/></div>
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde3" id="tardeCheck3" class="t" onclick = "turno(this);"/>    
+                        <div id="tarde3"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Noite<label><input type="checkbox" value="noite3" id="noiteCheck3" class="n" onclick = "turno(this);"/>    
-                        <div id="noite3"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicioNoiteQua"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaidaNoiteQua"></select>
-                            <input type="number" name="precoQuaN"/></div>
+                        <div id="noite3"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
 
                         <!--Quinta-->
-                        <td id="quinta"><label>Manhã<label><input type="checkbox" id="manhaCheck4" value="manha4" class="m" onclick = "turno(this);"/>    
-                        <div id="manha4"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicioManhaQui"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaidaManhaQui"></select>
-                            <input type="number" name="precoQuiM"/></div>
+                        <td id="quinta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck4" value="manha4" class="m" onclick = "turno(this);"/>    
+                        <div id="manha4"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input type="checkbox" id="tardeCheck4" value="tarde4" class="t" onclick = "turno(this);"/>    
-                        <div id="tarde4"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicioTardeQui"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaidaTardeQui"></select>
-                            <input type="number" name="precoQuiT"/></div>
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" id="tardeCheck4" value="tarde4" class="t" onclick = "turno(this);"/>    
+                        <div id="tarde4"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input type="checkbox" id="noiteCheck4" value="noite4" class="n" onclick = "turno(this);"/>    
-                        <div id="noite4"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicioNoiteQui"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaidaNoiteQui"></select>
-                            <input type="number" name="precoQuiN"/></div>
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" id="noiteCheck4" value="noite4" class="n" onclick = "turno(this);"/>    
+                        <div id="noite4"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
 
                         <!--Sexta-->
-                        <td id="sexta"><label>Manhã<label><input type="checkbox" id="manhaCheck5" class="m" value="manha5" onclick = "turno(this);"/>    
-                        <div id="manha5"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicioManhaSex"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaidaManhaSex"></select>
-                            <input type="number" name="precoSexM"/></div>
+                        <td id="sexta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck5" class="m" value="manha5" onclick = "turno(this);"/>    
+                        <div id="manha5"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input type="checkbox" id="tardeCheck5" value="tarde5" class="t" onclick = "turno(this);"/>    
-                        <div id="tarde5"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicioTardeSex"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaidaTardeSex"></select>
-                            <input type="number" name="precoSexT"/></div>
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" id="tardeCheck5" value="tarde5" class="t" onclick = "turno(this);"/>    
+                        <div id="tarde5"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input type="checkbox" id="noiteCheck5" value="noite5" class="n" onclick = "turno(this);"/>    
-                        <div id="noite5"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicioNoiteSex"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaidaNoiteSex"></select>
-                            <input type="number" name="precoSexN"/></div>
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" id="noiteCheck5" value="noite5" class="n" onclick = "turno(this);"/>    
+                        <div id="noite5"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
 
                         <!--Sabado-->
-                        <td id="sabado"><label>Manhã<label><input type="checkbox" id="manhaCheck6" class="m" value="manha6" onclick = "turno(this);"/>    
-                        <div id="manha6"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicioManhaSab"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaidaManhaSab"></select>
-                            <input type="number" name="precoSabM"/></div>
+                        <td id="sabado"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck6" class="m" value="manha6" onclick = "turno(this);"/>    
+                        <div id="manha6"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input type="checkbox" value="tarde6" id="tardeCheck6" class="t" onclick = "turno(this);"/>    
-                        <div id="tarde6"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicioTardeSab"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaidaTardeSab"></select>
-                            <input type="number" name="precoSabT"/></div>
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde6" id="tardeCheck6" class="t" onclick = "turno(this);"/>    
+                        <div id="tarde6"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                            <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input type="checkbox" value="noite6" id="noiteCheck6" class="n" onclick = "turno(this);"/>    
-                        <div id="noite6"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicioNoiteSab"></select>
-                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaidaNoiteSab"></select>
-                            <input type="number" name="precoSabN"/></div>
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite6" id="noiteCheck6" class="n" onclick = "turno(this);"/>    
+                        <div id="noite6"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
+                            <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
+                            <input type="number" class="preco" name="preco[]"/>
+                        <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
                     </tr>
@@ -164,6 +202,10 @@
             #manha0, #manha1, #manha2, #manha3, #manha4, #manha5, #manha6, #tarde0, #tarde1, #tarde2, #tarde3, #tarde4, #tarde5, #tarde6, 
             #noite0, #noite1, #noite2, #noite3, #noite4, #noite5, #noite6{
                 visibility: hidden;
+            }
+
+            .spnPreco{
+                display: none;
             }
         </style>
 
@@ -350,7 +392,7 @@
 
 
                 for(let indice = 0; indice <= selectSaidaTarde.length; indice++){
-                    console.log("teste",indice);
+                    console.log("",indice);
                     for(let a = 13; a >= 13 && a <= 18; a++){//hora saida turno tarde
                         let option = document.createElement('option');
                         option.value = `${a}:00`;
@@ -377,6 +419,29 @@
                     }
                 }
             }
+
+            const form = document.getElementById("form");
+
+            // function validarPreco(){
+            //     const preco = document.querySelectorAll('.precoTurno');
+            //     const spnPreco = document.querySelectorAll('.spnPreco');
+
+                
+            //     if(preco[0] == 0 || preco[0] == null){
+            //         spnPreco[0].style.display = "block";
+            //     }else{
+            //         spnPreco[0].style.display = "none";
+            //     }
+            // }
+
+            // form.addEventListener('submit', (event)=>{
+            //     event.preventDefault();
+            //     validarPreco();
+
+            //     if(valida == true){
+            //         form.submit();
+            //     }
+            // });
 
             hora_inicio();
             hora_saida();
