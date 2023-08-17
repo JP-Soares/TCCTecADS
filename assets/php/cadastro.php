@@ -45,7 +45,6 @@ if(mysqli_num_rows($verificar) == 0){
             VALUES ('$nome', '$cpf', '$caminhoSalvar', '$registroProfissional', '$sexo', '$dtNasc', '$descricao', '$telefone', '$email', '$senhaConfirma', '$estado', '$cidade', '$bairro', '$rua', 
             '$numero', '$complemento')";
         }else{//caso não tenha inserido foto no campo de foto
-            echo"Legal";
             $sql = "INSERT INTO cuidador (nome, cpf, registroProfissional, sexo, dtNasc, descricao, telefone, email, senha, estado, cidade, bairro, rua, numero, complemento) 
             VALUES ('$nome', '$cpf', '$registroProfissional', '$sexo', '$dtNasc', '$descricao', '$telefone', '$email', '$senhaConfirma', '$estado', '$cidade', '$bairro', '$rua', 
             '$numero', '$complemento')";

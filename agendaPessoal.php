@@ -28,6 +28,7 @@
                 $preco[] = $dadosAgenda["preco_turno"];
 
             }
+
         ?>
 
         <div id="container-agenda">
@@ -420,6 +421,7 @@
             }
 
             function hora_inicio(){
+                const hora_inicioValues = <?php echo json_encode($hora_inicio); ?>;
 
                 const selectInicioManha = document.querySelectorAll('.horaInicioManha');
                 const selectInicioTarde = document.querySelectorAll('.horaInicioTarde');
@@ -440,6 +442,7 @@
                         }
 
                         selectInicioManha[indice].appendChild(option);
+
                     }
                     
                     if(indice == 6){

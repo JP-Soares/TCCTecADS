@@ -36,6 +36,12 @@
                 <?php }
             ?>
 
+            <?php
+                if($_SESSION["usuario"] == "responsavel"){
+                    ?> <p><a href="idosos.php">Gerenciar idosos</a></p>
+                    <?php }
+            ?>
+
         </div>
     </body>
 </html>

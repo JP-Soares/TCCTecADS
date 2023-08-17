@@ -44,8 +44,8 @@
 
                     <label>Telefone:</label>
                     <input type="tel" id="txtTel" name="telefone" oninput="formatTel();" onclick="formatTel();" placeholder="()____-____" maxlength="13" value="<?php echo$_SESSION["telefone"]; ?>" required /><br><br>
-                    <label>Descrição:</label>
-                    <textarea name="descricao" id="txtDescricao" placeholder="Escreva um pouco sobre você..."><?php echo$_SESSION["descricao"]; ?></textarea>
+                    <?php if($_SESSION["usuario"] == "cuidador"){ ?> <label>Descrição:</label>
+                    <textarea name="descricao" id="txtDescricao" placeholder="Escreva um pouco sobre você..."><?php echo$_SESSION["descricao"]; ?></textarea> <?php } ?>
 
                 </div>
 
