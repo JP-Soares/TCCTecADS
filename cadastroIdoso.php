@@ -112,7 +112,7 @@
                 let dataAtual = new Date();
                 
                 // Adiciona 60 anos à data de nascimento
-                dataNascimento.setFullYear(dataNascimento.getFullYear() + 60);
+                dataNascimento.setFullYear(dataNascimento.getFullYear() + 65);
                 
                 if (dataNascimento <= dataAtual){
                     spDtNasc.style.display = "none";

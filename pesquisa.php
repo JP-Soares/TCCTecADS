@@ -43,6 +43,11 @@
                         <option value="TO">Tocantins</option>
             </select><br><br>
 
+            <label>Turnos:</label><br>
+            <label>Manhã</label><input type="checkbox" value="m" name="turno[]" /><br>
+            <label>Tarde</label><input type="checkbox" value="t" name="turno[]" /><br>
+            <label>Noite</label><input type="checkbox" value="n" name="turno[]" /><br>
+
             <button type="submit">Buscar!</button>
 
         </form>
@@ -51,64 +56,54 @@
 </html>
 
 <?php
+    include_once("assets/php/conexao.php");
 
-session_start();
+    $sql = "SELECT id_cuidador FROM cuidador INNER JOIN agenda ON cuidador.id_cuidador = agenda.id_cuidador WHERE 1";
 
-include_once("assets/php/conexao.php");
-
-if(isset($_POST['nome']) && isset($_POST['cidade']) && isset($_POST['estado'])){
-
-    $nome = mysqli_real_escape_string($con, trim($_POST['nome']));
-    $cidade = mysqli_real_escape_string($con, trim($_POST['cidade']));
-    $estado = mysqli_real_escape_string($con, trim($_POST['estado']));
-
-    //Seleciona o nome digitado
-    $sqlNome = mysqli_query($con, "SELECT id_cuidador FROM cuidador WHERE nome='$nome'");
-
-    while($dadosUsuario = mysqli_fetch_assoc($sqlNome)){
-
-        $id[] = $dadosUsuario['id_cuidador'];
-
+    if (!empty($nome)) {
+        $sql .= " AND nome LIKE '%$nome%'";
     }
 
-    //Seleciona a cidade digitada
-    $sqlCidade = mysqli_query($con, "SELECT id_cuidador FROM cuidador WHERE cidade='$cidade'");
-
-    while($dadosUsuario = mysqli_fetch_assoc($sqlCidade)){
-
-        $id[] = $dadosUsuario['id_cuidador'];
-
+    if (!empty($cidade)) {
+        $sql .= " AND cidade = '$cidade'";
     }
 
-    //Seleciona o estado digitado
-    $sqlEstado = mysqli_query($con, "SELECT id_cuidador FROM cuidador WHERE estado='$estado'");
-
-    while($dadosUsuario = mysqli_fetch_assoc($sqlEstado)){
-
-        $id[] = $dadosUsuario['id_cuidador'];
-
+    if (!empty($estado)) {
+        $sql .= " AND estado = '$estado'";
     }
 
-    if(isset($id)){
-        for($i = 0; $i < count($id); $i++){
-            //Seleciona os dados do usuário
-            $sqlDados = mysqli_query($con, "SELECT nome, email FROM cuidador WHERE id_cuidador='$id[$i]'");
-    
-            while($dadosUsuario = mysqli_fetch_assoc($sqlDados)){
-    
+    if (!empty($turno)) {
+        $turnoArray = implode("', '", $_POST['turno']);
+        $sql .= " AND agenda.turno IN ('$turnoArray')";
+    }
+
+    $result = mysqli_query($con, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $id = array();
+        while ($dadosUsuario = mysqli_fetch_assoc($result)) {
+            $id[] = $dadosUsuario['id_cuidador'];
+        }
+        foreach ($id as $cuidadorId) {
+            $sqlDados = mysqli_query($con, "SELECT nome, email, estado, cidade FROM cuidador WHERE id_cuidador='$cuidadorId'");
+            while ($dadosUsuario = mysqli_fetch_assoc($sqlDados)) {
                 $nome = $dadosUsuario['nome'];
                 $email = $dadosUsuario['email'];
-    
-                ?> 
+                $estado = $dadosUsuario['estado'];
+                $cidade = $dadosUsuario['cidade'];
+                ?>
+                <!-- Exibe os dados do cuidador --> 
                 <div>
-                    <p>Nome: <?php echo$nome; ?></p>
-                    <p>E-mail: <?php echo$email; ?></p>
-                    <p><a href="perfilBusca.php?idCuidador=<?php echo$id[$i]; ?>">Contratar!</a></p><br><br>
+                    <p>Nome: <?php echo $nome; ?></p>
+                    <p>E-mail: <?php echo $email; ?></p>
+                    <p>Estado: <?php echo $estado; ?></p>
+                    <p>Cidade: <?php echo $cidade; ?></p>
+                    <p><a href="perfilBusca.php?idCuidador=<?php echo $cuidadorId; ?>">Contratar!</a></p><br><br>
                 </div>
                 <?php
-    
-            } 
-        } 
-    }  
-}
+            }
+        }
+    } else {
+        echo "Nenhum resultado encontrado.";
+    }
 ?>

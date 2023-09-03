@@ -14,19 +14,21 @@
 
             $sqlVerifyAgenda = mysqli_query($con, "SELECT * FROM agenda WHERE id_cuidador = ".$_SESSION["id"]);
 
-            while($dadosAgenda = mysqli_fetch_assoc($sqlVerifyAgenda)){
-                // echo"<br>Dia: ".$dadosAgenda["dia_semana"];
-                // echo"<br>Turno: ".$dadosAgenda["turno"];
-                // echo"<br>Hora Inicio: ".$dadosAgenda["hora_inicio"];
-                // echo"<br>Hora Saida: ".$dadosAgenda["hora_saida"];
-                // echo"<br>Preco: ".$dadosAgenda["preco_turno"]."<br><br>";
-
-                $dia[] = $dadosAgenda["dia_semana"];
-                $turno[] = $dadosAgenda["turno"];
-                $hora_inicio[] = $dadosAgenda["hora_inicio"];
-                $hora_saida[] = $dadosAgenda["hora_saida"];
-                $preco[] = $dadosAgenda["preco_turno"];
-
+            if(mysqli_num_rows($sqlVerifyAgenda) > 0){
+                while($dadosAgenda = mysqli_fetch_assoc($sqlVerifyAgenda)){
+                    // echo"<br>Dia: ".$dadosAgenda["dia_semana"];
+                    // echo"<br>Turno: ".$dadosAgenda["turno"];
+                    // echo"<br>Hora Inicio: ".$dadosAgenda["hora_inicio"];
+                    // echo"<br>Hora Saida: ".$dadosAgenda["hora_saida"];
+                    // echo"<br>Preco: ".$dadosAgenda["preco_turno"]."<br><br>";
+    
+                    $dia[] = $dadosAgenda["dia_semana"];
+                    $turno[] = $dadosAgenda["turno"];
+                    $hora_inicio[] = $dadosAgenda["hora_inicio"];
+                    $hora_saida[] = $dadosAgenda["hora_saida"];
+                    $preco[] = $dadosAgenda["preco_turno"];
+    
+                } 
             }
 
         ?>
@@ -37,165 +39,164 @@
 
                 <table border="1">
                     <tr>
-                        <td><input type="checkbox" value="domingo" name="diaSemana[]" onclick="dia_semana(this);" id="dom" <?php for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom"){?> checked <?php } } ?>/><p>Domingo</p></td>
-                        <td><input type="checkbox" value="segunda" name="diaSemana[]" onclick="dia_semana(this);" id="seg" <?php for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg"){?> checked <?php } } ?>/><p>Segunda-Feira</p></td>
-                        <td><input type="checkbox" value="terca" name="diaSemana[]" onclick="dia_semana(this);" id="ter" <?php for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter"){?> checked <?php } } ?>/><p>Terça-Feira</p></td>
-                        <td><input type="checkbox" value="quarta" name="diaSemana[]" onclick="dia_semana(this);" id="qua" <?php for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua"){?> checked <?php } } ?>/><p>Quarta-Feira</p></td>
-                        <td><input type="checkbox" value="quinta" name="diaSemana[]" onclick="dia_semana(this);" id="qui" <?php for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui"){?> checked <?php } } ?>/><p>Quinta-Feira</p></td>
-                        <td><input type="checkbox" value="sexta" name="diaSemana[]" onclick="dia_semana(this);" id="sex" <?php for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex"){?> checked <?php } } ?>/><p>Sexta-Feira</p></td>
-                        <td><input type="checkbox" value="sabado" name="diaSemana[]" onclick="dia_semana(this);" id="sab" <?php for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab"){?> checked <?php } } ?>/><p>Sábado</p></td>
+                        <td><input type="checkbox" value="domingo" name="diaSemana[]" onclick="dia_semana(this);" id="dom" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom"){ ?> checked <?php } } } ?>/><p>Domingo</p></td>
+                        <td><input type="checkbox" value="segunda" name="diaSemana[]" onclick="dia_semana(this);" id="seg" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg"){?> checked <?php } } } ?>/><p>Segunda-Feira</p></td>
+                        <td><input type="checkbox" value="terca" name="diaSemana[]" onclick="dia_semana(this);" id="ter" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter"){?> checked <?php } } } ?>/><p>Terça-Feira</p></td>
+                        <td><input type="checkbox" value="quarta" name="diaSemana[]" onclick="dia_semana(this);" id="qua" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua"){?> checked <?php } } } ?>/><p>Quarta-Feira</p></td>
+                        <td><input type="checkbox" value="quinta" name="diaSemana[]" onclick="dia_semana(this);" id="qui" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui"){?> checked <?php } } } ?>/><p>Quinta-Feira</p></td>
+                        <td><input type="checkbox" value="sexta" name="diaSemana[]" onclick="dia_semana(this);" id="sex" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex"){?> checked <?php } } } ?>/><p>Sexta-Feira</p></td>
+                        <td><input type="checkbox" value="sabado" name="diaSemana[]" onclick="dia_semana(this);" id="sab" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab"){?> checked <?php } } } ?>/><p>Sábado</p></td>
                     </tr>
 
                     <tr>
                         <!--Domingo-->
-                        <td id="domingo"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" class="m" id="manhaCheck0" value="manha0" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m"){?> checked <?php } } ?>/>
+                        <td id="domingo"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" class="m" id="manhaCheck0" value="manha0" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m"){?> checked <?php } } } ?>/>
                             <div id="manha0"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
-                            <input type="number" class="precoTurno" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m"){ echo$preco[$i]; } } ?>" />
+                            <input type="number" class="precoTurno" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m"){ echo$preco[$i]; } } } ?>" />
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div><br>
                         <br>
-                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde0" id="tardeCheck0" class="t" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t"){?> checked <?php } } ?>/>
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde0" id="tardeCheck0" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t"){?> checked <?php } } } ?>/>
                         <div id="tarde0"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite0" id="noiteCheck0" class="n" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n"){?> checked <?php } } ?>/>
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite0" id="noiteCheck0" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n"){?> checked <?php } } } ?>/>
                             <div id="noite0"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
-                        <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n"){ echo$preco[$i]; } } ?>"/>
+                        <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n"){ echo$preco[$i]; } } } ?>"/>
                         <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         </td>
 
                         <!--Segunda-->
-                        <td id="segunda"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" class="m" id="manhaCheck1" value="manha1" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m"){?> checked <?php } } ?>/>    
+                        <td id="segunda"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" class="m" id="manhaCheck1" value="manha1" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
                         <div id="manha1"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde1" id="tardeCheck1" class="t" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t"){?> checked <?php } } ?>/>    
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde1" id="tardeCheck1" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
                             <div id="tarde1"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite1" id="noiteCheck1" class="n" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n"){?> checked <?php } } ?>/>    
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite1" id="noiteCheck1" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
                             <div id="noite1"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
                         
                         <!--Terca-->
-                        <td id="terca"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck2" value="manha2" class="m" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m"){?> checked <?php } } ?>/>    
+                        <td id="terca"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck2" value="manha2" class="m" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
                         <div id="manha2"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde2" id="tardeCheck2" class="t" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t"){?> checked <?php } } ?>/>    
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde2" id="tardeCheck2" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
                         <div id="tarde2"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite2" id="noiteCheck2" class="n" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n"){?> checked <?php } } ?>/>    
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite2" id="noiteCheck2" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
                         <div id="noite2"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
 
                         <!--Quarta-->
-                        <td id="quarta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck3" value="manha3" class="m" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m"){?> checked <?php } } ?>/>    
+                        <td id="quarta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck3" value="manha3" class="m" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
                         <div id="manha3"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde3" id="tardeCheck3" class="t" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t"){?> checked <?php } } ?>"/>    
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde3" id="tardeCheck3" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t"){?> checked <?php } } } ?>"/>    
                         <div id="tarde3"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input type="checkbox" value="noite3" id="noiteCheck3" class="n" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n"){?> checked <?php } } ?>/>    
+                        <label>Noite<label><input type="checkbox" value="noite3" id="noiteCheck3" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
                         <div id="noite3"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
 
                         <!--Quinta-->
-                        <td id="quinta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck4" value="manha4" class="m" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m"){?> checked <?php } } ?>/>    
+                        <td id="quinta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck4" value="manha4" class="m" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
                         <div id="manha4"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" id="tardeCheck4" value="tarde4" class="t" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t"){?> checked <?php } } ?>/>    
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" id="tardeCheck4" value="tarde4" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
                         <div id="tarde4"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" id="noiteCheck4" value="noite4" class="n" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n"){?> checked <?php } } ?>/>    
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" id="noiteCheck4" value="noite4" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
                         <div id="noite4"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
 
                         <!--Sexta-->
-                        <td id="sexta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck5" class="m" value="manha5" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m"){?> checked <?php } } ?>/>    
+                        <td id="sexta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck5" class="m" value="manha5" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
                         <div id="manha5"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" id="tardeCheck5" value="tarde5" class="t" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t"){?> checked <?php } } ?>/>    
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" id="tardeCheck5" value="tarde5" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
                         <div id="tarde5"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" id="noiteCheck5" value="noite5" class="n" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n"){?> checked <?php } } ?>/>    
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" id="noiteCheck5" value="noite5" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
                         <div id="noite5"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
 
                         <!--Sabado-->
-                        <td id="sabado"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck6" class="m" value="manha6" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m"){?> checked <?php } } ?>/>    
+                        <td id="sabado"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck6" class="m" value="manha6" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
                         <div id="manha6"><label>Hora de início: </label><select class="horaInicioManha" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaManha" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde6" id="tardeCheck6" class="t" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t"){?> checked <?php } } ?>/>    
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde6" id="tardeCheck6" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
                         <div id="tarde6"><label>Hora de início: </label><select class="horaInicioTarde" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaTarde" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite6" id="noiteCheck6" class="n" onclick = "turno(this);" <?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n"){?> checked <?php } } ?>/>    
+                        <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite6" id="noiteCheck6" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
                         <div id="noite6"><label>Hora de início: </label><select class="horaInicioNoite" name="horaInicio[]"></select>
                             <label>Hora de saída: </label><select class="horaSaidaNoite" name="horaSaida[]"></select>
-                            <input type="number" class="preco" name="preco[]" value="<?php for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n"){ echo$preco[$i]; } } ?>"/>
+                            <input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n"){ echo$preco[$i]; } } } ?>"/>
                         <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         </td>
                     </tr>
 
                 </table><br><br>
-                
                 <button id="btnEnviar" type="submit">Confirmar!</button>
 
             </form>
@@ -217,6 +218,7 @@
         </style>
 
         <?php
+            if(!empty($turno)){
                 for($i = 0; $i < count($turno); $i++){
                     if($dia[$i] == "dom"){
                         ?> <style> #domingo{ visibility: visible; } </style> <?php
@@ -323,9 +325,9 @@
                         }
                     }
                 }
+            }
 
-            ?>
-        
+        ?>
 
         <script src="assets/js/btnVoltar.js"></script>
 
@@ -409,7 +411,9 @@
                     dia.style.visibility = "hidden";
                 }
             }
+        </script>
 
+        <script>
             function turno(checkbox){
                 const turno = document.getElementById(checkbox.value);
 
@@ -419,7 +423,9 @@
                     turno.style.visibility = "hidden";
                 }
             }
+        </script>
 
+        <script>
             function hora_inicio(){
                 const hora_inicioValues = <?php echo json_encode($hora_inicio); ?>;
 
@@ -449,7 +455,7 @@
                         break;
                     }
                 }
-                    
+            
 
                 for(let indice = 0; indice <= selectInicioTarde.length; indice++){
                     for(let a = 12; a >= 12 && a <= 17; a++){//hora inicio turno tarde
@@ -465,8 +471,6 @@
                         break;
                     }
                 }
-
-
                 for(let indice = 0; indice <= selectInicioNoite.length; indice++){
                     for(let b = 18; b >= 12 && b <= 23; b++){//hora inicio turno noite
                         let option = document.createElement('option');
@@ -483,6 +487,9 @@
                 }
                 
             }
+        </script>
+
+        <script>
 
             function hora_saida(){
                 const selectSaidaManha = document.querySelectorAll('.horaSaidaManha');
@@ -541,27 +548,6 @@
             }
 
             const form = document.getElementById("form");
-
-            // function validarPreco(){
-            //     const preco = document.querySelectorAll('.precoTurno');
-            //     const spnPreco = document.querySelectorAll('.spnPreco');
-
-                
-            //     if(preco[0] == 0 || preco[0] == null){
-            //         spnPreco[0].style.display = "block";
-            //     }else{
-            //         spnPreco[0].style.display = "none";
-            //     }
-            // }
-
-            // form.addEventListener('submit', (event)=>{
-            //     event.preventDefault();
-            //     validarPreco();
-
-            //     if(valida == true){
-            //         form.submit();
-            //     }
-            // });
 
             hora_inicio();
             hora_saida();
