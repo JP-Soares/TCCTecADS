@@ -8,7 +8,9 @@
         <?php
             session_start();
 
-            $_SESSION["usuario"] = $_GET["usuario"];
+            if(isset($_GET["usuario"])){
+                $_SESSION["usuario"] = $_GET["usuario"];
+            }
 
             if(isset($_SESSION["situacaoLogin"])){
                 header('Loation: index.php');
@@ -18,6 +20,8 @@
 
     </head>
     <body>
+        <button onclick="goBack();">Voltar</button>
+
         <h1>LOGIN</h1>
 
         <div>
@@ -30,6 +34,12 @@
                 <input type="submit" value="Entrar!" /><br>
                 
             </form>
+
+            <span><?php if(isset($_SESSION["msgError"])){ echo$_SESSION["msgError"]; unset($_SESSION["msgError"]); } ?></span><!--Mensagem de erro caso erre algum dado do login-->
         </div>
     </body>
+
+
+    <script src="assets/js/btnVoltar.js"></script>
+
 </html>

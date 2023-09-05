@@ -29,6 +29,5 @@
             <a href="<?php echo$endereco ?>?usuario=responsavel">Responsável</a>
         </div>
 
-        <span><?php if(isset($_SESSION["msgError"])){ echo$_SESSION["msgError"]; } ?></span>
     </body>
 </html>

@@ -10,9 +10,8 @@
 
     if(mysqli_num_rows($sqlVerify) == 0){
         $_SESSION["msgError"] = "E-mail ou senha incorretos!";
-        header('Location: ../../opUsuario.php');
+        header('Location: ../../login.php');
     }else{
-        echo"EXISTE";
 
         while($dadosUsuario = mysqli_fetch_assoc($sqlVerify)){
             $_SESSION["nome"] = $dadosUsuario["nome"];

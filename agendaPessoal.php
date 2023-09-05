@@ -426,130 +426,113 @@
         </script>
 
         <script>
-            function hora_inicio(){
-                const hora_inicioValues = <?php echo json_encode($hora_inicio); ?>;
+            function hora_inicio() {
+                alert("hello world");
 
+                const hora_inicioValues = <?php echo json_encode($hora_inicio); ?>;
+                
                 const selectInicioManha = document.querySelectorAll('.horaInicioManha');
                 const selectInicioTarde = document.querySelectorAll('.horaInicioTarde');
                 const selectInicioNoite = document.querySelectorAll('.horaInicioNoite');
 
-                for(let indice = 0; indice <= selectInicioManha.length; indice++){
-                    for(let i = 0; i <= 11; i++){//hora de inicio turno manha
+                for (let indice = 0; indice < selectInicioManha.length; indice++) {
+                    for (let i = 0; i <= 11; i++) { // hora de inicio turno manha
                         let option = document.createElement('option');
                         
-                        if(i >= 10){
-                            // console.log(`${i}:00`);
+                        if (i >= 10) {
                             option.value = `${i}:00:00`;
                             option.textContent = `${i}:00`;
-                        }else{
+                        } else {
                             option.value = `0${i}:00`;
                             option.textContent = `0${i}:00`;
-                            // console.log(`0${i}:00`);
                         }
 
                         selectInicioManha[indice].appendChild(option);
-
                     }
                     
-                    if(indice == 6){
+                    if (indice == 6) {
                         break;
                     }
                 }
-            
 
-                for(let indice = 0; indice <= selectInicioTarde.length; indice++){
-                    for(let a = 12; a >= 12 && a <= 17; a++){//hora inicio turno tarde
+                for (let indice = 0; indice < selectInicioTarde.length; indice++) {
+                    for (let a = 12; a <= 17; a++) { // hora inicio turno tarde
                         let option = document.createElement('option');
                         option.value = `${a}:00:00`;
                         option.textContent = `${a}:00`;
-                        // console.log(`${a}:00`);
-
                         selectInicioTarde[indice].appendChild(option);
                     }
 
-                    if(indice == 6){
+                    if (indice == 6) {
                         break;
                     }
                 }
-                for(let indice = 0; indice <= selectInicioNoite.length; indice++){
-                    for(let b = 18; b >= 12 && b <= 23; b++){//hora inicio turno noite
+
+                for (let indice = 0; indice < selectInicioNoite.length; indice++) {
+                    for (let b = 18; b <= 23; b++) { // hora inicio turno noite
                         let option = document.createElement('option');
                         option.value = `${b}:00:00`;
                         option.textContent = `${b}:00`;
-                        // console.log(`${b}:00`);
-
                         selectInicioNoite[indice].appendChild(option);
                     }
 
-                    if(indice == 6){
+                    if (indice == 6) {
                         break;
                     }
                 }
-                
             }
+
+            hora_inicio();
         </script>
 
         <script>
-
-            function hora_saida(){
+            function hora_saida() {
                 const selectSaidaManha = document.querySelectorAll('.horaSaidaManha');
                 const selectSaidaTarde = document.querySelectorAll('.horaSaidaTarde');
                 const selectSaidaNoite = document.querySelectorAll('.horaSaidaNoite');
 
-                for(let indice = 0; indice <= selectSaidaManha.length; indice++){
-                    for(let i = 1; i <= 12; i++){//hora de saida turno manha
+                for (let indice = 0; indice < selectSaidaManha.length; indice++) {
+                    for (let i = 1; i <= 12; i++) {
                         let option = document.createElement('option');
-                        if(i >= 10){
+                        if (i >= 10) {
                             option.value = `${i}:00:00`;
                             option.textContent = `${i}:00`;
-                            // console.log(`${i}:00`);
-                        }else{
+                        } else {
                             option.value = `0${i}:00`;
                             option.textContent = `0${i}:00`;
-                            // console.log(`0${i}:00`);
                         }
 
                         selectSaidaManha[indice].appendChild(option);
                     }
 
-                    if(indice == 6){
+                    if (indice == 6) {
                         break;
                     }
                 }
 
-
-                for(let indice = 0; indice <= selectSaidaTarde.length; indice++){
-                    console.log("",indice);
-                    for(let a = 13; a >= 13 && a <= 18; a++){//hora saida turno tarde
+                for (let indice = 0; indice < selectSaidaTarde.length; indice++) {
+                    for (let a = 13; a <= 18; a++) {
                         let option = document.createElement('option');
                         option.value = `${a}:00:00`;
                         option.textContent = `${a}:00`;
-                        // console.log(`${a}:00`);
-
                         selectSaidaTarde[indice].appendChild(option);
                     }
 
-                    if(indice == 6){
+                    if (indice == 6) {
                         break;
                     }
                 }
 
-
-                for(let indice = 0; indice <= selectSaidaNoite.length; indice++){
-                    for(let b = 19; b >= 19 && b <= 24; b++){//hora saida turno noite
+                for (let indice = 0; indice < selectSaidaNoite.length; indice++) {
+                    for (let b = 19; b <= 24; b++) {
                         let option = document.createElement('option');
                         option.value = `${b}:00:00`;
                         option.textContent = `${b}:00`;
-                        // console.log(`${b}:00`);
-
                         selectSaidaNoite[indice].appendChild(option);
                     }
                 }
             }
 
-            const form = document.getElementById("form");
-
-            hora_inicio();
             hora_saida();
         </script>
 
