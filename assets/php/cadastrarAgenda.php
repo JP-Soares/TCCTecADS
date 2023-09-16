@@ -5,6 +5,16 @@
 include("conexao.php");
 session_start();
 
+
+//Se houver registros deste cuidador, deleta-os
+$sqlVerify = "SELECT * FROM agenda WHERE id_cuidador =". $_SESSION['id'];
+
+if($con->query($sqlVerify)){
+    $sqlDelete = mysqli_query($con, "DELETE FROM agenda WHERE id_cuidador =". $_SESSION['id']);//deleta os registros antigos deste cuidador
+}
+
+
+
 $dia_semana = $_POST['diaSemana'];//Seg(segunda)/ Ter(terça)/ Qua(quarta)/ Qui(quinta)/ Sex(sexta)/ Sab(sábado)/ Dom(domingo)
 $turno = $_POST['turnoTrabalho'];//M(manhã)/T(tarde)/N(noite)
 $hora_inicio = $_POST['horaInicio'];//hh:mm
@@ -14,19 +24,30 @@ $preco = $_POST['preco'];
 
 $diaSemanaString = implode(', ',$dia_semana);
 $turnoString = implode(', ',$turno);
+$hora_inicio_string = implode(', ',$hora_inicio);
+$hora_saida_string = implode(', ',$hora_saida);
 
-echo"<p>".$diaSemanaString."</p>";
-echo"<p>".$turnoString."</p>";
+//Organiza os precos digitados
+for($i = 0; $i <= count($preco); $i++){
+    if (!empty($preco[$i])) {
+        $precoArray[] = $preco[$i]; // Adicione apenas valores não vazios ao array $precoArray
+    }
+}
 
-echo"<br><br><br>";
 
- 
-// for($a = 0; $a < count($turno); $a++){
-//     for($i = count($turno); $i > count($dia_semana); $i--){
-//         echo"Registro: ".$a."<br>Dia Semana: ".$dia_semana[$i]."<br>Turno: ".$turno[$a];
-//         echo"<br><br>";
-//     }
-// }
+//Organiza os horarios de inicio digitados
+for($i = 0; $i <= count($hora_inicio); $i++){
+    if (!empty($hora_inicio[$i])) {
+        $hora_inicio_array[] = $hora_inicio[$i];
+    }
+}
+
+//Organiza os horarios de saida digitados
+for($i = 0; $i <= count($hora_saida); $i++){
+    if (!empty($hora_saida[$i])) {
+        $hora_saida_array[] = $hora_saida[$i];
+    }
+}
 
 for($a = 0; $a < count($turno); $a++){
     $diaSemana = substr($turno[$a] , -1);
@@ -58,13 +79,12 @@ for($a = 0; $a < count($turno); $a++){
             $dia = "sab";
             break;
     }
-
-    echo"Registro: ".$a."<br>Dia Semana: ".$dia."<br>Turno: ".$turnoSigla."Hora inicio: ".$hora_inicio[$a]."<br>Hora saida: ".$hora_saida[$a]."<br>Preco: ".$preco[$a];
+    echo"Registro: ".$a."<br>Dia Semana: ".$dia."<br>Turno: ".$turnoSigla."<br>Hora inicio: ".$hora_inicio[$a]."<br>Hora saida: ".$hora_saida[$a]."<br>Preco: ".$precoArray[$a];
     echo"<br><br>";
 
 
     $sql = "INSERT INTO agenda (id_cuidador, hora_inicio, hora_saida, turno, dia_semana, preco_turno) VALUES ('".$_SESSION['id']."', '".$hora_inicio[$a]."', '".$hora_saida[$a]."', 
-    '$turnoSigla', '$dia', '".$preco[$a]."')";
+    '$turnoSigla', '$dia', '".$precoArray[$a]."')";
 
     if($con->query($sql) == true){
         header('Location: ../../perfilPessoal.php');
