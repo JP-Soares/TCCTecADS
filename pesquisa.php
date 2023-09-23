@@ -56,54 +56,62 @@
 </html>
 
 <?php
-    include_once("assets/php/conexao.php");
+// Inclua o arquivo de conexão com o banco de dados
+include_once("assets/php/conexao.php");
 
-    $sql = "SELECT id_cuidador FROM cuidador INNER JOIN agenda ON cuidador.id_cuidador = agenda.id_cuidador WHERE 1";
+// Verifique se o formulário foi enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Recupere os valores do formulário
+    $nome = isset($_POST['nome']) ? mysqli_real_escape_string($con, $_POST['nome']) : '';
+    $cidade = isset($_POST['cidade']) ? mysqli_real_escape_string($con, $_POST['cidade']) : '';
+    $estado = isset($_POST['estado']) ? mysqli_real_escape_string($con, $_POST['estado']) : '';
+    $turno = isset($_POST['turno']) ? $_POST['turno'] : [];
+
+    // Construa a consulta SQL
+    $sql = "SELECT DISTINCT cuidador.id_cuidador, cuidador.nome, cuidador.email, cuidador.estado, cuidador.cidade FROM cuidador 
+            INNER JOIN agenda ON cuidador.id_cuidador = agenda.id_cuidador WHERE 1";
 
     if (!empty($nome)) {
-        $sql .= " AND nome LIKE '%$nome%'";
+        $sql .= " AND cuidador.nome LIKE '%$nome%'";
     }
 
     if (!empty($cidade)) {
-        $sql .= " AND cidade = '$cidade'";
+        $sql .= " AND cuidador.cidade = '$cidade'";
     }
 
-    if (!empty($estado)) {
-        $sql .= " AND estado = '$estado'";
+    if (!empty($estado) && $estado != 'null') {
+        $sql .= " AND cuidador.estado = '$estado'";
     }
 
     if (!empty($turno)) {
-        $turnoArray = implode("', '", $_POST['turno']);
+        $turnoArray = implode("', '", $turno);
         $sql .= " AND agenda.turno IN ('$turnoArray')";
     }
 
+    // Execute a consulta SQL
     $result = mysqli_query($con, $sql);
 
     if ($result && mysqli_num_rows($result) > 0) {
-        $id = array();
         while ($dadosUsuario = mysqli_fetch_assoc($result)) {
-            $id[] = $dadosUsuario['id_cuidador'];
-        }
-        foreach ($id as $cuidadorId) {
-            $sqlDados = mysqli_query($con, "SELECT nome, email, estado, cidade FROM cuidador WHERE id_cuidador='$cuidadorId'");
-            while ($dadosUsuario = mysqli_fetch_assoc($sqlDados)) {
-                $nome = $dadosUsuario['nome'];
-                $email = $dadosUsuario['email'];
-                $estado = $dadosUsuario['estado'];
-                $cidade = $dadosUsuario['cidade'];
-                ?>
-                <!-- Exibe os dados do cuidador --> 
-                <div>
-                    <p>Nome: <?php echo $nome; ?></p>
-                    <p>E-mail: <?php echo $email; ?></p>
-                    <p>Estado: <?php echo $estado; ?></p>
-                    <p>Cidade: <?php echo $cidade; ?></p>
-                    <p><a href="perfilBusca.php?idCuidador=<?php echo $cuidadorId; ?>">Contratar!</a></p><br><br>
-                </div>
-                <?php
-            }
+            $nome = $dadosUsuario['nome'];
+            $email = $dadosUsuario['email'];
+            $estado = $dadosUsuario['estado'];
+            $cidade = $dadosUsuario['cidade'];
+            $cuidadorId = $dadosUsuario['id_cuidador'];
+            ?>
+            <!-- Exibe os dados do cuidador --> 
+            <div>
+                <p>Nome: <?php echo $nome; ?></p>
+                <p>E-mail: <?php echo $email; ?></p>
+                <p>Estado: <?php echo $estado; ?></p>
+                <p>Cidade: <?php echo $cidade; ?></p>
+                <p><a href="perfilBusca.php?idCuidador=<?php echo $cuidadorId; ?>">Contratar!</a></p><br><br>
+            </div>
+            <?php
         }
     } else {
         echo "Nenhum resultado encontrado.";
     }
+}
 ?>
