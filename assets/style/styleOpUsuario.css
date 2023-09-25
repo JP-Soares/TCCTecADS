@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+div {
+    margin: 0 10px; /* Espaço entre as divs */
+    background-color: rgba(82, 113, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centralize verticalmente o conteúdo na div */
+    align-items: center; /* Centralize horizontalmente o conteúdo na div */
+    text-align: center; /* Centralize o texto horizontalmente */
+}
+
+h3 {
+    margin: 0; /* Remova a margem padrão do h3 */
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+    
+}
+
+a {
+    text-decoration: none;
+    color: #5271FF;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+    font-size: 25px;
+
+}
+
+a:hover{
+    color: #000000;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o texto horizontalmente */
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+    position: absolute;
+    top: 10%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    /* Estilos para telas menores, tornando as divs empilhadas verticalmente */
+    body {
+        flex-direction: column;
+    }
+    div {
+        margin: 10px 0; /* Espaço entre as divs */
+    }
+
+    h1{
+        position: relative;
+    }
+}

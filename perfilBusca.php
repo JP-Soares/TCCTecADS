@@ -16,7 +16,8 @@
             echo$id;
 
             //pegando os dados pessoais do cuidador
-            $sqlDados = mysqli_query($con, "SELECT * FROM cuidador WHERE id_cuidador = $id");
+            $sqlDados = mysqli_query($con, "SELECT cuidador.* FROM cuidador WHERE cuidador.id_cuidador");
+
 
             while($dados = mysqli_fetch_assoc($sqlDados)){
                 $nome = $dados["nome"];
@@ -46,15 +47,19 @@
             }else{
                 ?>
                 <table border="1">
+                    <form method="POST" name="" action="assets/php/contratar.php">
                     <tr>
                         <td><p>Dia da semana:</p></td>
                         <td><p>Turno:</p></td>
                         <td><p>Hora de início:</p></td>
                         <td><p>Hora de saída:</p></td>
                         <td><p>Preço:</p></td>
+                        <td><p>Selecione o turno que deseja:</p></td>
                     </tr>
                 <?php
                 while($dadosAgenda = mysqli_fetch_assoc($sqlAgenda)){
+                    $idAgenda = $dadosAgenda["id_agenda"];
+
                     $horaInicio = $dadosAgenda["hora_inicio"];
                     $horaSaida = $dadosAgenda["hora_saida"];
                     $turno = $dadosAgenda["turno"];
@@ -106,6 +111,7 @@
                             <td><p><?php echo$horaInicio; ?></p></td>
                             <td><p><?php echo$horaSaida; ?></p></td>
                             <td><p>R$<?php echo$preco; ?></p></td>
+                            <td><input type="checkbox" name="contratoTurno[]" value="<?php echo$idAgenda; ?>"/></td>
                         </tr>
                 <?php
                 }
@@ -116,7 +122,8 @@
             
         ?>
 
-                   
+        <button id="btnEnviar" type="submit">Confirmar!</button>
+
         </div>
 
     </body>

@@ -1,0 +1,137 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+    color: #5271FF;
+    font-weight: bold;
+}
+
+p{
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #fff;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Estilo para alinhar o texto à direita e o título à esquerda */
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.conteudo .titulo {
+    text-align: left; /* Alinha o título à esquerda */
+    font-size: 24px; /* Tamanho da fonte do título */
+    color: #333; /* Cor do título */
+    margin-bottom: 10px; /* Espaço inferior abaixo do título */
+}
+
+.conteudo .texto {
+    text-align: left; /* Alinha o texto à direita */
+    font-size: 18px; /* Tamanho da fonte do texto */
+    color: #666; /* Cor do texto */
+    background-color: #F0F0F0;
+    line-height: 1.6; /* Altura da linha para melhor legibilidade */
+    width: 100%; /* Use a largura total em telas menores */
+    max-width: 45vw; /* Limite a largura máxima em telas maiores */
+    margin: 10px auto; /* Centralize o texto verticalmente e adicione espaçamento */
+    padding: 20px; /* Adicione algum espaço interno para melhorar a leitura */
+    box-sizing: border-box; /* Inclua margens e preenchimentos na largura total */
+}
+
+/* Estilos responsivos */
+@media screen and (max-width: 768px) {
+    .conteudo .titulo,
+    .conteudo .texto {
+        width: 100%; /* Use a largura total em telas menores */
+        max-width: none; /* Remova a largura máxima em telas menores */
+        text-align: left; /* Alinhe o texto à esquerda em telas menores */
+    }
+}
+
+
+
+/* Estilos responsivos */
+@media screen and (max-width: 768px) {
+    ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    li {
+        margin: 10px 0;
+    }
+}
+/* Estilo para o carrossel Swiper */
+.swiper-container {
+    width: 100%;
+    max-width: 1000px; /* Defina a largura máxima desejada */
+    margin: 0 auto; /* Centralize o carrossel horizontalmente */
+    overflow: hidden; /* Evite que as imagens ultrapassem o carrossel */
+}
+
+.swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee; /* Cor de fundo dos slides */
+    height: 400px; /* Ajuste a altura conforme necessário */
+}
+
+/* Estilo para a imagem dentro dos slides */
+.swiper-slide img {
+    max-width: 100%; /* A imagem se ajustará automaticamente à largura do contêiner */
+    height: auto; /* Mantenha a proporção da imagem */
+}
+
+/* Estilo para a paginação */
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #888; /* Cor dos pontos de paginação */
+    opacity: 0.7;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #ff7f50; /* Cor do ponto de paginação ativo */
+}
+
+/* Estilo personalizado para a paginação do Swiper */
+.custom-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center; /* Centralizar os pontos de paginação horizontalmente */
+}

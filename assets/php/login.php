@@ -38,7 +38,6 @@
             }
         }
         $_SESSION["situacaoLogin"] = true;
-
         
         header('Location: ../../index.php');
     }

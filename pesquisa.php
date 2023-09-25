@@ -68,9 +68,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $estado = isset($_POST['estado']) ? mysqli_real_escape_string($con, $_POST['estado']) : '';
     $turno = isset($_POST['turno']) ? $_POST['turno'] : [];
 
-    // Construa a consulta SQL
-    $sql = "SELECT DISTINCT cuidador.id_cuidador, cuidador.nome, cuidador.email, cuidador.estado, cuidador.cidade FROM cuidador 
-            INNER JOIN agenda ON cuidador.id_cuidador = agenda.id_cuidador WHERE 1";
+    // Construa a consulta SQL usando DISTINCT para selecionar registros únicos
+    $sql = "SELECT DISTINCT cuidador.id_cuidador, cuidador.nome, cuidador.email, cuidador.estado, cuidador.cidade 
+    FROM cuidador 
+    INNER JOIN agenda ON cuidador.id_cuidador = agenda.id_cuidador 
+    LEFT JOIN consulta ON cuidador.id_cuidador = consulta.id_cuidador
+    WHERE consulta.id_agenda IS NULL";
+
 
     if (!empty($nome)) {
         $sql .= " AND cuidador.nome LIKE '%$nome%'";

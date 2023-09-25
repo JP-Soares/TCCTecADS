@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+}
+
+/* Estilo para o botão "Voltar" */
+button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #428bca;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.login-container {
+    background-color: rgba(82, 113, 255);
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px; /* Largura máxima da div */
+    text-align: center;
+    align-items: center;
+    padding-left: 60px;
+}
+
+form {
+    text-align: left; /* Alinhe o texto do formulário à esquerda */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold; /* Deixa o texto em negrito */
+}
+
+input[type="email"],
+input[type="password"]{
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+}
+
+/* Estilo para o botão de enviar */
+input[type="submit"] {
+    width: calc(80% + 20px); /* Ajuste a largura conforme necessário */
+    padding: 10px;
+    margin-top: 10px; /* Adicione um espaçamento superior para separá-lo dos campos de entrada */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+    background-color: #fff; /* Cor de fundo do botão */
+    color: black; /* Cor do texto do botão */
+    cursor: pointer; /* Mostrar um cursor de apontar ao passar o mouse */
+}
+
+input[type="submit"]:hover{
+    transition: 2s;
+    color: rgba(82, 113, 255);
+}
+
+span {
+    color: red;
+}
