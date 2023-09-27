@@ -22,7 +22,7 @@
         <ul>
             <li><?php
                     if(isset($_SESSION["situacaoLogin"])){
-                        ?><p><a href="perfilPessoal.php">Perfil</a></li></p><?php
+                        ?><p><a href="perfilPessoal.php"><img class="iconsMenu" src="assets/img/perfilicon.png" /></a></li></p><?php
                     }else{
                         ?>
                         <li><p><a href="opUsuario.php?tipo=login">Login</a></p></li>
@@ -34,13 +34,13 @@
                     if(isset($_SESSION["usuario"]) == "responsavel"){
                 ?>
 
-                <li><p><a href="pesquisa.php">Pesquisa</a></p></li>
+                <li><p><a href="pesquisa.php"><img class="iconsMenu" src="assets/img/searchicon.png" /></a></p></li>
 
                 <?php } ?></li>
         </ul>
     </nav>
 
-        <div><br>
+        <div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <p><?php echo$_SESSION["id"]; ?></p>
             <p><?php echo$_SESSION["nome"]; ?></p>
             <p><?php echo$_SESSION["dtNasc"]; ?></p>

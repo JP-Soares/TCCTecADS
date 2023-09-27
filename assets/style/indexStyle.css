@@ -99,6 +99,7 @@ section {
     align-items: center;
     background-color: #eee; /* Cor de fundo dos slides */
     height: 400px; /* Ajuste a altura conforme necessário */
+    margin-top: 20%;
 }
 
 /* Estilo para a imagem dentro dos slides */

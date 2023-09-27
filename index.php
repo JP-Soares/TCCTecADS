@@ -26,22 +26,23 @@
 
 
                     if(isset($_SESSION["situacaoLogin"]) == true){
-                        ?> <li><p><a href="perfilPessoal.php">Perfil</a></p></li>
+                        ?> <div class="menu-right1"><li class="itens-menu"><a href="perfilPessoal.php"><img class="iconsMenu" src="assets/img/perfilicon.png" /></a></li>
                         <?php
+                            if($_SESSION["usuario"] == "responsavel"){
+                                ?> <li class="itens-menu"><a href="pesquisa.php"><img class="iconsMenu" src="assets/img/searchicon.png" /></a></li></div>
+                                <?php
+                            }else{
+                                ?> </div> <?php
+                            }
+
                     }else{
                         ?>
-                        <li><p><a href="opUsuario.php?tipo=login">Login</a></p></li>
-                        <li><p><a href="opUsuario.php?tipo=cadastro">Cadastro</a></p></li>
+                        <div class="menu-right2"><li class="itens-menu"><a href="opUsuario.php?tipo=login">Login</a></li>
+                        <li class="itens-menu"><a href="opUsuario.php?tipo=cadastro">Cadastro</a></li></div>
                         <?php
                     }
                 ?>
-                <?php
-                    if(isset($_SESSION["usuario"]) == "responsavel"){
-                ?>
-
-                <li><p><a href="pesquisa.php">Pesquisa</a></p></li>
-
-                <?php } ?>
+                <div class="menu-left"><li class="itens-menu"><a href="#">Ajuda</a></li></div>
         </ul>
     </nav>
 

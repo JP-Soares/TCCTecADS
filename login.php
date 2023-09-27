@@ -7,6 +7,8 @@
         <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
 
         <link rel="stylesheet" href="assets/style/styleLogin.css">
+        <link rel="stylesheet" href="assets/style/btnVoltar.css">
+
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,9 +29,19 @@
 
     </head>
     <body>
-        <button onclick="goBack();">Voltar</button>
+        <a class="btnVoltar" onclick="goBack();"><img class="imgBtnVoltar" src="assets/img/voltar.png" /></a>
 
         <h1>LOGIN</h1>
+        <h3>
+            <?php
+                if($_GET["usuario"] == "cuidador"){
+                    $msg = "Cuidador(a)"; 
+                }else{
+                    $msg = "Responsável";
+                }
+            ?>
+            Bem-Vindo(a)! de volta <?php echo$msg;?>
+        </h3>
 
         <div class="login-container">
             <form name="" method="POST" action="assets/php/login.php?<?php echo$_SESSION["usuario"]; ?>">

@@ -1,9 +1,12 @@
 nav {
     background-color: rgba(82, 113, 255);
     position: fixed;
+    height: 15%;
     width: 100%; /* Defina a largura total para o menu */
     top: 0; /* Alinhe o menu no topo da janela de visualização */
     z-index: 1000; /* Adicione uma camada superior para garantir que o menu esteja à frente de outros elementos */
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 
@@ -27,9 +30,64 @@ a {
     font-family: 'Agdasima', sans-serif;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-family: 'Mitr', sans-serif;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 a:hover {
     color: #000000;
+}
+
+.iconsMenu{
+    width: 5vw;
+}
+
+.menu-right2, .menu-left{
+    width: 50%;
+    height: 15vh;
+    padding-top: 5vh;
+    text-align: center;
+}
+
+.menu-left{
+    padding-left: 20vw;
+    display: flex;
+}
+
+.menu-right2{
+    padding-right: 30vw;
+    display: flex;
+}
+
+.menu-right1{
+    width: 50%;
+    height: 15vh;
+    padding-top: 2vh;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-right1 a{
+    margin-right: 450%;
+}
+
+.menu-left a{
+    margin-left: 450%;
+}
+
+/* Media query para tornar o menu responsivo */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Empilhar os itens verticalmente em telas menores */
+        align-items: center; /* Centralizar itens verticalmente */
+    }
+
+    .left-menu,
+    .right-menu {
+        margin-top: 10px; /* Espaçamento entre os menus */
+    }
+
+    .iconsMenu{
+        width: 25vw;
+    }
 }

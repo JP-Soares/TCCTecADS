@@ -1,0 +1,26 @@
+.btnVoltar {
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.imgBtnVoltar{
+    width: 5vw;
+    height: 10vh;
+}
+
+.btnVoltar :hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .imgBtnVoltar{
+        width: 10vw;
+        height: 10vh;
+    }
+}
