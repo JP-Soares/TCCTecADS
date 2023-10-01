@@ -1,0 +1,96 @@
+/* Default styles for larger screens */
+#container-dados-pessoais,
+#container-dados-endereco,
+#container-dados-login {
+    width: 30%;
+    margin: 0 auto;
+    background-color: rgba(82, 113, 255, 0.8);
+    border-radius: 20px;
+    padding-left: 60px;
+}
+
+h1, h3{
+    font-size: 25px;
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+    text-align: center;
+}
+
+/* Estilize as labels para que elas ocupem a largura máxima do container e tenham um espaço à esquerda */
+label {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px; /* Espaço pequeno abaixo das labels */
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+}
+
+/* Aplique um estilo para os campos de entrada */
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+textarea,
+select {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px; /* Espaço entre os campos de entrada */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+}
+
+button {
+    width: calc(80% + 20px); /* Ajuste a largura conforme necessário */
+    padding: 10px;
+    margin-top: 10px; /* Adicione um espaçamento superior para separá-lo dos campos de entrada */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+    background-color: #fff; /* Cor de fundo do botão */
+    color: black; /* Cor do texto do botão */
+    cursor: pointer; /* Mostrar um cursor de apontar ao passar o mouse */
+}
+
+button:hover{
+    transition: 2s;
+    color: rgba(82, 113, 255);
+}
+
+
+/* Adjust styles for medium-sized screens */
+@media (max-width: 768px) {
+    #container-dados-pessoais,
+    #container-dados-endereco,
+    #container-dados-login {
+        width: 50%;
+        padding-left: 30px;
+    }
+
+    h1{
+        margin-top: 40%;
+    }
+}
+
+/* Adjust styles for smaller screens */
+@media (max-width: 480px) {
+    #container-dados-pessoais,
+    #container-dados-endereco,
+    #container-dados-login {
+        width: 80%;
+    }
+}
+
+/* Add more media queries and styles as needed for different screen sizes */

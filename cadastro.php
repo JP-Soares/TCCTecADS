@@ -3,6 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/style/styleCadastro.css" />
+        <link rel="stylesheet" href="assets/style/btnVoltar.css">
+        <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Agdasima&family=M+PLUS+Rounded+1c:wght@900&family=Mitr:wght@300&display=swap" rel="stylesheet">
+
         <title>HelpOlder||Cadastro</title>
 
         <?php
@@ -17,7 +25,8 @@
 
         <div>
             <form id="form" method="POST" name="" action="assets/php/cadastro.php">
-                <h3>Preencha os campos abaixo</h3>
+                <a class="btnVoltar" onclick="goBack();"><img class="imgBtnVoltar" src="assets/img/voltar.png" /></a>
+                <h3>Preencha os campos abaixo:</h3>
                 
                 <div id="container-dados-pessoais">
                     <label>Nome:</label>
@@ -43,9 +52,10 @@
                     <textarea name="descricao" id="txtDescricao" placeholder="Escreva um pouco sobre você..."></textarea>
 
                 </div>
-
+                
+                <h3>Preencha seus dados de endereço:</h3>
                 <div id="container-dados-endereco">
-                    <h3>Preencha seus dados de endereço:</h3>
+                    
                     <label>Estado:</label><select id="estado" name="estado">
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
@@ -84,14 +94,15 @@
                     <input type="text" name="rua" placeholder="Digite a rua aqui" required/><br><br>
                     <label>Número:</label>
                     <input type="text" name="numero" placeholder="Digite o número da residência aqui" required/><br><br>
-                    <label>completo:</label>
+                    <label>Complemento:</label>
                     <input type="text" name="complemento" placeholder="Digite o complemento aqui"/><br><br>
 
                 </div>
 
+                <h3>Estamos Terminando!</h3>
+                <h3>Preencha seus dados de login:</h3>
                 <div id="container-dados-login">
-                    <h3>Estamos Terminando!</h3>
-                    <h3>Preencha seus dados de login:</h3>
+                    
 
                     <label>E-mail:</label>
                     <input type="email" name="email" placeholder="Digite o E-mail aqui" required/><br><br>
@@ -101,11 +112,11 @@
                     <label>Confirme a senha:</label>
                     <input type="password" id="txtConfirmaSenha" name="confirmaSenha" oninput="confirmarSenha();" placeholder="Confirme a senha aqui" required/><br>
                     <span id="spConfirmaSenha">As senhas precisam ser iguais!</span><br><br>
+                    <button id="btnEnviar" type="submit">Cadastrar!</button>
 
                     <p id="msgErro"><?php echo isset($_SESSION['msgErro']); ?></p>
                 </div>
 
-                <button id="btnEnviar" type="submit">Cadastrar!</button>
 
             </form>
         </div>
@@ -119,6 +130,7 @@
         <script src="assets/js/formato.js"></script>
         <script src="assets/js/foto.js"></script>
         <script src="assets/js/validador.js"></script>
+        <script src="assets/js/btnVoltar.js"></script>
 
     </body>
 </html>

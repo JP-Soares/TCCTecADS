@@ -5,6 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow-y: hidden;
 }
 
 div {
@@ -66,10 +67,28 @@ h1 {
         flex-direction: column;
     }
     div {
+        width: 70%;
         margin: 10px 0; /* Espaço entre as divs */
     }
 
     h1{
         position: relative;
+        margin-top: 30%;
+    }
+
+    body{
+        overflow-y: visible;
+    }
+}
+
+@media (min-width: 1080px) {
+    div{
+        margin-top: 10%;
+        height: 70vh;
+    }
+
+    div img{
+        margin-top: 40%;
+        max-height: 50%;
     }
 }

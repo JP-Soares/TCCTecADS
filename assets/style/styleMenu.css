@@ -49,7 +49,7 @@ a:hover {
 }
 
 .menu-left{
-    padding-left: 20vw;
+    padding-left: 2vw;
     display: flex;
 }
 
@@ -76,18 +76,22 @@ a:hover {
 }
 
 /* Media query para tornar o menu responsivo */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     nav {
-        flex-direction: column; /* Empilhar os itens verticalmente em telas menores */
-        align-items: center; /* Centralizar itens verticalmente */
+        flex-direction: column;
+        align-items: center;
     }
 
-    .left-menu,
-    .right-menu {
-        margin-top: 10px; /* Espaçamento entre os menus */
+    .menu-left {
+        margin-top: 0px; /* Reduza a margem superior */
+        padding: 20px 0 4px 0; /* Adicione espaço interno na parte inferior */
     }
 
-    .iconsMenu{
+    a {
+        font-size: 15px;
+    }
+
+    .iconsMenu {
         width: 25vw;
     }
 }
