@@ -16,17 +16,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Agdasima&family=M+PLUS+Rounded+1c:wght@900&family=Mitr:wght@300&display=swap" rel="stylesheet">
 
     <script src="assets/js/carrossel.js"></script>
+    <script src="assets/js/menu.js"></script>
+
 </head>
 <body>
 
     <nav>
+
         <ul>
                 <?php
                     session_start();
 
 
                     if(isset($_SESSION["situacaoLogin"]) == true){
-                        ?> <div class="menu-right1"><li class="itens-menu"><a href="perfilPessoal.php"><img class="iconsMenu" src="assets/img/perfilicon.png" /></a></li>
+                        ?> <div class="menu-right1"><li class="itens-menu"><a id="abrir-menu" onclick="abrirMenu();"><img class="iconsMenu" src="assets/img/perfilicon.png" /></a></li>
+                            <!-- Menu Lateral -->
+                        <div class="menu-lateral">
+                            <li class="itens-menu"><a href="index.php"><img class="iconsMenu" src="assets/img/home.png" /><span>Home</span></a></li>
+                            <li class="itens-menu"><a href="perfilPessoal.php"><img class="iconsMenu" src="assets/img/perfilMenu.png" /><span>Perfil</span></a></li>
+                            <?php if($_SESSION["usuario"] == "cuidador"){ ?> <li class="itens-menu"><a href="agendaPessoal.php"><img class="iconsMenu" src="assets/img/agenda.png" /><span>Agenda Pessoal</a></span></li><?php } ?>
+                            <li class="itens-menu"><a href="#"><img class="iconsMenu" src="assets/img/configuracoes.png" /><span>Configurações</span></a></li>
+
+                            <li class="itens-menu"><a href="assets/php/logout.php"><img class="iconsMenu" src="assets/img/logout.png"><span>Sair</span></a></li>
+                            <li class="itens-menu"><a class="fechar-menu-button" onclick="fecharMenu()"><img class="iconsMenu" src="assets/img/close.png"></a></li>
+                        </div>
                         <?php
                             if($_SESSION["usuario"] == "responsavel"){
                                 ?> <li class="itens-menu"><a href="pesquisa.php"><img class="iconsMenu" src="assets/img/searchicon.png" /></a></li></div>

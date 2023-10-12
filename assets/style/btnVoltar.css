@@ -9,18 +9,17 @@
     cursor: pointer;
 }
 
-.imgBtnVoltar{
-    width: 5vw;
-    height: 10vh;
+.imgBtnVoltar {
+    width: 5%; /* Use porcentagem para tornar a imagem responsiva */
+    height: auto; /* Mantenha a proporção de altura automática */
 }
 
-.btnVoltar :hover{
+.btnVoltar:hover {
     text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
-    .imgBtnVoltar{
-        width: 10vw;
-        height: 10vh;
+    .imgBtnVoltar {
+        width: 10%; /* Aumente o tamanho da imagem para telas menores */
     }
 }

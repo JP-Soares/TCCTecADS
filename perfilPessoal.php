@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HelpOlder||Perfil</title>
 
+        <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+
         <link rel="stylesheet" href="assets/style/styleMenu.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Agdasima&family=M+PLUS+Rounded+1c:wght@900&family=Mitr:wght@300&display=swap" rel="stylesheet">
 
         <?php
             include_once("assets/php/conexao.php");
@@ -15,30 +21,42 @@
                 exit();
             }
         ?>
-
+        <script src="assets/js/menu.js"></script>
     </head>
     <body>
         <nav>
-        <ul>
-            <li><?php
-                    if(isset($_SESSION["situacaoLogin"])){
-                        ?><p><a href="perfilPessoal.php"><img class="iconsMenu" src="assets/img/perfilicon.png" /></a></li></p><?php
+            <ul>
+                <?php
+                    if(isset($_SESSION["situacaoLogin"]) == true){
+                        ?> <div class="menu-right1"><li class="itens-menu"><a id="abrir-menu" onclick="abrirMenu();"><img class="iconsMenu" src="assets/img/perfilicon.png" /></a></li>
+                            <!-- Menu Lateral -->
+                        <div class="menu-lateral">
+                            <li class="itens-menu"><a href="index.php"><img class="iconsMenu" src="assets/img/home.png" /><span>Home</span></a></li>
+                            <li class="itens-menu"><a href="perfilPessoal.php"><img class="iconsMenu" src="assets/img/perfilMenu.png" /><span>Perfil</span></a></li>
+                            <li class="itens-menu"><a href="agendaPessoal.php"><img class="iconsMenu" src="assets/img/agenda.png" /><span>Agenda Pessoal</a></span></li>
+                            <li class="itens-menu"><a href="#"><img class="iconsMenu" src="assets/img/configuracoes.png" /><span>Configurações</span></a></li>
+
+                            <li class="itens-menu"><a href="assets/php/logout.php"><img class="iconsMenu" src="assets/img/logout.png"><span>Sair</span></a></li>
+                            <li class="itens-menu"><a class="fechar-menu-button" onclick="fecharMenu()"><img class="iconsMenu" src="assets/img/close.png"></a></li>
+                        </div>
+                        <?php
+                            if($_SESSION["usuario"] == "responsavel"){
+                                ?> <li class="itens-menu"><a href="pesquisa.php"><img class="iconsMenu" src="assets/img/searchicon.png" /></a></li></div>
+                                <?php
+                            }else{
+                                ?> </div> <?php
+                            }
+
                     }else{
                         ?>
-                        <li><p><a href="opUsuario.php?tipo=login">Login</a></p></li>
-                        <li><p><a href="opUsuario.php?tipo=cadastro">Cadastro</a></p></li>
+                        <div class="menu-right2"><li class="itens-menu"><a href="opUsuario.php?tipo=login">Login</a></li>
+                        <li class="itens-menu"><a href="opUsuario.php?tipo=cadastro">Cadastro</a></li></div>
                         <?php
                     }
                 ?>
-                <?php
-                    if(isset($_SESSION["usuario"]) == "responsavel"){
-                ?>
-
-                <li><p><a href="pesquisa.php"><img class="iconsMenu" src="assets/img/searchicon.png" /></a></p></li>
-
-                <?php } ?></li>
-        </ul>
-    </nav>
+                <div class="menu-left"><li class="itens-menu"><a href="#">Ajuda</a></li></div>
+            </ul>
+        </nav>
 
         <div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <p><?php echo$_SESSION["id"]; ?></p>
@@ -69,6 +87,12 @@
         </div>
 
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
             .perfilMenu{
                 color: black;
             }
