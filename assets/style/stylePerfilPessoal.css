@@ -4,17 +4,16 @@
     box-sizing: border-box;
 }
 
-.container-perfil .container-perfil-conteudo .perfilMenu{
-    color: black;
-    font-size: 18px;
-    text-align: center;
-}
-
 .dados-perfil{
   color: white;
 }
 
-.container-perfil .container-perfil-conteudo .perfilMenu :hover{
+.dados-perfil span{
+  color: black;
+  font-weight: bold;
+}
+
+.container-perfil .container-perfil-conteudo .perfilMenu:hover{
     text-decoration: underline;
 }
 
@@ -28,6 +27,12 @@
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-family: 'Mitr', sans-serif;
   }
+
+  .container-perfil .container-perfil-conteudo .perfilMenu{
+    color: black;
+    font-size: 18px;
+    text-align: center;
+}
   
   .container-perfil-conteudo {
     font-size: 18px;

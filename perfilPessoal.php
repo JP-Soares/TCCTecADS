@@ -65,18 +65,19 @@
         <br><br><br><br><br><br><br><br><br><br><br><br>
         <div class="container-perfil">
             <div class="container-perfil-conteudo">
+
                 <div class="profile-image">
-                    <img src="sua-imagem.jpg" alt="Sua Imagem">
+                    <img src="<?php echo$_SESSION["foto"]; ?>" />
                 </div>
 
-                <p class="dados-perfil">Nome: <?php echo$_SESSION["nome"]; ?></p>
-                <p class="dados-perfil">Idade: <?php echo$_SESSION["dtNasc"]; ?></p>
-                <p class="dados-perfil">Telefone: <?php echo$_SESSION["telefone"]; ?></p>
+                <p class="dados-perfil"><span>Nome: </span><?php echo$_SESSION["nome"]; ?></p>
+                <p class="dados-perfil"><span>Idade: </span><?php echo$_SESSION["dtNasc"]; ?></p>
+                <p class="dados-perfil"><span>Telefone: </span><?php echo$_SESSION["telefone"]; ?></p>
                 
                 <?php //se for cuidador mostrará os seguintes dados
                     if($_SESSION["usuario"] == "cuidador"){
-                        ?> <p class="dados-perfil"><?php echo$_SESSION["registroProfissional"]; ?></p>
-                        <p class="dados-perfil"><?php echo$_SESSION["descricao"]; ?></p>
+                        ?> <p class="dados-perfil"><span>Registro: </span><?php echo$_SESSION["registroProfissional"]; ?></p>
+                        <p class="dados-perfil"><span>Descrição: </span><?php echo$_SESSION["descricao"]; ?></p>
                     <?php } ?>
 
                 <p><a class="perfilMenu" href="updatePerfil.php">Editar Dados do Perfil</a></p>

@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $turno = isset($_POST['turno']) ? $_POST['turno'] : [];
 
     // Construa a consulta SQL usando DISTINCT para selecionar registros únicos
-    $sql = "SELECT DISTINCT cuidador.id_cuidador, cuidador.nome, cuidador.email, cuidador.estado, cuidador.cidade 
+    $sql = "SELECT DISTINCT cuidador.id_cuidador, cuidador.foto, cuidador.nome, cuidador.email, cuidador.estado, cuidador.cidade 
     FROM cuidador 
     INNER JOIN agenda ON cuidador.id_cuidador = agenda.id_cuidador 
     LEFT JOIN consulta ON cuidador.id_cuidador = consulta.id_cuidador
@@ -112,6 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result && mysqli_num_rows($result) > 0) {
         while ($dadosUsuario = mysqli_fetch_assoc($result)) {
+            $foto = $dadosUsuario["foto"];
             $nome = $dadosUsuario['nome'];
             $email = $dadosUsuario['email'];
             $estado = $dadosUsuario['estado'];
@@ -119,13 +120,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $cuidadorId = $dadosUsuario['id_cuidador'];
             ?>
             <!-- Exibe os dados do cuidador --> 
-            <div>
-                <p>Nome: <?php echo $nome; ?></p>
-                <p>E-mail: <?php echo $email; ?></p>
-                <p>Estado: <?php echo $estado; ?></p>
-                <p>Cidade: <?php echo $cidade; ?></p>
-                <p><a href="perfilBusca.php?idCuidador=<?php echo $cuidadorId; ?>">Contratar!</a></p><br><br>
+            <div class="profile-card">
+                <div class="profile-image">
+                    <img src="<?php=$foto; ?>" alt="Imagem de perfil">
+                </div>
+                <div class="profile-data">
+                    <p><span>Nome:</span> <?php echo$nome ?></p>
+                    <p><span>Estado:</span> <?php echo$estado ?></p>
+                    <p><span>Cidade:</span> <?php echo$cidade ?></p>
+
+                    <div class="tag">
+                        <a href="perfilBusca.php?idCuidador=<?php echo$cuidadorId ?>">Contratar!</a>
+                    </div>
+                </div>
             </div>
+            
             <?php
         }
     } else {

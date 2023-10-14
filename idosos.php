@@ -5,6 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HelpOlder||Gerenciar Idosos</title>
 
+        <link rel="stylesheet" href="assets/style/styleIdosos.css" />
+        <link rel="stylesheet" href="assets/style/btnVoltar.css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Agdasima&family=M+PLUS+Rounded+1c:wght@900&family=Mitr:wght@300&display=swap" rel="stylesheet">
+
         <?php
             include_once('assets/php/conexao.php');
 
@@ -13,6 +20,8 @@
 
     </head>
     <body>
+        <a class="btnVoltar" onclick="goBack();"><img class="imgBtnVoltar" src="assets/img/voltar.png" /></a>
+
         <h1>Aqui aparecem os idosos cadastrados!</h1>
 
         <?php
@@ -21,13 +30,23 @@
             while($dadosIdoso = mysqli_fetch_assoc($sqlVerify)){
                 $idIdoso = $dadosIdoso["id_idoso"];
                 $nome = $dadosIdoso["nome"];
+                $idade = $dadosIdoso["dtNasc"];
+                $descricao = $dadosIdoso["descricao"];
 
                 ?>
-                <div id="container-dados-idoso">
-                    <p><?php echo$idIdoso; ?></p>
-                    <p><?php echo$nome; ?></p>
-                    <p><a href="dadosIdoso.php?idIdoso=<?php echo$idIdoso; ?>">Editar</a></p>
-                    <p><a href="assets/php/deletaridoso.php?idIdoso=<?php echo$idIdoso; ?>">Romover</a></p>
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="<?php=$foto; ?>" alt="Imagem de perfil">
+                    </div>
+                    <div class="profile-data">
+                        <p><span>Nome:</span> <?php echo$nome ?></p>
+                        <p><span>Idade:</span> <?php echo$idade ?></p>
+                        <p><span>Descrição:</span> <?php echo$descricao ?></p>
+
+                        <div class="tag">
+                            <a href="perfilBusca.php?idCuidador=<?php echo$cuidadorId ?>">Verificar Dados!</a>
+                        </div>
+                    </div>
                 </div>
            <?php }
         ?>

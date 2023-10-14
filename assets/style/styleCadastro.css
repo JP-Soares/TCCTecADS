@@ -69,6 +69,20 @@ button:hover{
     color: rgba(82, 113, 255);
 }
 
+.file-input-wrapper{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 1px solid black;
+}
+  
+.file-input-wrapper {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* Adjust styles for medium-sized screens */
 @media (max-width: 768px) {

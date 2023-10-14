@@ -83,3 +83,55 @@ button:hover{
         margin-top: 20%;
     }
 }
+
+/*Resultados da pesquisa*/
+
+.profile-card {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: rgba(82, 113, 255);
+    border-radius: 5px;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+.profile-data {
+    margin-left: 20px;
+}
+
+.profile-data p {
+    margin: 5px 0;
+}
+
+.tag {
+    margin-top: 10px;
+}
+
+.profile-card p{
+    color: white;
+}
+
+.profile-card p span{
+    color: black;
+    font-weight: bold;
+}
+
+.profile-card a{
+    text-decoration: none;
+    color: black;
+}
+
+.profile-card a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}

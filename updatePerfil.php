@@ -5,6 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HelpOlder||Atualizar</title>
 
+        <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/style/styleCadastro.css">
+        <link rel="stylesheet" href="assets/style/btnVoltar.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Agdasima&family=M+PLUS+Rounded+1c:wght@900&family=Mitr:wght@300&display=swap" rel="stylesheet">
+
+        <script src="assets/js/btnVoltar.js"></script>
         <?php
             session_start();
 
@@ -18,10 +28,11 @@
 
     </head>
     <body>
+        <a class="btnVoltar" onclick="goBack();"><img class="imgBtnVoltar" src="assets/img/voltar.png" /></a>
         <h1>Atualizar Perfil</h1>
 
         <div>
-            <form id="form" method="POST" name="" action="assets/php/update.php">
+            <form id="form" method="POST" name="" action="assets/php/update.php" enctype="multipart/form-data">
                 <h3>Preencha os campos abaixo</h3>
                 
                 <div id="container-dados-pessoais">
@@ -109,9 +120,10 @@
                     <span id="spConfirmaSenha">As senhas precisam ser iguais!</span><br><br>
 
                     <p id="msgErro"><?php echo isset($_SESSION['msgErro']); ?></p>
+
+                    <button type="submit">Atualizar!</button>
                 </div>
 
-                <button id="btnEnviar" type="submit">Atualizar!</button>
             </form>
         </div>
 

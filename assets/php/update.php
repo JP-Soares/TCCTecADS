@@ -33,17 +33,16 @@ $verificar = mysqli_query($con, "SELECT * FROM ". $_SESSION["usuario"]. " WHERE 
 if(mysqli_num_rows($verificar) == 1){
         
     if($_SESSION["usuario"] == "cuidador"){//update de cuidador
-        if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
-            $nomeArquivo = $_FILES['fotoPerfil']['name'];
-            $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
-            $caminhoSalvar = '../uploadImg/'.$nomeArquivo;
-            move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
-            $pasta = "../uploadImg";
-            $diretorio = dir($pasta);
+        if(isset($_FILES['fotoPerfil']) && is_uploaded_file($_FILES["fotoPerfil"]["tmp_name"])){//caso inserido foto no campo de foto
+            $extensao = strtolower(substr($_FILES['fotoPerfil']['name'], -4)); //pega a extensao do arquivo
+            $novo_nome = md5(time()) . $extensao; //define o nome do arquivo
+            $diretorio = "../uploadImg/"; //define o diretorio para onde enviaremos o arquivo
+
+            move_uploaded_file($_FILES['fotoPerfil']['tmp_name'], $diretorio.$novo_nome); //efetua o upload
 
             $_SESSION["nome"]                 =  $nome;
             $_SESSION["cpf"]                  =  $cpf;
-            $_SESSION["foto"]                 =  $caminhoSalvar;
+            $_SESSION["foto"]                 =  $novo_nome;
             $_SESSION["registroProfissional"] =  $registroProfissional;
             $_SESSION["sexo"]                 =  $sexo;
             $_SESSION["dtNasc"]               =  $dtNasc;
@@ -58,9 +57,12 @@ if(mysqli_num_rows($verificar) == 1){
             $_SESSION["numero"]               =  $numero;
             $_SESSION["complemento"]          =  $complemento;
             
-            $sql = mysqli_query($con, "UPDATE cuidador SET nome='$nome', cpf='$cpf', foto='$caminhoSalvar', registroProfissional='$registroProfissional', sexo='$sexo', dtNasc='$dtNasc', 
+            $sql = mysqli_query($con, "UPDATE cuidador SET nome='$nome', cpf='$cpf', foto='$novo_nome', registroProfissional='$registroProfissional', sexo='$sexo', dtNasc='$dtNasc', 
             descricao='$descricao', telefone='$telefone', email='$email', senha='$senhaConfirma', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', 
             complemento='$complemento' WHERE id_cuidador=".$_SESSION["id"]);
+
+            echo"tem foto";
+            echo '<img src='.$caminhoSalvar.' />';
             header('Location: ../../perfilPessoal.php');
         }else{//caso não tenha inserido foto no campo de foto
             echo"Legal";
