@@ -112,13 +112,12 @@ if(mysqli_num_rows($verificar) == 1){
             $_SESSION["numero"]               =  $numero;
             $_SESSION["complemento"]          =  $complemento;
 
-            $sql = mysqli_query($con, "UPDATE cuidador SET nome='$nome', cpf='$cpf', foto='$caminhoSalvar', sexo='$sexo', dtNasc='$dtNasc', 
+            $sql = mysqli_query($con, "UPDATE responsavel SET nome='$nome', cpf='$cpf', foto='$caminhoSalvar', sexo='$sexo', dtNasc='$dtNasc', 
             telefone='$telefone', email='$email', senha='$senhaConfirma', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', 
             complemento='$complemento' WHERE id_responsavel=".$_SESSION["id"]);
             header('Location: ../../perfilPessoal.php');
             
         }else{//caso não tenha inserido foto no campo de foto
-            echo"Legal";
 
             $_SESSION["nome"]                 =  $nome;
             $_SESSION["cpf"]                  =  $cpf;
@@ -134,7 +133,7 @@ if(mysqli_num_rows($verificar) == 1){
             $_SESSION["numero"]               =  $numero;
             $_SESSION["complemento"]          =  $complemento;
 
-            $sql = mysqli_query($con, "UPDATE cuidador SET nome='$nome', cpf='$cpf', sexo='$sexo', dtNasc='$dtNasc', 
+            $sql = mysqli_query($con, "UPDATE responsavel SET nome='$nome', cpf='$cpf', sexo='$sexo', dtNasc='$dtNasc', 
             telefone='$telefone', email='$email', senha='$senhaConfirma', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', 
             complemento='$complemento' WHERE id_responsavel=".$_SESSION["id"]);
             header('Location: ../../perfilPessoal.php');

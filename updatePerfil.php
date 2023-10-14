@@ -90,7 +90,7 @@
                     <input type="text" name="rua" placeholder="Digite a rua aqui" value="<?php echo$_SESSION["rua"]; ?>" required/><br><br>
                     <label>Número:</label>
                     <input type="text" name="numero" placeholder="Digite o número da residência aqui" value="<?php echo$_SESSION["numero"]; ?>" required/><br><br>
-                    <label>Completo:</label>
+                    <label>Complemento:</label>
                     <input type="text" name="complemento" placeholder="Digite o complemento aqui" value="<?php echo$_SESSION["complemento"]; ?>" /><br><br>
 
                 </div>

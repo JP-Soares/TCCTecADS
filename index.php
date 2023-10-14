@@ -35,7 +35,7 @@
                             <li class="itens-menu"><a href="index.php"><img class="iconsMenu" src="assets/img/home.png" /><span>Home</span></a></li>
                             <li class="itens-menu"><a href="perfilPessoal.php"><img class="iconsMenu" src="assets/img/perfilMenu.png" /><span>Perfil</span></a></li>
                             <?php if($_SESSION["usuario"] == "cuidador"){ ?> <li class="itens-menu"><a href="agendaPessoal.php"><img class="iconsMenu" src="assets/img/agenda.png" /><span>Agenda Pessoal</a></span></li><?php } ?>
-                            <li class="itens-menu"><a href="#"><img class="iconsMenu" src="assets/img/configuracoes.png" /><span>Configurações</span></a></li>
+                            <!-- <li class="itens-menu"><a href="#"><img class="iconsMenu" src="assets/img/configuracoes.png" /><span>Configurações</span></a></li> -->
 
                             <li class="itens-menu"><a href="assets/php/logout.php"><img class="iconsMenu" src="assets/img/logout.png"><span>Sair</span></a></li>
                             <li class="itens-menu"><a class="fechar-menu-button" onclick="fecharMenu()"><img class="iconsMenu" src="assets/img/close.png"></a></li>

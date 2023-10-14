@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-perfil .container-perfil-conteudo .perfilMenu{
+    color: black;
+    font-size: 18px;
+    text-align: center;
+}
+
+.dados-perfil{
+  color: white;
+}
+
+.container-perfil .container-perfil-conteudo .perfilMenu :hover{
+    text-decoration: underline;
+}
+
+.container-perfil {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: rgba(82, 113, 255);
+    border-radius: 10px;
+    font-family: 'Agdasima', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Mitr', sans-serif;
+  }
+  
+  .container-perfil-conteudo {
+    font-size: 18px;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 1px solid black;
+  }
+  
+  .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
