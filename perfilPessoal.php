@@ -30,6 +30,93 @@
             <ul>
                 <?php
 
+                    switch ($_SESSION["estado"]) {
+                        case "AC":
+                            $_SESSION["estado"] = "Acre";
+                            break;
+                        case "AL":
+                            $_SESSION["estado"] = "Alagoas";
+                            break;
+                        case "AP":
+                            $_SESSION["estado"] = "Amapá";
+                            break;
+                        case "AM":
+                            $_SESSION["estado"] = "Amazonas";
+                            break;
+                        case "BA":
+                            $_SESSION["estado"] = "Bahia";
+                            break;
+                        case "CE":
+                            $_SESSION["estado"] = "Ceará";
+                            break;
+                        case "DF":
+                            $_SESSION["estado"] = "Distrito Federal";
+                            break;
+                        case "ES":
+                            $_SESSION["estado"] = "Espírito Santo";
+                            break;
+                        case "GO":
+                            $_SESSION["estado"] = "Goiás";
+                            break;
+                        case "MA":
+                            $_SESSION["estado"] = "Maranhão";
+                            break;
+                        case "MT":
+                            $_SESSION["estado"] = "Mato Grosso";
+                            break;
+                        case "MS":
+                            $_SESSION["estado"] = "Mato Grosso do Sul";
+                            break;
+                        case "MG":
+                            $_SESSION["estado"] = "Minas Gerais";
+                            break;
+                        case "PA":
+                            $_SESSION["estado"] = "Pará";
+                            break;
+                        case "PB":
+                            $_SESSION["estado"] = "Paraíba";
+                            break;
+                        case "PR":
+                            $_SESSION["estado"] = "Paraná";
+                            break;
+                        case "PE":
+                            $_SESSION["estado"] = "Pernambuco";
+                            break;
+                        case "PI":
+                            $_SESSION["estado"] = "Piauí";
+                            break;
+                        case "RJ":
+                            $_SESSION["estado"] = "Rio de Janeiro";
+                            break;
+                        case "RN":
+                            $_SESSION["estado"] = "Rio Grande do Norte";
+                            break;
+                        case "RS":
+                            $_SESSION["estado"] = "Rio Grande do Sul";
+                            break;
+                        case "RO":
+                            $_SESSION["estado"] = "Rondônia";
+                            break;
+                        case "RR":
+                            $_SESSION["estado"] = "Roraima";
+                            break;
+                        case "SC":
+                            $_SESSION["estado"] = "Santa Catarina";
+                            break;
+                        case "SP":
+                            $_SESSION["estado"] = "São Paulo";
+                            break;
+                        case "SE":
+                            $_SESSION["estado"] = "Sergipe";
+                            break;
+                        case "TO":
+                            $_SESSION["estado"] = "Tocantins";
+                            break;
+                        default:
+                            $_SESSION["estado"] = "Estado não encontrado";
+                            break;
+                    }
+
 
                     if(isset($_SESSION["situacaoLogin"]) == true){
                         ?> <div class="menu-right1"><li class="itens-menu"><a id="abrir-menu" onclick="abrirMenu();"><img class="iconsMenu" src="assets/img/perfilicon.png" /></a></li>

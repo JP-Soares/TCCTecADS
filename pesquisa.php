@@ -117,6 +117,94 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email = $dadosUsuario['email'];
             $estado = $dadosUsuario['estado'];
             $cidade = $dadosUsuario['cidade'];
+
+            switch ($estado) {
+                case "AC":
+                    $estado = "Acre";
+                    break;
+                case "AL":
+                    $estado = "Alagoas";
+                    break;
+                case "AP":
+                    $estado = "Amapá";
+                    break;
+                case "AM":
+                    $estado = "Amazonas";
+                    break;
+                case "BA":
+                    $estado = "Bahia";
+                    break;
+                case "CE":
+                    $estado = "Ceará";
+                    break;
+                case "DF":
+                    $estado = "Distrito Federal";
+                    break;
+                case "ES":
+                    $estado = "Espírito Santo";
+                    break;
+                case "GO":
+                    $estado = "Goiás";
+                    break;
+                case "MA":
+                    $estado = "Maranhão";
+                    break;
+                case "MT":
+                    $estado = "Mato Grosso";
+                    break;
+                case "MS":
+                    $estado = "Mato Grosso do Sul";
+                    break;
+                case "MG":
+                    $estado = "Minas Gerais";
+                    break;
+                case "PA":
+                    $estado = "Pará";
+                    break;
+                case "PB":
+                    $estado = "Paraíba";
+                    break;
+                case "PR":
+                    $estado = "Paraná";
+                    break;
+                case "PE":
+                    $estado = "Pernambuco";
+                    break;
+                case "PI":
+                    $estado = "Piauí";
+                    break;
+                case "RJ":
+                    $estado = "Rio de Janeiro";
+                    break;
+                case "RN":
+                    $estado = "Rio Grande do Norte";
+                    break;
+                case "RS":
+                    $estado = "Rio Grande do Sul";
+                    break;
+                case "RO":
+                    $estado = "Rondônia";
+                    break;
+                case "RR":
+                    $estado = "Roraima";
+                    break;
+                case "SC":
+                    $estado = "Santa Catarina";
+                    break;
+                case "SP":
+                    $estado = "São Paulo";
+                    break;
+                case "SE":
+                    $estado = "Sergipe";
+                    break;
+                case "TO":
+                    $estado = "Tocantins";
+                    break;
+                default:
+                    $estado = "Estado não encontrado";
+                    break;
+            }
+
             $cuidadorId = $dadosUsuario['id_cuidador'];
             ?>
             <!-- Exibe os dados do cuidador --> 

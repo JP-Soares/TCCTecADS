@@ -8,12 +8,17 @@
         <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
 
         <link rel="stylesheet" href="assets/style/stylePerfilBusca.css" />
+        <link rel="stylesheet" href="assets/style/btnVoltar.css" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Agdasima&family=M+PLUS+Rounded+1c:wght@900&family=Mitr:wght@300&display=swap" rel="stylesheet">
+
+        <script src="assets/js/btnVoltar.js"></script>
     </head>
     <body>
+        <a class="btnVoltar" onclick="goBack();"><img class="imgBtnVoltar" src="assets/img/voltar.png" /></a>
+
         <h1>Perfil do Cuidador</h1>
 
         <?php
@@ -37,6 +42,94 @@
 
                 $registroProfissional = $dados["registroProfissional"];
                 $estado = $dados["estado"];
+
+                switch ($estado) {
+                    case "AC":
+                        $estado = "Acre";
+                        break;
+                    case "AL":
+                        $estado = "Alagoas";
+                        break;
+                    case "AP":
+                        $estado = "Amapá";
+                        break;
+                    case "AM":
+                        $estado = "Amazonas";
+                        break;
+                    case "BA":
+                        $estado = "Bahia";
+                        break;
+                    case "CE":
+                        $estado = "Ceará";
+                        break;
+                    case "DF":
+                        $estado = "Distrito Federal";
+                        break;
+                    case "ES":
+                        $estado = "Espírito Santo";
+                        break;
+                    case "GO":
+                        $estado = "Goiás";
+                        break;
+                    case "MA":
+                        $estado = "Maranhão";
+                        break;
+                    case "MT":
+                        $estado = "Mato Grosso";
+                        break;
+                    case "MS":
+                        $estado = "Mato Grosso do Sul";
+                        break;
+                    case "MG":
+                        $estado = "Minas Gerais";
+                        break;
+                    case "PA":
+                        $estado = "Pará";
+                        break;
+                    case "PB":
+                        $estado = "Paraíba";
+                        break;
+                    case "PR":
+                        $estado = "Paraná";
+                        break;
+                    case "PE":
+                        $estado = "Pernambuco";
+                        break;
+                    case "PI":
+                        $estado = "Piauí";
+                        break;
+                    case "RJ":
+                        $estado = "Rio de Janeiro";
+                        break;
+                    case "RN":
+                        $estado = "Rio Grande do Norte";
+                        break;
+                    case "RS":
+                        $estado = "Rio Grande do Sul";
+                        break;
+                    case "RO":
+                        $estado = "Rondônia";
+                        break;
+                    case "RR":
+                        $estado = "Roraima";
+                        break;
+                    case "SC":
+                        $estado = "Santa Catarina";
+                        break;
+                    case "SP":
+                        $estado = "São Paulo";
+                        break;
+                    case "SE":
+                        $estado = "Sergipe";
+                        break;
+                    case "TO":
+                        $estado = "Tocantins";
+                        break;
+                    default:
+                        $estado = "Estado não encontrado";
+                        break;
+                }
+
                 $cidade = $dados["cidade"];
                 $telefone = $dados["telefone"];
             }
@@ -49,6 +142,7 @@
                 </div>
                 <div class="profile-data">
                     <p><span>Nome:</span> <?php echo$nome ?></p>
+                    <p><span>Idade:</span> <?php echo$idade; ?></p>
                     <p><span>Estado:</span> <?php echo$estado ?></p>
                     <p><span>Cidade:</span> <?php echo$cidade ?></p>
 

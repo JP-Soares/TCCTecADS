@@ -41,6 +41,10 @@ a:hover {
     width: 5vw;
 }
 
+.iconsMenu:hover{
+    opacity: 0.7;
+}
+
 .menu-right2, .menu-left{
     width: 50%;
     height: 15vh;

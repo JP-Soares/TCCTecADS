@@ -56,6 +56,8 @@ if(mysqli_num_rows($verificar) == 1){
             $_SESSION["rua"]                  =  $rua;
             $_SESSION["numero"]               =  $numero;
             $_SESSION["complemento"]          =  $complemento;
+
+            
             
             $sql = mysqli_query($con, "UPDATE cuidador SET nome='$nome', cpf='$cpf', foto='$novo_nome', registroProfissional='$registroProfissional', sexo='$sexo', dtNasc='$dtNasc', 
             descricao='$descricao', telefone='$telefone', email='$email', senha='$senhaConfirma', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', 

@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HelpOlder||Gerenciar Idosos</title>
+        <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
 
         <link rel="stylesheet" href="assets/style/styleIdosos.css" />
         <link rel="stylesheet" href="assets/style/btnVoltar.css" />
@@ -11,6 +12,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Agdasima&family=M+PLUS+Rounded+1c:wght@900&family=Mitr:wght@300&display=swap" rel="stylesheet">
+        <script src="assets/js/btnVoltar.js"></script>
 
         <?php
             include_once('assets/php/conexao.php');
@@ -22,7 +24,7 @@
     <body>
         <a class="btnVoltar" onclick="goBack();"><img class="imgBtnVoltar" src="assets/img/voltar.png" /></a>
 
-        <h1>Aqui aparecem os idosos cadastrados!</h1>
+        <h1>Idosos cadastrados!</h1>
 
         <?php
             $sqlVerify = mysqli_query($con,"SELECT * FROM idoso WHERE id_responsavel = ".$_SESSION["id"]);
@@ -44,7 +46,7 @@
                         <p><span>Descrição:</span> <?php echo$descricao ?></p>
 
                         <div class="tag">
-                            <a href="perfilBusca.php?idCuidador=<?php echo$cuidadorId ?>">Verificar Dados!</a>
+                            <a href="dadosIdoso.php?idIdoso=<?php echo$idIdoso; ?>">Verificar Dados!</a>
                         </div>
                     </div>
                 </div>

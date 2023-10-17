@@ -11,68 +11,16 @@ body {
     font-family: 'Mitr', sans-serif;
 }
 
-.profile-card {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: rgba(82, 113, 255);
-    border-radius: 5px;
+h1{
+    text-align: center;
 }
 
-.profile-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 1px solid black;
-}
-
-.profile-data {
-    margin-left: 20px;
-}
-
-.title-table{
-    color: black;
-}
-
-.profile-data p {
-    margin: 5px 0;
-}
-
-.tag {
-    margin-top: 10px;
-}
-
-.profile-card p{
-    color: white;
-}
-
-.profile-card p span{
-    color: black;
-    font-weight: bold;
-}
-
-.profile-card a{
-    text-decoration: none;
-    color: black;
-}
-
-.profile-card a:hover{
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-table{
-    border: 1px solid black;
-}
-
-.profile-card button{
+button {
     width: calc(80% + 20px); /* Ajuste a largura conforme necessário */
     padding: 10px;
     margin-top: 10px; /* Adicione um espaçamento superior para separá-lo dos campos de entrada */
+    margin: 0 auto;
+    display: block;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 20px;
@@ -85,7 +33,32 @@ table{
     cursor: pointer; /* Mostrar um cursor de apontar ao passar o mouse */
 }
 
-.profile-card button:hover{
+button:hover{
     transition: 2s;
     color: rgba(82, 113, 255);
+}
+
+label {
+    float: left;
+    clear: left; /* Garante que os rótulos estejam acima dos campos de entrada */
+    margin-right: 10px; /* Adiciona espaço entre o rótulo e o campo de entrada */
+}
+
+select{
+    float: right;
+    clear: top; /* Garante que os rótulos estejam acima dos campos de entrada */
+}
+
+input[type="number"] {
+    float: right;
+    width: 25%;
+}
+
+@media (max-width: 900px) {
+    .tabela-agenda .dias-agenda td{
+        display: block;
+        width: 100%; /* Ocupa toda a largura disponível */
+        box-sizing: border-box; /* Para garantir que o padding e a borda sejam contabilizados na largura total */
+        margin-bottom: 10px; /* Adiciona espaço entre as células */
+    }
 }
