@@ -67,6 +67,12 @@ body {
 
 table{
     border: 1px solid black;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+td{
+    width: 100px; /* Defina um tamanho fixo para todas as células */
 }
 
 .profile-card button{
@@ -89,3 +95,23 @@ table{
     transition: 2s;
     color: rgba(82, 113, 255);
 }
+
+/* Estilos para telas menores (até 768px) */
+@media (max-width: 768px) {
+    .profile-card {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .profile-image {
+      width: 100%;
+    }
+
+    .profile-data {
+      width: 100%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+  }

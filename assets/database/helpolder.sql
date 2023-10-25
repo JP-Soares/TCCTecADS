@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Set-2023 às 05:07
+-- Tempo de geração: 23/10/2023 às 14:25
 -- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.0.28
+-- Versão do PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `agenda`
+-- Estrutura para tabela `agenda`
 --
 
 CREATE TABLE `agenda` (
@@ -39,18 +39,19 @@ CREATE TABLE `agenda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `agenda`
+-- Despejando dados para a tabela `agenda`
 --
 
 INSERT INTO `agenda` (`id_agenda`, `id_cuidador`, `hora_inicio`, `hora_saida`, `turno`, `dia_semana`, `preco_turno`, `status`) VALUES
-(49, 1, '06:00:00', '12:00:00', 'm', 'dom', '100', NULL),
-(50, 1, '13:00:00', '18:00:00', 't', 'seg', '200', NULL),
-(51, 1, '19:00:00', '23:00:00', 'n', 'ter', '300', NULL);
+(59, 1, '06:00:00', '12:00:00', 'm', 'dom', '200', NULL),
+(60, 1, '13:00:00', '17:00:00', 't', 'seg', '200', NULL),
+(61, 1, '18:00:00', '23:00:00', 'n', 'ter', '300', NULL),
+(62, 1, '13:00:00', '17:00:00', 't', 'qua', '80', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `avaliacao`
+-- Estrutura para tabela `avaliacao`
 --
 
 CREATE TABLE `avaliacao` (
@@ -64,7 +65,7 @@ CREATE TABLE `avaliacao` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `consulta`
+-- Estrutura para tabela `consulta`
 --
 
 CREATE TABLE `consulta` (
@@ -78,7 +79,7 @@ CREATE TABLE `consulta` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cuidador`
+-- Estrutura para tabela `cuidador`
 --
 
 CREATE TABLE `cuidador` (
@@ -102,16 +103,16 @@ CREATE TABLE `cuidador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `cuidador`
+-- Despejando dados para a tabela `cuidador`
 --
 
 INSERT INTO `cuidador` (`id_cuidador`, `nome`, `cpf`, `foto`, `registroProfissional`, `sexo`, `dtNasc`, `descricao`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
-(1, 'Camila', '123.456.789-11', NULL, '753', 'Feminino', '2000-06-07', 'Sou uma ótima cuidadora de idosa', '(12)3456-7898', 'camila@camila.com', '12345678', 'MT', 'Cidade', 'Bairro', 'Rua', '89', 'Apt 234 Bloco 2');
+(1, 'Ana', '123.456.789-11', 0x35383032323463353431306536376437356233326261306362666564633165622e6a7067, '753', 'Feminino', '2000-06-07', 'Sou uma ótima cuidadora de idosa', '(12)3456-7898', 'ana@ana.com', '12345678', 'AC', 'Cidade', 'Bairro', 'Rua', '89', 'Apt 234 Bloco 2');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `idoso`
+-- Estrutura para tabela `idoso`
 --
 
 CREATE TABLE `idoso` (
@@ -133,16 +134,17 @@ CREATE TABLE `idoso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `idoso`
+-- Despejando dados para a tabela `idoso`
 --
 
 INSERT INTO `idoso` (`id_idoso`, `id_responsavel`, `nome`, `cpf`, `sexo`, `dtNasc`, `descricao`, `telefone`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`, `enfermidades`) VALUES
-(2, 1, 'Ariosvaldo', '888.888.888-88', 'Masculino', '1954-10-15', 'Sou um idoso que gosta de xadrez.\r\nUso andador', '(89)8988-0958', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '1231', '', 'enfermidade2, enfermidade3');
+(2, 1, 'Ariosvaldo', '888.888.888-88', 'Masculino', '1954-10-15', 'Sou um idoso que gosta de xadrez.\r\nUso andador', '(89)8988-0958', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '1231', '', 'enfermidade2, enfermidade3'),
+(3, 1, 'Maria Aparecida', '963.852.741-11', 'Feminino', '1958-01-23', 'Sou uma idosa que adora flores e caminhar no parque', '(98)9898-9898', 'AM', 'Manaus', 'Bairro do Limoeiro', 'Rua dos Limões', '89', '', 'enfermidade1, enfermidade2');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `responsavel`
+-- Estrutura para tabela `responsavel`
 --
 
 CREATE TABLE `responsavel` (
@@ -164,7 +166,7 @@ CREATE TABLE `responsavel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `responsavel`
+-- Despejando dados para a tabela `responsavel`
 --
 
 INSERT INTO `responsavel` (`id_responsavel`, `nome`, `cpf`, `foto`, `sexo`, `dtNasc`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
@@ -175,14 +177,14 @@ INSERT INTO `responsavel` (`id_responsavel`, `nome`, `cpf`, `foto`, `sexo`, `dtN
 --
 
 --
--- Índices para tabela `agenda`
+-- Índices de tabela `agenda`
 --
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`id_agenda`),
   ADD KEY `id_cuidador` (`id_cuidador`);
 
 --
--- Índices para tabela `avaliacao`
+-- Índices de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD PRIMARY KEY (`id_avaliacao`),
@@ -190,7 +192,7 @@ ALTER TABLE `avaliacao`
   ADD KEY `id_responsavel` (`id_responsavel`);
 
 --
--- Índices para tabela `consulta`
+-- Índices de tabela `consulta`
 --
 ALTER TABLE `consulta`
   ADD PRIMARY KEY (`id_consulta`),
@@ -200,33 +202,33 @@ ALTER TABLE `consulta`
   ADD KEY `id_agenda` (`id_agenda`);
 
 --
--- Índices para tabela `cuidador`
+-- Índices de tabela `cuidador`
 --
 ALTER TABLE `cuidador`
   ADD PRIMARY KEY (`id_cuidador`);
 
 --
--- Índices para tabela `idoso`
+-- Índices de tabela `idoso`
 --
 ALTER TABLE `idoso`
   ADD PRIMARY KEY (`id_idoso`),
   ADD KEY `id_responsavel` (`id_responsavel`);
 
 --
--- Índices para tabela `responsavel`
+-- Índices de tabela `responsavel`
 --
 ALTER TABLE `responsavel`
   ADD PRIMARY KEY (`id_responsavel`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacao`
@@ -250,7 +252,7 @@ ALTER TABLE `cuidador`
 -- AUTO_INCREMENT de tabela `idoso`
 --
 ALTER TABLE `idoso`
-  MODIFY `id_idoso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_idoso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `responsavel`
@@ -259,24 +261,24 @@ ALTER TABLE `responsavel`
   MODIFY `id_responsavel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `agenda`
+-- Restrições para tabelas `agenda`
 --
 ALTER TABLE `agenda`
   ADD CONSTRAINT `agenda_ibfk_1` FOREIGN KEY (`id_cuidador`) REFERENCES `cuidador` (`id_cuidador`);
 
 --
--- Limitadores para a tabela `avaliacao`
+-- Restrições para tabelas `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`id_cuidador`) REFERENCES `cuidador` (`id_cuidador`),
   ADD CONSTRAINT `avaliacao_ibfk_2` FOREIGN KEY (`id_responsavel`) REFERENCES `responsavel` (`id_responsavel`);
 
 --
--- Limitadores para a tabela `consulta`
+-- Restrições para tabelas `consulta`
 --
 ALTER TABLE `consulta`
   ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`id_cuidador`) REFERENCES `cuidador` (`id_cuidador`),
@@ -285,7 +287,7 @@ ALTER TABLE `consulta`
   ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`id_agenda`) REFERENCES `agenda` (`id_agenda`);
 
 --
--- Limitadores para a tabela `idoso`
+-- Restrições para tabelas `idoso`
 --
 ALTER TABLE `idoso`
   ADD CONSTRAINT `idoso_ibfk_1` FOREIGN KEY (`id_responsavel`) REFERENCES `responsavel` (`id_responsavel`);

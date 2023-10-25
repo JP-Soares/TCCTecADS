@@ -23,6 +23,7 @@
 
         <?php
             include_once("assets/php/conexao.php");
+            session_start();
 
             $id = $_GET["idCuidador"];
 
@@ -138,7 +139,7 @@
 
             <div class="profile-card">
                 <div class="profile-image">
-                    <img src="<?php=$foto; ?>" alt="Imagem de perfil">
+                    <img src="<?php echo$foto; ?>" alt="Imagem de perfil">
                 </div>
                 <div class="profile-data">
                     <p><span>Nome:</span> <?php echo$nome ?></p>
@@ -154,7 +155,7 @@
                         }else{
                             ?>
                             <table border="1">
-                                <form method="POST" name="" action="assets/php/contratar.php">
+                                <form method="POST" name="" action="assets/php/contratar.php?id_cuidador=<?php echo$id; ?>">
                                 <tr>
                                     <td><p class="title-table">Dia da semana:</p></td>
                                     <td><p class="title-table">Turno:</p></td>
@@ -162,6 +163,7 @@
                                     <td><p class="title-table">Hora de saída:</p></td>
                                     <td><p class="title-table">Preço:</p></td>
                                     <td><p class="title-table">Selecione o turno que deseja:</p></td>
+                                    <td><p class="title-table">Selecione o idoso:</p></td>
                                 </tr>
                             <?php
                             while($dadosAgenda = mysqli_fetch_assoc($sqlAgenda)){
@@ -210,6 +212,7 @@
 
                                 $preco = $dadosAgenda["preco_turno"];
 
+
                                 ?>
 
                                     <tr>
@@ -218,7 +221,20 @@
                                         <td><p><?php echo$horaInicio; ?></p></td>
                                         <td><p><?php echo$horaSaida; ?></p></td>
                                         <td><p>R$<?php echo$preco; ?></p></td>
-                                        <td><input type="checkbox" name="contratoTurno[]" value="<?php echo$idAgenda; ?>"/></td>
+                                        <td><input type="checkbox" onclick="turno(this);" class="turnoContrato" name="contratoTurno[]" value="<?php echo$idAgenda; ?>"/></td>
+
+                                        <?php
+                                        //Seleciona os dados dos idosos
+                                        $sqlIdosos = mysqli_query($con, "SELECT * FROM idoso WHERE id_responsavel =".$_SESSION["id"]);
+                                        while($dadosIdosos = mysqli_fetch_assoc($sqlIdosos)){
+                                            $idIdoso = $dadosIdosos["id_idoso"];
+                                            $nomeIdoso = $dadosIdosos["nome"];
+                                            
+                                            ?>
+                                            <td><p class="idosoContrato"><?php echo$nomeIdoso; ?></p>
+                                            <input class="idosoContratoCheckbox" type="checkbox" name="contratoIdoso[]" value="<?php echo$idIdoso; ?>"/></td>
+                                       <?php } ?>
+                                        
                                     </tr>
                             <?php
                             }
@@ -226,11 +242,67 @@
                 </table>
                 <?php
                 }
-            
             ?>
 
-            <button id="btnEnviar" type="submit">Confirmar!</button>
+            <style>
+                .idosoContrato, .idosoContratoCheckbox{
+                    visibility: hidden;
+                }
+            </style>
+
+            <script>
+                // Função para mostrar ou ocultar os itens relacionados à mesma linha
+                function toggleRelatedItems(checkbox) {
+                    const row = checkbox.closest('tr');
+                    const itemsToShow = row.querySelectorAll('.idosoContrato, .idosoContratoCheckbox');
+
+                    if (checkbox.checked) {
+                        itemsToShow.forEach(item => {
+                            item.style.visibility = 'visible';
+                        });
+                    } else {
+                        itemsToShow.forEach(item => {
+                            item.style.visibility = 'hidden';
+                            item.checked = false;
+                        });
+                    }
+                }
+
+                // Função para permitir a seleção de apenas um checkbox de idoso por linha
+                function allowSingleSelection(checkbox) {
+                    const row = checkbox.closest('tr');
+                    const idosoCheckboxes = row.querySelectorAll('.idosoContratoCheckbox');
+
+                    idosoCheckboxes.forEach(idosoCheckbox => {
+                        if (idosoCheckbox !== checkbox) {
+                            idosoCheckbox.checked = false;
+                        }
+                    });
+                }
+
+                const checkboxesTurno = document.querySelectorAll('.turnoContrato');
+                checkboxesTurno.forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        toggleRelatedItems(this);
+                    });
+                });
+
+                const checkboxesIdoso = document.querySelectorAll('.idosoContratoCheckbox');
+                checkboxesIdoso.forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        allowSingleSelection(this);
+                    });
+                });
+            </script>
+
+            <center><button id="btnEnviar" type="submit">Confirmar!</button></center>
         </div>
+
+        <?php
+            if(!empty($_SESSION["msg"]) && $_SESSION["msg"] == "Contrato com sucesso!"){
+                echo $_SESSION["msg"];
+            }
+        ?>
 
     </body>
 </html>
