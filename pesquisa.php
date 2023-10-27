@@ -84,10 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Construa a consulta SQL usando DISTINCT para selecionar registros únicos
     $sql = "SELECT DISTINCT cuidador.id_cuidador, cuidador.foto, cuidador.nome, cuidador.email, cuidador.estado, cuidador.cidade 
-    FROM cuidador 
-    INNER JOIN agenda ON cuidador.id_cuidador = agenda.id_cuidador 
-    LEFT JOIN consulta ON cuidador.id_cuidador = consulta.id_cuidador
-    WHERE consulta.id_agenda IS NULL";
+            FROM cuidador 
+            INNER JOIN agenda ON cuidador.id_cuidador = agenda.id_cuidador";
 
 
     if (!empty($nome)) {

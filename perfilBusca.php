@@ -148,8 +148,8 @@
                     <p><span>Cidade:</span> <?php echo$cidade ?></p>
 
                     <?php //pegando os dados de agenda do cuidador
-                        $sqlAgenda = mysqli_query($con, "SELECT * FROM agenda WHERE id_cuidador = $id");
-
+                        $sqlAgenda = mysqli_query($con,"SELECT * FROM agenda WHERE id_agenda NOT IN (SELECT id_agenda FROM consulta WHERE id_cuidador = $id)");
+                        
                         if(mysqli_num_rows($sqlAgenda) == 0){
                             echo"Este cuidador não possui uma agenda!";
                         }else{
@@ -297,12 +297,6 @@
 
             <center><button id="btnEnviar" type="submit">Confirmar!</button></center>
         </div>
-
-        <?php
-            if(!empty($_SESSION["msg"]) && $_SESSION["msg"] == "Contrato com sucesso!"){
-                echo $_SESSION["msg"];
-            }
-        ?>
 
     </body>
 </html>
