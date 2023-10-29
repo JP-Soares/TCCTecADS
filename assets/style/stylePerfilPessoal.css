@@ -53,3 +53,27 @@
     object-fit: cover;
   }
   
+table{
+  border: 1px solid black;
+  text-align: center;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+td{
+    width: 100px; /* Defina um tamanho fixo para todas as células */
+}
+
+.container-consulta{
+  background-color: rgba(82, 113, 255);
+  margin: auto;
+  width: 40%;
+  border-radius: 10px;
+  font-family: 'Agdasima', sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-family: 'Mitr', sans-serif;
+}
+
+.title-table{
+  color: white;
+}

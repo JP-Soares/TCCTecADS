@@ -183,5 +183,130 @@
             </div>
         </div>
 
+
+        <!-- AQUI TEM QUE FAZER -->
+        <?php
+            if($_SESSION["usuario"] == "cuidador"){
+                $sqlVerificarConsulta = mysqli_query($con, "SELECT * FROM consulta WHERE id_cuidador=".$_SESSION["id"]);
+            }else if($_SESSION["usuario"] == "responsavel"){
+                $sqlVerificarConsulta = mysqli_query($con, "SELECT * FROM consulta WHERE id_responsavel=".$_SESSION["id"]);
+            }
+
+            if(mysqli_num_rows($sqlVerificarConsulta) == 0){
+                echo"Não há consultas agendadas no momento!";
+            }else{
+                ?>
+                <div class="container-consulta">
+                        <table border="1">
+                            <tr>
+                                <td><p class="title-table">Idoso:</p></td>
+                                <td><p class="title-table"><?php if($_SESSION["usuario"] == "cuidador"){ ?> Responsável: <?php }else{ ?> Cuidador: <?php } ?></p></td>
+                                <td><p class="title-table">Turno da Consulta:</p></td>
+                                <td><p class="title-table">Dia da semana da consulta:</p></td>
+                                <td><p class="title-table">Hora de início da consulta:</p></td>
+                                <td><p class="title-table">Hora do término da consulta:</p></td>
+                                <td><p class="title-table">Valor da consulta:</p></td>
+                            </tr>
+                <?php
+                //pega os dados da consulta
+                while($dadosConsulta = mysqli_fetch_assoc($sqlVerificarConsulta)){
+                    $id_agenda[] = $dadosConsulta["id_agenda"];
+                    $id_cuidador[] = $dadosConsulta["id_cuidador"];
+                    $id_idoso[] = $dadosConsulta["id_idoso"];
+                    $id_responsavel[] = $dadosConsulta["id_responsavel"];
+
+                    $id_agenda_list = implode(',', $id_agenda);
+                    $id_idoso_list = implode(',', $id_idoso);
+                    $id_cuidador_list = implode(',', $id_cuidador);
+                    $id_responsavel_list = implode(',', $id_responsavel);
+
+                    //pega os dados da agenda
+                    $sqlAgenda = mysqli_query($con, "SELECT * FROM agenda WHERE id_agenda IN ($id_agenda_list)");
+                    while($dadosAgenda = mysqli_fetch_assoc($sqlAgenda)){
+                        $hora_inicio = $dadosAgenda["hora_inicio"];
+                        $hora_saida = $dadosAgenda["hora_saida"];
+                        $turno = $dadosAgenda["turno"];
+                        $diaSemana = $dadosAgenda["dia_semana"];
+
+                        switch($diaSemana){
+                            case "dom":
+                                $diaSemana = "Domingo";
+                                break;
+                            case "seg":
+                                $diaSemana = "Segunda-feira";
+                                break;
+                            case "ter":
+                                $diaSemana = "Terça-feira";
+                                break;
+                            case "qua":
+                                $diaSemana = "Quarta-feira";
+                                break;
+                            case "qui":
+                                $diaSemana = "Quinta-feira";
+                                break;
+                            case "sex":
+                                $diaSemana = "Sexta-feira";
+                                break;
+                            case "sab":
+                                $diaSemana = "Sábado";
+                                break;
+                        }
+
+                        switch($turno){
+                            case "m":
+                                $turno = "Manhã";
+                                break;
+                            case "t":
+                                $turno = "Tarde";
+                                break;
+                            case "n":
+                                $turno = "Noite";
+                                break;
+                        }
+
+                        $precoTurno = $dadosAgenda["preco_turno"];
+                    }
+
+
+                    //Pega os dados do idoso
+                    $sqlIdoso = mysqli_query($con, "SELECT nome FROM idoso WHERE id_idoso IN ($id_idoso_list)");
+                    while($dadosIdoso = mysqli_fetch_assoc($sqlIdoso)){
+                        $nome_idoso = $dadosIdoso["nome"];
+                    }
+
+                    //Pega os dados do cuidador
+                    if($_SESSION["usuario"] == "responsavel"){
+                        $sqlCuidador = mysqli_query($con, "SELECT nome FROM cuidador WHERE id_cuidador IN ($id_cuidador_list)");
+                        while($dadosCuidador = mysqli_fetch_assoc($sqlCuidador)){
+                            $nome_cuidador = $dadosCuidador["nome"];
+                        }
+                    }
+
+
+                    //Pega os dados do responsavel
+                    if($_SESSION["usuario"] == "cuidador"){
+                        $sqlresponsavel = mysqli_query($con, "SELECT nome FROM responsavel WHERE id_responsavel IN ($id_responsavel_list)");
+                        while($dadosresponsavel = mysqli_fetch_assoc($sqlresponsavel)){
+                            $nome_responsavel = $dadosresponsavel["nome"];
+                        }
+                    }
+                ?>
+    
+                            <tr>
+                                <td><p><?php echo $nome_idoso; ?></p></td>
+                                <td><p><?php if($_SESSION["usuario"] == "responsavel"){ echo $nome_cuidador; } else{ echo $nome_responsavel; } ?></p></td>
+                                <td><p><?php echo $turno; ?></p></td>
+                                <td><p><?php echo $diaSemana; ?></p></td>
+                                <td><p><?php echo $hora_inicio; ?></p></td>
+                                <td><p><?php echo $hora_saida; ?></p></td>
+                                <td><?php echo$precoTurno; ?></p></td>
+                            </tr>
+                        
+                <?php
+                }
+            }
+        ?>
+            </table>
+        <div>
     </body>
 </html>
