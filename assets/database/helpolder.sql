@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23/10/2023 às 14:25
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.0.28
+-- Tempo de geração: 30-Out-2023 às 18:58
+-- Versão do servidor: 10.4.11-MariaDB
+-- versão do PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `agenda`
+-- Estrutura da tabela `agenda`
 --
 
 CREATE TABLE `agenda` (
@@ -34,24 +35,23 @@ CREATE TABLE `agenda` (
   `hora_saida` time NOT NULL,
   `turno` varchar(1) NOT NULL,
   `dia_semana` varchar(3) NOT NULL,
-  `preco_turno` varchar(6) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `preco_turno` varchar(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `agenda`
+-- Extraindo dados da tabela `agenda`
 --
 
-INSERT INTO `agenda` (`id_agenda`, `id_cuidador`, `hora_inicio`, `hora_saida`, `turno`, `dia_semana`, `preco_turno`, `status`) VALUES
-(59, 1, '06:00:00', '12:00:00', 'm', 'dom', '200', NULL),
-(60, 1, '13:00:00', '17:00:00', 't', 'seg', '200', NULL),
-(61, 1, '18:00:00', '23:00:00', 'n', 'ter', '300', NULL),
-(62, 1, '13:00:00', '17:00:00', 't', 'qua', '80', NULL);
+INSERT INTO `agenda` (`id_agenda`, `id_cuidador`, `hora_inicio`, `hora_saida`, `turno`, `dia_semana`, `preco_turno`) VALUES
+(59, 1, '06:00:00', '12:00:00', 'm', 'dom', '200'),
+(60, 1, '13:00:00', '17:00:00', 't', 'seg', '200'),
+(61, 1, '18:00:00', '23:00:00', 'n', 'ter', '300'),
+(62, 1, '13:00:00', '17:00:00', 't', 'qua', '80');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `avaliacao`
+-- Estrutura da tabela `avaliacao`
 --
 
 CREATE TABLE `avaliacao` (
@@ -60,12 +60,12 @@ CREATE TABLE `avaliacao` (
   `id_responsavel` int(11) NOT NULL,
   `qtde_estrela` int(11) DEFAULT NULL,
   `comentario` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `consulta`
+-- Estrutura da tabela `consulta`
 --
 
 CREATE TABLE `consulta` (
@@ -73,13 +73,22 @@ CREATE TABLE `consulta` (
   `id_cuidador` int(11) NOT NULL,
   `id_responsavel` int(11) NOT NULL,
   `id_idoso` int(11) NOT NULL,
-  `id_agenda` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_agenda` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `consulta`
+--
+
+INSERT INTO `consulta` (`id_consulta`, `id_cuidador`, `id_responsavel`, `id_idoso`, `id_agenda`, `status`) VALUES
+(1, 1, 1, 2, 59, 1),
+(2, 1, 1, 3, 61, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cuidador`
+-- Estrutura da tabela `cuidador`
 --
 
 CREATE TABLE `cuidador` (
@@ -100,10 +109,10 @@ CREATE TABLE `cuidador` (
   `rua` varchar(50) NOT NULL,
   `numero` varchar(5) NOT NULL,
   `complemento` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `cuidador`
+-- Extraindo dados da tabela `cuidador`
 --
 
 INSERT INTO `cuidador` (`id_cuidador`, `nome`, `cpf`, `foto`, `registroProfissional`, `sexo`, `dtNasc`, `descricao`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
@@ -112,7 +121,7 @@ INSERT INTO `cuidador` (`id_cuidador`, `nome`, `cpf`, `foto`, `registroProfissio
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `idoso`
+-- Estrutura da tabela `idoso`
 --
 
 CREATE TABLE `idoso` (
@@ -131,10 +140,10 @@ CREATE TABLE `idoso` (
   `numero` varchar(5) NOT NULL,
   `complemento` varchar(20) DEFAULT NULL,
   `enfermidades` varchar(180) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `idoso`
+-- Extraindo dados da tabela `idoso`
 --
 
 INSERT INTO `idoso` (`id_idoso`, `id_responsavel`, `nome`, `cpf`, `sexo`, `dtNasc`, `descricao`, `telefone`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`, `enfermidades`) VALUES
@@ -144,7 +153,7 @@ INSERT INTO `idoso` (`id_idoso`, `id_responsavel`, `nome`, `cpf`, `sexo`, `dtNas
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `responsavel`
+-- Estrutura da tabela `responsavel`
 --
 
 CREATE TABLE `responsavel` (
@@ -163,10 +172,10 @@ CREATE TABLE `responsavel` (
   `rua` varchar(50) NOT NULL,
   `numero` varchar(5) NOT NULL,
   `complemento` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `responsavel`
+-- Extraindo dados da tabela `responsavel`
 --
 
 INSERT INTO `responsavel` (`id_responsavel`, `nome`, `cpf`, `foto`, `sexo`, `dtNasc`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
@@ -177,14 +186,14 @@ INSERT INTO `responsavel` (`id_responsavel`, `nome`, `cpf`, `foto`, `sexo`, `dtN
 --
 
 --
--- Índices de tabela `agenda`
+-- Índices para tabela `agenda`
 --
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`id_agenda`),
   ADD KEY `id_cuidador` (`id_cuidador`);
 
 --
--- Índices de tabela `avaliacao`
+-- Índices para tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD PRIMARY KEY (`id_avaliacao`),
@@ -192,7 +201,7 @@ ALTER TABLE `avaliacao`
   ADD KEY `id_responsavel` (`id_responsavel`);
 
 --
--- Índices de tabela `consulta`
+-- Índices para tabela `consulta`
 --
 ALTER TABLE `consulta`
   ADD PRIMARY KEY (`id_consulta`),
@@ -202,26 +211,26 @@ ALTER TABLE `consulta`
   ADD KEY `id_agenda` (`id_agenda`);
 
 --
--- Índices de tabela `cuidador`
+-- Índices para tabela `cuidador`
 --
 ALTER TABLE `cuidador`
   ADD PRIMARY KEY (`id_cuidador`);
 
 --
--- Índices de tabela `idoso`
+-- Índices para tabela `idoso`
 --
 ALTER TABLE `idoso`
   ADD PRIMARY KEY (`id_idoso`),
   ADD KEY `id_responsavel` (`id_responsavel`);
 
 --
--- Índices de tabela `responsavel`
+-- Índices para tabela `responsavel`
 --
 ALTER TABLE `responsavel`
   ADD PRIMARY KEY (`id_responsavel`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
@@ -240,7 +249,7 @@ ALTER TABLE `avaliacao`
 -- AUTO_INCREMENT de tabela `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `cuidador`
@@ -261,24 +270,24 @@ ALTER TABLE `responsavel`
   MODIFY `id_responsavel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `agenda`
+-- Limitadores para a tabela `agenda`
 --
 ALTER TABLE `agenda`
   ADD CONSTRAINT `agenda_ibfk_1` FOREIGN KEY (`id_cuidador`) REFERENCES `cuidador` (`id_cuidador`);
 
 --
--- Restrições para tabelas `avaliacao`
+-- Limitadores para a tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`id_cuidador`) REFERENCES `cuidador` (`id_cuidador`),
   ADD CONSTRAINT `avaliacao_ibfk_2` FOREIGN KEY (`id_responsavel`) REFERENCES `responsavel` (`id_responsavel`);
 
 --
--- Restrições para tabelas `consulta`
+-- Limitadores para a tabela `consulta`
 --
 ALTER TABLE `consulta`
   ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`id_cuidador`) REFERENCES `cuidador` (`id_cuidador`),
@@ -287,7 +296,7 @@ ALTER TABLE `consulta`
   ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`id_agenda`) REFERENCES `agenda` (`id_agenda`);
 
 --
--- Restrições para tabelas `idoso`
+-- Limitadores para a tabela `idoso`
 --
 ALTER TABLE `idoso`
   ADD CONSTRAINT `idoso_ibfk_1` FOREIGN KEY (`id_responsavel`) REFERENCES `responsavel` (`id_responsavel`);

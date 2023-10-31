@@ -67,11 +67,15 @@ td{
 .container-consulta{
   background-color: rgba(82, 113, 255);
   margin: auto;
-  width: 40%;
+  width:fit-content;
   border-radius: 10px;
   font-family: 'Agdasima', sans-serif;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-family: 'Mitr', sans-serif;
+}
+
+.verificarDadosIdoso{
+  font-size: 20px;
 }
 
 .title-table{

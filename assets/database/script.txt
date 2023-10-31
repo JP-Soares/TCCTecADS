@@ -66,7 +66,6 @@ CREATE TABLE agenda(
   turno varchar(1) NOT NULL,
   dia_semana varchar(3) NOT NULL,
   preco_turno varchar(6) NOT NULL,
-  status boolean,
   PRIMARY KEY(id_agenda),
   FOREIGN KEY(id_cuidador) REFERENCES cuidador(id_cuidador)
 );
@@ -77,6 +76,7 @@ CREATE TABLE consulta(
   id_responsavel int NOT NULL,
   id_idoso int NOT NULL,
   id_agenda int NOT NULL,
+  status boolean NOT NULL,
   PRIMARY KEY(id_consulta),
   FOREIGN KEY(id_cuidador) REFERENCES cuidador(id_cuidador),
   FOREIGN KEY(id_responsavel) REFERENCES responsavel(id_responsavel),

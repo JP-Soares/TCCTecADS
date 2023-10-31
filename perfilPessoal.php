@@ -30,6 +30,11 @@
             <ul>
                 <?php
 
+                    $idade = $_SESSION["dtNasc"];
+                    $dataAtual = new DateTime();
+                    $idade = new DateTime($idade);
+                    $idade = $dataAtual->diff($idade)->y;
+
                     switch ($_SESSION["estado"]) {
                         case "AC":
                             $_SESSION["estado"] = "Acre";
@@ -158,7 +163,7 @@
                 </div>
 
                 <p class="dados-perfil"><span>Nome: </span><?php echo$_SESSION["nome"]; ?></p>
-                <p class="dados-perfil"><span>Idade: </span><?php echo$_SESSION["dtNasc"]; ?></p>
+                <p class="dados-perfil"><span>Idade: </span><?php echo$idade; ?></p>
                 <p class="dados-perfil"><span>Telefone: </span><?php echo$_SESSION["telefone"]; ?></p>
                 
                 <?php //se for cuidador mostrará os seguintes dados
@@ -196,24 +201,30 @@
                 echo"Não há consultas agendadas no momento!";
             }else{
                 ?>
+                <br><br><br>
                 <div class="container-consulta">
+                    <h1>Consultas:</h1>
                         <table border="1">
                             <tr>
                                 <td><p class="title-table">Idoso:</p></td>
                                 <td><p class="title-table"><?php if($_SESSION["usuario"] == "cuidador"){ ?> Responsável: <?php }else{ ?> Cuidador: <?php } ?></p></td>
                                 <td><p class="title-table">Turno da Consulta:</p></td>
-                                <td><p class="title-table">Dia da semana da consulta:</p></td>
+                                <td><p class="title-table">Dia da consulta:</p></td>
                                 <td><p class="title-table">Hora de início da consulta:</p></td>
                                 <td><p class="title-table">Hora do término da consulta:</p></td>
                                 <td><p class="title-table">Valor da consulta:</p></td>
+                                <td><p class="title-table"><?php if($_SESSION["usuario"] == "cuidador"){ ?> Dados do Idoso: <?php }else{ ?> Situação da Consulta: <?php } ?></p></td>
+                                <?php if($_SESSION["usuario"] == "cuidador"){ ?> <td colspan="2"><p class="title-table">Aceitar ou recusar consulta:</p></td> <?php } ?>
                             </tr>
                 <?php
                 //pega os dados da consulta
                 while($dadosConsulta = mysqli_fetch_assoc($sqlVerificarConsulta)){
+                    $id_consulta[] = $dadosConsulta["id_consulta"];
                     $id_agenda[] = $dadosConsulta["id_agenda"];
                     $id_cuidador[] = $dadosConsulta["id_cuidador"];
                     $id_idoso[] = $dadosConsulta["id_idoso"];
                     $id_responsavel[] = $dadosConsulta["id_responsavel"];
+                    $status = $dadosConsulta["status"];
 
                     $id_agenda_list = implode(',', $id_agenda);
                     $id_idoso_list = implode(',', $id_idoso);
@@ -264,14 +275,21 @@
                                 break;
                         }
 
+                        if($status == 1){
+                            $status = "Consulta aceita pelo cuidador!";
+                        }else{
+                            $status = "Agurdando confirmação do cuidador!";
+                        }
+
                         $precoTurno = $dadosAgenda["preco_turno"];
                     }
 
 
                     //Pega os dados do idoso
-                    $sqlIdoso = mysqli_query($con, "SELECT nome FROM idoso WHERE id_idoso IN ($id_idoso_list)");
+                    $sqlIdoso = mysqli_query($con, "SELECT id_idoso, nome FROM idoso WHERE id_idoso IN ($id_idoso_list)");
                     while($dadosIdoso = mysqli_fetch_assoc($sqlIdoso)){
                         $nome_idoso = $dadosIdoso["nome"];
+                        $id_idoso_geral = $dadosIdoso["id_idoso"];
                     }
 
                     //Pega os dados do cuidador
@@ -300,6 +318,20 @@
                                 <td><p><?php echo $hora_inicio; ?></p></td>
                                 <td><p><?php echo $hora_saida; ?></p></td>
                                 <td><?php echo$precoTurno; ?></p></td>
+
+                                <?php
+                                    if($_SESSION["usuario"] == "cuidador"){//mostra a oção de verificar os dados do idoso e os botões para aceitar ou não a consulta
+                                        ?> <td><p><a class="verificarDadosIdoso" href="dadosIdosoCuidador.php?idIdoso=<?php echo$id_idoso_geral; ?>">Verificar Dados</a></p></td>
+                                           <form method="POST" action="" name="">
+                                                <td><p><a class="btnStatus" href="dadosIdosoCuidador.php?idIdoso=<?php echo$id_consulta; ?>"><img class="imgBtnStatus" src="assets/img/check.png" /></a></p></td>
+                                                <td><p><a class="btnStatus" href="dadosIdosoCuidador.php?idIdoso=<?php echo$id_consulta; ?>"><img class="imgBtnStatus" src="assets/img/close.png" /></a></p></td>
+                                           </form>
+                                    <?php } else{ //exibe a condição da consulta, se ela foi aceita pelo cuidador ou não
+                                        ?>
+                                        <td><p><?php echo$status; ?></p></td>
+                                        <?php
+                                    }
+                                ?>
                             </tr>
                         
                 <?php
@@ -307,6 +339,17 @@
             }
         ?>
             </table>
-        <div>
+        </div>
+
+        <style>
+            .imgBtnStatus{
+                width: 3vw;
+            }
+
+            .imgBtnStatus:hover{
+                opacity: 0.5;
+            }
+        </style>
+
     </body>
 </html>
