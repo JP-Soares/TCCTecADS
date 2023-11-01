@@ -48,7 +48,7 @@
                 <label>E-mail:</label>
                 <input type="email" name="email" placeholder="Digite o e-mail de login" required /><br><br>
                 <label>Senha:</label>
-                <input type="password" name="senha" placeholder="Digite a senha" required /><br><br>
+                <input type="password" id="senha" name="senha" placeholder="Digite a senha" required /><br><br>
 
                 <input type="submit" value="Entrar!" /><br>
                 

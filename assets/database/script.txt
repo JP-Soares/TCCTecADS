@@ -76,7 +76,7 @@ CREATE TABLE consulta(
   id_responsavel int NOT NULL,
   id_idoso int NOT NULL,
   id_agenda int NOT NULL,
-  status boolean NOT NULL,
+  statusConsulta boolean NOT NULL,
   PRIMARY KEY(id_consulta),
   FOREIGN KEY(id_cuidador) REFERENCES cuidador(id_cuidador),
   FOREIGN KEY(id_responsavel) REFERENCES responsavel(id_responsavel),

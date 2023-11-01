@@ -198,7 +198,7 @@
             }
 
             if(mysqli_num_rows($sqlVerificarConsulta) == 0){
-                echo"Não há consultas agendadas no momento!";
+                echo"<center><h1>Não há consultas agendadas no momento!</h1></center>";
             }else{
                 ?>
                 <br><br><br>
@@ -224,12 +224,13 @@
                     $id_cuidador[] = $dadosConsulta["id_cuidador"];
                     $id_idoso[] = $dadosConsulta["id_idoso"];
                     $id_responsavel[] = $dadosConsulta["id_responsavel"];
-                    $status = $dadosConsulta["status"];
+                    $status = $dadosConsulta["statusConsulta"];
 
                     $id_agenda_list = implode(',', $id_agenda);
                     $id_idoso_list = implode(',', $id_idoso);
                     $id_cuidador_list = implode(',', $id_cuidador);
                     $id_responsavel_list = implode(',', $id_responsavel);
+                    $id_consulta_list = implode(',', $id_consulta);
 
                     //pega os dados da agenda
                     $sqlAgenda = mysqli_query($con, "SELECT * FROM agenda WHERE id_agenda IN ($id_agenda_list)");
@@ -319,12 +320,16 @@
                                 <td><p><?php echo $hora_saida; ?></p></td>
                                 <td><?php echo$precoTurno; ?></p></td>
 
+                                <!-- FAZER ISSO AQUI -->
                                 <?php
                                     if($_SESSION["usuario"] == "cuidador"){//mostra a oção de verificar os dados do idoso e os botões para aceitar ou não a consulta
+                                        if($status == 0){//se a consulta ainda não foi aceita
+                                            
+                                        }
                                         ?> <td><p><a class="verificarDadosIdoso" href="dadosIdosoCuidador.php?idIdoso=<?php echo$id_idoso_geral; ?>">Verificar Dados</a></p></td>
                                            <form method="POST" action="" name="">
-                                                <td><p><a class="btnStatus" href="dadosIdosoCuidador.php?idIdoso=<?php echo$id_consulta; ?>"><img class="imgBtnStatus" src="assets/img/check.png" /></a></p></td>
-                                                <td><p><a class="btnStatus" href="dadosIdosoCuidador.php?idIdoso=<?php echo$id_consulta; ?>"><img class="imgBtnStatus" src="assets/img/close.png" /></a></p></td>
+                                                <td><p><a class="btnStatus" href="assets/php/statusConsulta.php?idConsulta=<?php echo$id_consulta_list; ?>&status=1"><img class="imgBtnStatus" src="assets/img/check.png" /></a></p></td>
+                                                <td><p><a class="btnStatus" href="assets/php/statusConsulta.php?idConsulta=<?php echo$id_consulta_list; ?>&status=0"><img class="imgBtnStatus" src="assets/img/close.png" /></a></p></td>
                                            </form>
                                     <?php } else{ //exibe a condição da consulta, se ela foi aceita pelo cuidador ou não
                                         ?>
