@@ -323,18 +323,24 @@
                                 <!-- FAZER ISSO AQUI -->
                                 <?php
                                     if($_SESSION["usuario"] == "cuidador"){//mostra a oção de verificar os dados do idoso e os botões para aceitar ou não a consulta
-                                        if($status == 0){//se a consulta ainda não foi aceita
-                                            
-                                        }
                                         ?> <td><p><a class="verificarDadosIdoso" href="dadosIdosoCuidador.php?idIdoso=<?php echo$id_idoso_geral; ?>">Verificar Dados</a></p></td>
+                                        <?php
+                                        if($status == 0){//se a consulta ainda não foi aceita
+                                        ?>
                                            <form method="POST" action="" name="">
                                                 <td><p><a class="btnStatus" href="assets/php/statusConsulta.php?idConsulta=<?php echo$id_consulta_list; ?>&status=1"><img class="imgBtnStatus" src="assets/img/check.png" /></a></p></td>
                                                 <td><p><a class="btnStatus" href="assets/php/statusConsulta.php?idConsulta=<?php echo$id_consulta_list; ?>&status=0"><img class="imgBtnStatus" src="assets/img/close.png" /></a></p></td>
                                            </form>
-                                    <?php } else{ //exibe a condição da consulta, se ela foi aceita pelo cuidador ou não
+                                    <?php } else{ //se a consulta foi aceita
                                         ?>
-                                        <td><p><?php echo$status; ?></p></td>
+                                            <td><p>Consulta aceita!</p></td>
                                         <?php
+                                    } }
+
+                                    if($_SESSION["usuario"] == "responsavel"){
+                                        ?> <td><p>Consulta aceita!</p></td>
+
+                                    <?php
                                     }
                                 ?>
                             </tr>
