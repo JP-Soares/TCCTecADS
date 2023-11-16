@@ -41,11 +41,9 @@ if(mysqli_num_rows($verificar) == 1){
             $pasta = "../uploadImg";
             $diretorio = dir($pasta);
 
-            move_uploaded_file($_FILES['fotoPerfil']['tmp_name'], $diretorio.$novo_nome); //efetua o upload
-
             $_SESSION["nome"]                 =  $nome;
             $_SESSION["cpf"]                  =  $cpf;
-            $_SESSION["foto"]                 =  $novo_nome;
+            $_SESSION["foto"]                 =  $caminhoSalvar;
             $_SESSION["registroProfissional"] =  $registroProfissional;
             $_SESSION["sexo"]                 =  $sexo;
             $_SESSION["dtNasc"]               =  $dtNasc;
@@ -62,7 +60,7 @@ if(mysqli_num_rows($verificar) == 1){
 
             
             
-            $sql = mysqli_query($con, "UPDATE cuidador SET nome='$nome', cpf='$cpf', foto='$novo_nome', registroProfissional='$registroProfissional', sexo='$sexo', dtNasc='$dtNasc', 
+            $sql = mysqli_query($con, "UPDATE cuidador SET nome='$nome', cpf='$cpf', registroProfissional='$registroProfissional', foto='$caminhoSalvar', sexo='$sexo', dtNasc='$dtNasc', 
             descricao='$descricao', telefone='$telefone', email='$email', senha='$senhaConfirma', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', 
             complemento='$complemento' WHERE id_cuidador=".$_SESSION["id"]);
 
