@@ -159,7 +159,7 @@
             <div class="container-perfil-conteudo">
 
                 <div class="profile-image">
-                    <img src="<?php echo$_SESSION["foto"]; ?>" />
+                    <img src="<?php echo$_SESSION['foto']; ?>" />
                 </div>
 
                 <p class="dados-perfil"><span>Nome: </span><?php echo$_SESSION["nome"]; ?></p>

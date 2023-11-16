@@ -33,10 +33,13 @@ $verificar = mysqli_query($con, "SELECT * FROM ". $_SESSION["usuario"]. " WHERE 
 if(mysqli_num_rows($verificar) == 1){
         
     if($_SESSION["usuario"] == "cuidador"){//update de cuidador
-        if(isset($_FILES['fotoPerfil']) && is_uploaded_file($_FILES["fotoPerfil"]["tmp_name"])){//caso inserido foto no campo de foto
-            $extensao = strtolower(substr($_FILES['fotoPerfil']['name'], -4)); //pega a extensao do arquivo
-            $novo_nome = md5(time()) . $extensao; //define o nome do arquivo
-            $diretorio = "../uploadImg/"; //define o diretorio para onde enviaremos o arquivo
+        if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
+            $nomeArquivo = $_FILES['fotoPerfil']['name'];
+            $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
+            $caminhoSalvar = 'assets/uploadImg/'.$nomeArquivo;
+            move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
+            $pasta = "../uploadImg";
+            $diretorio = dir($pasta);
 
             move_uploaded_file($_FILES['fotoPerfil']['tmp_name'], $diretorio.$novo_nome); //efetua o upload
 
@@ -96,7 +99,7 @@ if(mysqli_num_rows($verificar) == 1){
         if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
             $nomeArquivo = $_FILES['fotoPerfil']['name'];
             $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
-            $caminhoSalvar = '../uploadImg/'.$nomeArquivo;
+            $caminhoSalvar = 'assets/uploadImg/'.$nomeArquivo;
             move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
             $pasta = "../uploadImg";
             $diretorio = dir($pasta);

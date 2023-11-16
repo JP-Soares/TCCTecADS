@@ -30,7 +30,7 @@ $enfermidadesString = implode(", ",$enfermidades);
 if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
     $nomeArquivo = $_FILES['fotoPerfil']['name'];
     $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
-    $caminhoSalvar = '../uploadImg/'.$nomeArquivo;
+    $caminhoSalvar = 'assets/uploadImg/'.$nomeArquivo;
     move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
     $pasta = "../uploadImg";
     $diretorio = dir($pasta);
