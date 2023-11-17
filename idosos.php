@@ -34,11 +34,12 @@
                 $nome = $dadosIdoso["nome"];
                 $idade = $dadosIdoso["dtNasc"];
                 $descricao = $dadosIdoso["descricao"];
+                $foto = $dadosIdoso["foto"];
 
                 ?>
                 <div class="profile-card">
                     <div class="profile-image">
-                        <img src="<?php=$foto; ?>" alt="Imagem de perfil">
+                        <img src="<?php echo$foto; ?>" alt="Imagem de perfil">
                     </div>
                     <div class="profile-data">
                         <p><span>Nome:</span> <?php echo$nome ?></p>

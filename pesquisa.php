@@ -208,7 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Exibe os dados do cuidador --> 
             <div class="profile-card">
                 <div class="profile-image">
-                    <img src="<?php=$foto; ?>" alt="Imagem de perfil">
+                    <img src="<?php echo$foto; ?>" alt="Imagem de perfil">
                 </div>
                 <div class="profile-data">
                     <p><span>Nome:</span> <?php echo$nome ?></p>

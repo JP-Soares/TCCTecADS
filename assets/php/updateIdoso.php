@@ -34,10 +34,10 @@ if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
     move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
     $pasta = "../uploadImg";
     $diretorio = dir($pasta);
-     
-    $queryUpdateIdoso = "UPDATE idoso SET nome='$nome', cpf='$cpf', foto='$caminhoSalvar', sexo='$sexo', dtNasc='$dtNasc', descricao='$descricao',
+    
+    $queryUpdateIdoso = "UPDATE idoso SET nome='$nome', cpf='$cpf', sexo='$sexo', dtNasc='$dtNasc', descricao='$descricao',
     telefone='$telefone', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero',
-    complemento='$complemento', enfermidades='$enfermidadesString' WHERE id_idoso=".$idIdoso;
+    complemento='$complemento', enfermidades='$enfermidadesString', foto='$caminhoSalvar' WHERE id_idoso=".$idIdoso;
 
     $resultUpdate = mysqli_query($con, $queryUpdateIdoso);
 
