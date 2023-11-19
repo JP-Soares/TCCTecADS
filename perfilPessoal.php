@@ -23,6 +23,7 @@
             }
         ?>
         <script src="assets/js/menu.js"></script>
+        <script src="assets/js/popUp.js"></script>
     </head>
     <body>
         <nav>
@@ -338,7 +339,8 @@
                                     } }
 
                                     if($_SESSION["usuario"] == "responsavel"){
-                                        ?> <td><p>Consulta aceita!</p></td>
+                                        ?><td><p>Consulta aceita!</p></td>
+                                            <td><p><a href="avaliar.php?id_cuidador=<?php echo$id_cuidador_list; ?>&id_responsavel=<?php echo$_SESSION["id"]; ?>">Avaliar Cuidador</a></p></td>
 
                                     <?php
                                     }
@@ -350,6 +352,7 @@
             }
         ?>
             </table>
+
         </div>
 
         <style>

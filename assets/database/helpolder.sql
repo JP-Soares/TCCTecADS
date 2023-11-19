@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/11/2023 às 12:33
+-- Tempo de geração: 19/11/2023 às 03:13
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -45,7 +45,12 @@ INSERT INTO `agenda` (`id_agenda`, `id_cuidador`, `hora_inicio`, `hora_saida`, `
 (59, 1, '06:00:00', '12:00:00', 'm', 'dom', '200'),
 (60, 1, '13:00:00', '17:00:00', 't', 'seg', '200'),
 (61, 1, '18:00:00', '23:00:00', 'n', 'ter', '300'),
-(62, 1, '13:00:00', '17:00:00', 't', 'qua', '80');
+(62, 1, '13:00:00', '17:00:00', 't', 'qua', '80'),
+(63, 1, '13:00:00', '18:00:00', 'm', 'dom', '200'),
+(64, 1, '00:00:00', '00:00:00', 't', 'seg', '200'),
+(65, 1, '00:00:00', '00:00:00', 'n', 'ter', '300'),
+(66, 1, '00:00:00', '00:00:00', 't', 'qua', '80'),
+(67, 1, '00:00:00', '00:00:00', 't', 'sex', '');
 
 -- --------------------------------------------------------
 
@@ -60,6 +65,13 @@ CREATE TABLE `avaliacao` (
   `qtde_estrela` int(11) DEFAULT NULL,
   `comentario` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `avaliacao`
+--
+
+INSERT INTO `avaliacao` (`id_avaliacao`, `id_cuidador`, `id_responsavel`, `qtde_estrela`, `comentario`) VALUES
+(2, 1, 1, 4, 'Exclente profissional! Recomendo!');
 
 -- --------------------------------------------------------
 
@@ -81,7 +93,8 @@ CREATE TABLE `consulta` (
 --
 
 INSERT INTO `consulta` (`id_consulta`, `id_cuidador`, `id_responsavel`, `id_idoso`, `id_agenda`, `statusConsulta`) VALUES
-(4, 1, 1, 3, 61, 1);
+(4, 1, 1, 3, 61, 1),
+(5, 1, 1, 3, 59, 0);
 
 -- --------------------------------------------------------
 
@@ -114,7 +127,7 @@ CREATE TABLE `cuidador` (
 --
 
 INSERT INTO `cuidador` (`id_cuidador`, `nome`, `cpf`, `foto`, `registroProfissional`, `sexo`, `dtNasc`, `descricao`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
-(1, 'Ana', '123.456.789-11', 0x35383032323463353431306536376437356233326261306362666564633165622e6a7067, '753', 'Feminino', '2000-06-07', 'Sou uma ótima cuidadora de idosa', '(12)3456-7898', 'ana@ana.com', '12345678', 'AC', 'Cidade', 'Bairro', 'Rua', '89', 'Apt 234 Bloco 2');
+(1, 'Ana', '123.456.789-11', 0x6173736574732f75706c6f6164496d672f626f622e6a7067, '753', 'Feminino', '2000-06-07', 'Sou uma ótima cuidadora de idosa', '(12)3456-7898', 'ana@ana.com', '12345678', 'AC', 'Cidade', 'Bairro', 'Rua', '89', 'Apt 234 Bloco 2');
 
 -- --------------------------------------------------------
 
@@ -137,16 +150,17 @@ CREATE TABLE `idoso` (
   `rua` varchar(50) NOT NULL,
   `numero` varchar(5) NOT NULL,
   `complemento` varchar(20) DEFAULT NULL,
-  `enfermidades` varchar(180) DEFAULT NULL
+  `enfermidades` varchar(180) DEFAULT NULL,
+  `foto` blob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `idoso`
 --
 
-INSERT INTO `idoso` (`id_idoso`, `id_responsavel`, `nome`, `cpf`, `sexo`, `dtNasc`, `descricao`, `telefone`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`, `enfermidades`) VALUES
-(2, 1, 'Ariosvaldo', '888.888.888-88', 'Masculino', '1954-10-15', 'Sou um idoso que gosta de xadrez.\r\nUso andador', '(89)8988-0958', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '1231', '', 'enfermidade2, enfermidade3'),
-(3, 1, 'Maria Aparecida', '963.852.741-11', 'Feminino', '1958-01-23', 'Sou uma idosa que adora flores e caminhar no parque', '(98)9898-9898', 'AM', 'Manaus', 'Bairro do Limoeiro', 'Rua dos Limões', '89', '', 'enfermidade1, enfermidade2');
+INSERT INTO `idoso` (`id_idoso`, `id_responsavel`, `nome`, `cpf`, `sexo`, `dtNasc`, `descricao`, `telefone`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`, `enfermidades`, `foto`) VALUES
+(2, 1, 'Romeu', '888.888.888-88', 'Masculino', '1954-10-15', 'Sou um idoso que gosta de xadrez.\r\nUso andador', '(89)8988-0958', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '1231', '', 'enfermidade2, enfermidade3', NULL),
+(3, 1, 'Maria Aparecida', '963.852.741-11', 'Feminino', '1958-01-23', 'Sou uma idosa que adora flores e caminhar no parque', '(98)9898-9898', 'AM', 'Manaus', 'Bairro do Limoeiro', 'Rua dos Limões', '89', '', 'enfermidade1, enfermidade2', NULL);
 
 -- --------------------------------------------------------
 
@@ -177,7 +191,7 @@ CREATE TABLE `responsavel` (
 --
 
 INSERT INTO `responsavel` (`id_responsavel`, `nome`, `cpf`, `foto`, `sexo`, `dtNasc`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
-(1, 'Ivone', '878.945.950-89', NULL, 'Feminino', '2000-11-02', '(31)2313-1312', 'ivone@ivone.com', '12345678', 'RN', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '365', '');
+(1, 'Ivone', '878.945.950-89', 0x6173736574732f75706c6f6164496d672f74657374652e6a7067, 'Feminino', '2000-11-02', '(31)2313-1312', 'ivone@ivone.com', '12345678', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '365', '');
 
 --
 -- Índices para tabelas despejadas
@@ -235,19 +249,19 @@ ALTER TABLE `responsavel`
 -- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
-  MODIFY `id_avaliacao` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_avaliacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `cuidador`
