@@ -204,6 +204,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             $cuidadorId = $dadosUsuario['id_cuidador'];
+
+            //SELECIONA A QUANTIDADE DE ESTRELAS QUE POSSUI
+            $sqlAvaliacao = mysqli_query($con, "SELECT qtde_estrela FROM avaliacao WHERE id_cuidador=".$cuidadorId);
+            while ($dadosAvaliacao = mysqli_fetch_assoc($sqlAvaliacao)) {
+                $quantidadeEstrelas = $dadosAvaliacao["qtde_estrela"];
+            }
             ?>
             <!-- Exibe os dados do cuidador --> 
             <div class="profile-card">
@@ -215,11 +221,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p><span>Estado:</span> <?php echo$estado ?></p>
                     <p><span>Cidade:</span> <?php echo$cidade ?></p>
 
+                    <div class="rating">
+                        <?php
+                            for ($i = 1; $i <= 5; $i++) {
+                                echo '<span class="star';
+                                if ($i <= $quantidadeEstrelas) {
+                                    echo ' rated';
+                                }
+                                echo '"></span>';
+                            }
+                        ?>
+                    </div>
+
                     <div class="tag">
                         <a href="perfilBusca.php?idCuidador=<?php echo$cuidadorId ?>">Contratar!</a>
                     </div>
                 </div>
             </div>
+
+
+            <style>
+                .rating {
+                    unicode-bidi: bidi-override;
+                    direction: rtl;
+                    text-align: center;
+                    position: relative;
+                    font-size: 36px;
+                }
+
+                .star {
+                    display: inline-block;
+                    position: relative;
+                    width: 1.1em;
+                    color: #808080; /* Cor padrão das estrelas */
+                    margin-bottom: -10px; /* Ajuste o valor conforme necessário para subir as estrelas */
+                }
+
+                .star::before {
+                    content: "\2605";
+                    z-index: 0;
+                }
+
+                .rated {
+                    color: #FFD700; /* Cor das estrelas avaliadas */
+                }
+        </style>
             
             <?php
         }

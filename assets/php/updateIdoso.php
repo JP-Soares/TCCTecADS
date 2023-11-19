@@ -35,31 +35,31 @@ if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
     $pasta = "../uploadImg";
     $diretorio = dir($pasta);
     
-    $queryUpdateIdoso = "UPDATE idoso SET nome='$nome', cpf='$cpf', sexo='$sexo', dtNasc='$dtNasc', descricao='$descricao',
+    $queryUpdateIdoso = mysqli_query($con, "UPDATE idoso SET nome='$nome', cpf='$cpf', sexo='$sexo', dtNasc='$dtNasc', descricao='$descricao',
     telefone='$telefone', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero',
-    complemento='$complemento', enfermidades='$enfermidadesString', foto='$caminhoSalvar' WHERE id_idoso=".$idIdoso;
+    complemento='$complemento', enfermidades='$enfermidadesString', foto='$caminhoSalvar' WHERE id_idoso=".$idIdoso);
 
-    $resultUpdate = mysqli_query($con, $queryUpdateIdoso);
+    // $resultUpdate = mysqli_query($con, $queryUpdateIdoso);
 
-    if ($resultUpdate) {
-        echo "Atualização realizada com sucesso!";
-    } else {
-        echo "Erro na atualização: " . mysqli_error($con);
-    }
+    // if ($resultUpdate) {
+    //     echo "Atualização realizada com sucesso!";
+    // } else {
+    //     echo "Erro na atualização: " . mysqli_error($con);
+    // }
 
     header('Location: ../../idosos.php');
 }else{//caso não tenha inserido foto no campo de foto
-    $queryUpdateIdoso = "UPDATE idoso SET nome='$nome', cpf='$cpf', sexo='$sexo', dtNasc='$dtNasc', descricao='$descricao',
+    $queryUpdateIdoso = mysqli_query($con, "UPDATE idoso SET nome='$nome', cpf='$cpf', sexo='$sexo', dtNasc='$dtNasc', descricao='$descricao',
     telefone='$telefone', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero',
-    complemento='$complemento', enfermidades='$enfermidadesString' WHERE id_idoso=".$idIdoso;
+    complemento='$complemento', enfermidades='$enfermidadesString' WHERE id_idoso=".$idIdoso);
 
     $resultUpdate = mysqli_query($con, $queryUpdateIdoso);
 
-    if ($resultUpdate) {
-        echo "Atualização realizada com sucesso!";
-    } else {
-        echo "Erro na atualização: " . mysqli_error($con);
-    }
+    // if ($resultUpdate) {
+    //     echo "Atualização realizada com sucesso!";
+    // } else {
+    //     echo "Erro na atualização: " . mysqli_error($con);
+    // }
 
     header('Location: ../../idosos.php');
 }

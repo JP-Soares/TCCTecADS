@@ -15,6 +15,7 @@ body {
     width: 50%;
     display: flex;
     align-items: center;
+    flex-direction: column; /* Alteração aqui para alterar a direção para coluna */
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -23,15 +24,18 @@ body {
 }
 
 .profile-image {
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid black;
+    margin-bottom: 10px; /* Adiciona um espaçamento inferior */
+    order: -1; /* Move a imagem para o topo, acima do restante do conteúdo */
 }
 
 .profile-data {
     margin-left: 20px;
+    text-align: center; /* Adiciona centralização para o texto */
 }
 
 .title-table{
