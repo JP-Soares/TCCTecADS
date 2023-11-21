@@ -30,10 +30,9 @@ if(mysqli_num_rows($verificar) == 0){
     if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
         $nomeArquivo = $_FILES['fotoPerfil']['name'];
         $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
-        $caminhoSalvar = 'assets/uploadImg/'.$nomeArquivo;
+        $pastaDestino = "../uploadImg/"; // Um nível acima da pasta 'php'
+        $caminhoSalvar = $pastaDestino . $nomeArquivo;
         move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
-        $pasta = "../uploadImg";
-        $diretorio = dir($pasta);
     
         $sql = "INSERT INTO idoso (id_responsavel, nome, cpf, foto, sexo, dtNasc, descricao, telefone, estado, cidade, bairro, rua, numero, complemento, enfermidades) 
         VALUES ('".$_SESSION["id"]."', '$nome', '$cpf', '$caminhoSalvar', '$sexo', '$dtNasc', '$descricao', '$telefone', '$estado', '$cidade', '$bairro', '$rua', 

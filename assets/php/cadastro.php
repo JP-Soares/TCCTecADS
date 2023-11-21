@@ -42,7 +42,7 @@ if(mysqli_num_rows($verificar) == 0){
             $diretorio = dir($pasta);
             
             $sql = "INSERT INTO cuidador (nome, cpf, foto, registroProfissional, sexo, dtNasc, descricao, telefone, email, senha, estado, cidade, bairro, rua, numero, complemento) 
-            VALUES ('$nome', '$cpf', '$caminhoSalvar', '$registroProfissional', '$sexo', '$dtNasc', '$descricao', '$telefone', '$email', '$senhaConfirma', '$estado', '$cidade', '$bairro', '$rua', 
+            VALUES ('$nome', '$cpf', '$nomeArquivo', '$registroProfissional', '$sexo', '$dtNasc', '$descricao', '$telefone', '$email', '$senhaConfirma', '$estado', '$cidade', '$bairro', '$rua', 
             '$numero', '$complemento')";
         }else{//caso não tenha inserido foto no campo de foto
             $sql = "INSERT INTO cuidador (nome, cpf, registroProfissional, sexo, dtNasc, descricao, telefone, email, senha, estado, cidade, bairro, rua, numero, complemento) 
@@ -61,7 +61,7 @@ if(mysqli_num_rows($verificar) == 0){
             $diretorio = dir($pasta);
             
             $sql = "INSERT INTO responsavel (nome, cpf, foto, sexo, dtNasc, telefone, email, senha, estado, cidade, bairro, rua, numero, complemento) 
-            VALUES ('$nome', '$cpf', '$caminhoSalvar', '$sexo', '$dtNasc', '$telefone', '$email', '$senhaConfirma', '$estado', '$cidade', '$bairro', '$rua', 
+            VALUES ('$nome', '$cpf', '$nomeArquivo', '$sexo', '$dtNasc', '$telefone', '$email', '$senhaConfirma', '$estado', '$cidade', '$bairro', '$rua', 
             '$numero', '$complemento')";
         }else{//caso não tenha inserido foto no campo de foto
             echo"Legal";
@@ -80,7 +80,7 @@ if(mysqli_num_rows($verificar) == 0){
             while($dadosUsuario = mysqli_fetch_assoc($sqlVerify)){
                 $_SESSION["nome"] = $dadosUsuario["nome"];
                 $_SESSION["cpf"] = $dadosUsuario["cpf"];
-                $_SESSION["foto"] = $dadosUsuario["foto"];
+                $_SESSION["foto"]                 =  "assets/uploadImg/".$nomeArquivo;
                 $_SESSION["sexo"] = $dadosUsuario["sexo"];
                 $_SESSION["dtNasc"] = $dadosUsuario["dtNasc"];
                 $_SESSION["telefone"] = $dadosUsuario["telefone"];

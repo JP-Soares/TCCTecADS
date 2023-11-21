@@ -16,7 +16,7 @@
         while($dadosUsuario = mysqli_fetch_assoc($sqlVerify)){
             $_SESSION["nome"] = $dadosUsuario["nome"];
             $_SESSION["cpf"] = $dadosUsuario["cpf"];
-            $_SESSION["foto"] = $dadosUsuario["foto"];
+            $_SESSION["foto"] = "assets/uploadImg/".$dadosUsuario["foto"];
             $_SESSION["sexo"] = $dadosUsuario["sexo"];
             $_SESSION["dtNasc"] = $dadosUsuario["dtNasc"];
             $_SESSION["telefone"] = $dadosUsuario["telefone"];

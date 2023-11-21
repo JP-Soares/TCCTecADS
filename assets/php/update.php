@@ -36,14 +36,13 @@ if(mysqli_num_rows($verificar) == 1){
         if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
             $nomeArquivo = $_FILES['fotoPerfil']['name'];
             $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
-            $caminhoSalvar = 'assets/uploadImg/'.$nomeArquivo;
+            $pastaDestino = "../uploadImg/"; // Um nível acima da pasta 'php'
+            $caminhoSalvar = $pastaDestino . $nomeArquivo;
             move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
-            $pasta = "../uploadImg";
-            $diretorio = dir($pasta);
 
             $_SESSION["nome"]                 =  $nome;
             $_SESSION["cpf"]                  =  $cpf;
-            $_SESSION["foto"]                 =  $caminhoSalvar;
+            $_SESSION["foto"]                 =  "assets/uploadImg/".$nomeArquivo;
             $_SESSION["registroProfissional"] =  $registroProfissional;
             $_SESSION["sexo"]                 =  $sexo;
             $_SESSION["dtNasc"]               =  $dtNasc;
@@ -60,7 +59,7 @@ if(mysqli_num_rows($verificar) == 1){
 
             
             
-            $sql = mysqli_query($con, "UPDATE cuidador SET nome='$nome', cpf='$cpf', registroProfissional='$registroProfissional', foto='$caminhoSalvar', sexo='$sexo', dtNasc='$dtNasc', 
+            $sql = mysqli_query($con, "UPDATE cuidador SET nome='$nome', cpf='$cpf', registroProfissional='$registroProfissional', foto='$nomeArquivo', sexo='$sexo', dtNasc='$dtNasc', 
             descricao='$descricao', telefone='$telefone', email='$email', senha='$senhaConfirma', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', 
             complemento='$complemento' WHERE id_cuidador=".$_SESSION["id"]);
 
@@ -97,14 +96,13 @@ if(mysqli_num_rows($verificar) == 1){
         if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
             $nomeArquivo = $_FILES['fotoPerfil']['name'];
             $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
-            $caminhoSalvar = 'assets/uploadImg/'.$nomeArquivo;
+            $pastaDestino = "../uploadImg/"; // Um nível acima da pasta 'php'
+            $caminhoSalvar = $pastaDestino . $nomeArquivo;
             move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
-            $pasta = "../uploadImg";
-            $diretorio = dir($pasta);
 
             $_SESSION["nome"]                 =  $nome;
             $_SESSION["cpf"]                  =  $cpf;
-            $_SESSION["foto"]                 =  $caminhoSalvar;
+            $_SESSION["foto"]                 =  "assets/uploadImg/".$nomeArquivo;
             $_SESSION["sexo"]                 =  $sexo;
             $_SESSION["dtNasc"]               =  $dtNasc;
             $_SESSION["telefone"]             =  $telefone;
@@ -117,7 +115,7 @@ if(mysqli_num_rows($verificar) == 1){
             $_SESSION["numero"]               =  $numero;
             $_SESSION["complemento"]          =  $complemento;
 
-            $sql = mysqli_query($con, "UPDATE responsavel SET nome='$nome', cpf='$cpf', foto='$caminhoSalvar', sexo='$sexo', dtNasc='$dtNasc', 
+            $sql = mysqli_query($con, "UPDATE responsavel SET nome='$nome', cpf='$cpf', foto='$nomeArquivo', sexo='$sexo', dtNasc='$dtNasc', 
             telefone='$telefone', email='$email', senha='$senhaConfirma', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', 
             complemento='$complemento' WHERE id_responsavel=".$_SESSION["id"]);
             header('Location: ../../perfilPessoal.php');

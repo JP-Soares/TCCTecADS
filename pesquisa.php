@@ -206,7 +206,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $cuidadorId = $dadosUsuario['id_cuidador'];
 
             //SELECIONA A QUANTIDADE DE ESTRELAS QUE POSSUI
-            $sqlAvaliacao = mysqli_query($con, "SELECT qtde_estrela FROM avaliacao WHERE id_cuidador=".$cuidadorId);
+            $sqlAvaliacao = mysqli_query($con, "SELECT qtde_estrela FROM avaliacao INNER JOIN cuidador ON avaliacao.id_cuidador = cuidador.id_cuidador 
+            WHERE cuidador.id_cuidador = " . $cuidadorId);
+
             while ($dadosAvaliacao = mysqli_fetch_assoc($sqlAvaliacao)) {
                 $quantidadeEstrelas = $dadosAvaliacao["qtde_estrela"];
             }
@@ -214,7 +216,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Exibe os dados do cuidador --> 
             <div class="profile-card">
                 <div class="profile-image">
-                    <img src="<?php echo$foto; ?>" alt="Imagem de perfil">
+                    <img src="<?php echo"assets/uploadImg/".$foto; ?>" alt="Imagem de perfil">
                 </div>
                 <div class="profile-data">
                     <p><span>Nome:</span> <?php echo$nome ?></p>
@@ -265,7 +267,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 .rated {
                     color: #FFD700; /* Cor das estrelas avaliadas */
                 }
-        </style>
+            </style>
             
             <?php
         }

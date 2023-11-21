@@ -139,7 +139,7 @@
 
             <div class="profile-card">
                 <div class="profile-image">
-                    <img src="<?php echo$foto; ?>" alt="Imagem de perfil">
+                    <img src="<?php echo"assets/uploadImg/".$foto; ?>" alt="Imagem de perfil">
                 </div>
                 <div class="profile-data">
                     <p><span>Nome:</span> <?php echo$nome ?></p>
@@ -240,6 +240,17 @@
                             }
                     ?>
                 </table>
+
+                <div id="box-avaliacao">
+                    <?php
+                        //SELECIONA A QUANTIDADE DE ESTRELAS QUE POSSUI
+                        $sqlAvaliacao = mysqli_query($con, "SELECT qtde_estrela, comentario FROM avaliacao WHERE id_cuidador=".$id);
+                        while ($dadosAvaliacao = mysqli_fetch_assoc($sqlAvaliacao)) {
+                            $quantidadeEstrelasArray[] = $dadosAvaliacao["qtde_estrela"];
+                            $comentarioArray[] = $dadosAvaliacao["comentario"];
+                        }
+                    ?>
+                </div>
                 <?php
                 }
             ?>
@@ -247,6 +258,31 @@
             <style>
                 .idosoContrato, .idosoContratoCheckbox{
                     visibility: hidden;
+                }
+
+                .rating {
+                    unicode-bidi: bidi-override;
+                    direction: rtl;
+                    text-align: center;
+                    position: relative;
+                    font-size: 36px;
+                }
+
+                .star {
+                    display: inline-block;
+                    position: relative;
+                    width: 1.1em;
+                    color: #808080; /* Cor padrão das estrelas */
+                    margin-bottom: -10px; /* Ajuste o valor conforme necessário para subir as estrelas */
+                }
+
+                .star::before {
+                    content: "\2605";
+                    z-index: 0;
+                }
+
+                .rated {
+                    color: #FFD700; /* Cor das estrelas avaliadas */
                 }
             </style>
 

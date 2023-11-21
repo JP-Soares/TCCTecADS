@@ -30,10 +30,9 @@ $enfermidadesString = implode(", ",$enfermidades);
 if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
     $nomeArquivo = $_FILES['fotoPerfil']['name'];
     $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
-    $caminhoSalvar = 'assets/uploadImg/'.$nomeArquivo;
+    $pastaDestino = "../uploadImg/"; // Um nível acima da pasta 'php'
+    $caminhoSalvar = $pastaDestino . $nomeArquivo;
     move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
-    $pasta = "../uploadImg";
-    $diretorio = dir($pasta);
     
     $queryUpdateIdoso = mysqli_query($con, "UPDATE idoso SET nome='$nome', cpf='$cpf', sexo='$sexo', dtNasc='$dtNasc', descricao='$descricao',
     telefone='$telefone', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero',
