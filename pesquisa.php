@@ -206,11 +206,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $cuidadorId = $dadosUsuario['id_cuidador'];
 
             //SELECIONA A QUANTIDADE DE ESTRELAS QUE POSSUI
-            $sqlAvaliacao = mysqli_query($con, "SELECT qtde_estrela FROM avaliacao INNER JOIN cuidador ON avaliacao.id_cuidador = cuidador.id_cuidador 
-            WHERE cuidador.id_cuidador = " . $cuidadorId);
+            $sqlAvaliacao = mysqli_query($con, "SELECT qtde_estrela FROM avaliacao WHERE id_cuidador = ".$cuidadorId);
 
-            while ($dadosAvaliacao = mysqli_fetch_assoc($sqlAvaliacao)) {
-                $quantidadeEstrelas = $dadosAvaliacao["qtde_estrela"];
+            if (mysqli_num_rows($sqlAvaliacao) > 0) {
+                while ($dadosAvaliacao = mysqli_fetch_assoc($sqlAvaliacao)) {
+                    $quantidadeEstrelas = $dadosAvaliacao["qtde_estrela"];
+                }
             }
             ?>
             <!-- Exibe os dados do cuidador --> 
@@ -225,12 +226,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="rating">
                         <?php
-                            for ($i = 1; $i <= 5; $i++) {
-                                echo '<span class="star';
-                                if ($i <= $quantidadeEstrelas) {
-                                    echo ' rated';
+                            if (mysqli_num_rows($sqlAvaliacao) > 0) {
+                                for ($i = 1; $i <= 5; $i++) {
+                                    echo '<span class="star';
+                                    if ($i <= $quantidadeEstrelas) {
+                                        echo ' rated';
+                                    }
+                                    echo '"></span>';
                                 }
-                                echo '"></span>';
+                            }else{
+                                echo"<p>Não há avaliações!</p>";
                             }
                         ?>
                     </div>

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19/11/2023 às 03:13
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.0.28
+-- Tempo de geração: 22/11/2023 às 18:58
+-- Versão do servidor: 10.4.11-MariaDB
+-- Versão do PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -35,7 +36,7 @@ CREATE TABLE `agenda` (
   `turno` varchar(1) NOT NULL,
   `dia_semana` varchar(3) NOT NULL,
   `preco_turno` varchar(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Despejando dados para a tabela `agenda`
@@ -47,10 +48,7 @@ INSERT INTO `agenda` (`id_agenda`, `id_cuidador`, `hora_inicio`, `hora_saida`, `
 (61, 1, '18:00:00', '23:00:00', 'n', 'ter', '300'),
 (62, 1, '13:00:00', '17:00:00', 't', 'qua', '80'),
 (63, 1, '13:00:00', '18:00:00', 'm', 'dom', '200'),
-(64, 1, '00:00:00', '00:00:00', 't', 'seg', '200'),
-(65, 1, '00:00:00', '00:00:00', 'n', 'ter', '300'),
-(66, 1, '00:00:00', '00:00:00', 't', 'qua', '80'),
-(67, 1, '00:00:00', '00:00:00', 't', 'sex', '');
+(68, 2, '14:00:00', '18:00:00', 't', 'dom', '800');
 
 -- --------------------------------------------------------
 
@@ -64,7 +62,7 @@ CREATE TABLE `avaliacao` (
   `id_responsavel` int(11) NOT NULL,
   `qtde_estrela` int(11) DEFAULT NULL,
   `comentario` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Despejando dados para a tabela `avaliacao`
@@ -86,7 +84,7 @@ CREATE TABLE `consulta` (
   `id_idoso` int(11) NOT NULL,
   `id_agenda` int(11) NOT NULL,
   `statusConsulta` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Despejando dados para a tabela `consulta`
@@ -120,14 +118,15 @@ CREATE TABLE `cuidador` (
   `rua` varchar(50) NOT NULL,
   `numero` varchar(5) NOT NULL,
   `complemento` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Despejando dados para a tabela `cuidador`
 --
 
 INSERT INTO `cuidador` (`id_cuidador`, `nome`, `cpf`, `foto`, `registroProfissional`, `sexo`, `dtNasc`, `descricao`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
-(1, 'Ana', '123.456.789-11', 0x6173736574732f75706c6f6164496d672f626f622e6a7067, '753', 'Feminino', '2000-06-07', 'Sou uma ótima cuidadora de idosa', '(12)3456-7898', 'ana@ana.com', '12345678', 'AC', 'Cidade', 'Bairro', 'Rua', '89', 'Apt 234 Bloco 2');
+(1, 'Ana', '123.456.789-11', 0x6d756c686572322e6a7067, '753', 'Feminino', '2000-06-07', 'Sou uma ótima cuidadora de idosa', '(12)3456-7898', 'ana@ana.com', '12345678', 'AC', 'Cidade', 'Bairro', 'Rua', '89', 'Apt 234 Bloco 2'),
+(2, 'Joel da Silva', '888.888.888-88', 0x686f6d656d2e6a7067, '563', 'Masculino', '1998-05-06', 'Sou um ótimo cuidador com uma vasta experiência', '(99)9999-9999', 'joel@joel.com', '12345678', 'RS', 'Cidade', 'Bairro', 'Rua', '86', '');
 
 -- --------------------------------------------------------
 
@@ -152,7 +151,7 @@ CREATE TABLE `idoso` (
   `complemento` varchar(20) DEFAULT NULL,
   `enfermidades` varchar(180) DEFAULT NULL,
   `foto` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Despejando dados para a tabela `idoso`
@@ -184,17 +183,17 @@ CREATE TABLE `responsavel` (
   `rua` varchar(50) NOT NULL,
   `numero` varchar(5) NOT NULL,
   `complemento` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Despejando dados para a tabela `responsavel`
 --
 
 INSERT INTO `responsavel` (`id_responsavel`, `nome`, `cpf`, `foto`, `sexo`, `dtNasc`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
-(1, 'Ivone', '878.945.950-89', 0x6173736574732f75706c6f6164496d672f74657374652e6a7067, 'Feminino', '2000-11-02', '(31)2313-1312', 'ivone@ivone.com', '12345678', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '365', '');
+(1, 'Ivone', '878.945.950-89', 0x2e2e2f75706c6f6164496d672f6d756c6865722e6a7067, 'Feminino', '2000-11-02', '(31)2313-1312', 'ivone@ivone.com', '12345678', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '365', '');
 
 --
--- Índices para tabelas despejadas
+-- Índices de tabelas apagadas
 --
 
 --
@@ -242,14 +241,14 @@ ALTER TABLE `responsavel`
   ADD PRIMARY KEY (`id_responsavel`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacao`
@@ -267,7 +266,7 @@ ALTER TABLE `consulta`
 -- AUTO_INCREMENT de tabela `cuidador`
 --
 ALTER TABLE `cuidador`
-  MODIFY `id_cuidador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cuidador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `idoso`
@@ -282,7 +281,7 @@ ALTER TABLE `responsavel`
   MODIFY `id_responsavel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para dumps de tabelas
 --
 
 --

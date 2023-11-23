@@ -28,7 +28,7 @@
             $id = $_GET["idCuidador"];
 
             //pegando os dados pessoais do cuidador
-            $sqlDados = mysqli_query($con, "SELECT cuidador.* FROM cuidador WHERE cuidador.id_cuidador");
+            $sqlDados = mysqli_query($con, "SELECT cuidador.* FROM cuidador WHERE cuidador.id_cuidador = ".$id);
 
 
             while($dados = mysqli_fetch_assoc($sqlDados)){
@@ -139,7 +139,7 @@
 
             <div class="profile-card">
                 <div class="profile-image">
-                    <img src="<?php echo"assets/uploadImg/".$foto; ?>" alt="Imagem de perfil">
+                    <img src="<?php echo"assets/uploadImg/".$foto; ?>" id="imgPerfil" alt="Imagem de perfil">
                 </div>
                 <div class="profile-data">
                     <p><span>Nome:</span> <?php echo$nome ?></p>
@@ -148,7 +148,7 @@
                     <p><span>Cidade:</span> <?php echo$cidade ?></p>
 
                     <?php //pegando os dados de agenda do cuidador
-                        $sqlAgenda = mysqli_query($con,"SELECT * FROM agenda WHERE id_agenda NOT IN (SELECT id_agenda FROM consulta WHERE id_cuidador = $id)");
+                        $sqlAgenda = mysqli_query($con,"SELECT * FROM agenda WHERE id_agenda NOT IN (SELECT id_agenda FROM consulta WHERE id_cuidador = $id) AND id_cuidador = $id");
                         
                         if(mysqli_num_rows($sqlAgenda) == 0){
                             echo"Este cuidador não possui uma agenda!";
@@ -284,6 +284,7 @@
                 .rated {
                     color: #FFD700; /* Cor das estrelas avaliadas */
                 }
+                
             </style>
 
             <script>

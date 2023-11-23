@@ -69,11 +69,30 @@ body {
     font-weight: bold;
 }
 
-table{
+
+table {
     border: 1px solid black;
     text-align: center;
     border-collapse: collapse;
+    overflow-y: auto;
+    height: 500px;
+    width: 100%; /* ou uma largura específica em pixels ou porcentagem */
 }
+
+thead th {
+    width: 10%; /* ou uma largura específica em pixels ou porcentagem */
+}
+
+tbody {
+    display: block;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+tbody td {
+    width: 10%; /* ou uma largura específica em pixels ou porcentagem */
+}
+
 
 td{
     width: 100px; /* Defina um tamanho fixo para todas as células */
