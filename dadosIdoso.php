@@ -45,7 +45,7 @@
         <h1>Dados dos Idosos</h1>
 
         <div>
-            <form id="form" method="POST" name="" action="assets/php/updateIdoso.php?idIdoso=<?php echo$idIdoso; ?>" >
+            <form id="form" method="POST" name="" action="assets/php/updateIdoso.php?idIdoso=<?php echo$idIdoso; ?>" enctype="multipart/form-data">
 
                 <?php 
                     $enfermidades = explode(", ",$enfermidades);

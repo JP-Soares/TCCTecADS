@@ -36,7 +36,7 @@ if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
     
     $queryUpdateIdoso = mysqli_query($con, "UPDATE idoso SET nome='$nome', cpf='$cpf', sexo='$sexo', dtNasc='$dtNasc', descricao='$descricao',
     telefone='$telefone', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero',
-    complemento='$complemento', enfermidades='$enfermidadesString', foto='$caminhoSalvar' WHERE id_idoso=".$idIdoso);
+    complemento='$complemento', enfermidades='$enfermidadesString', foto='$nomeArquivo' WHERE id_idoso=".$idIdoso);
 
     // $resultUpdate = mysqli_query($con, $queryUpdateIdoso);
 

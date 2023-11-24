@@ -206,12 +206,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $cuidadorId = $dadosUsuario['id_cuidador'];
 
             //SELECIONA A QUANTIDADE DE ESTRELAS QUE POSSUI
-            $sqlAvaliacao = mysqli_query($con, "SELECT qtde_estrela FROM avaliacao WHERE id_cuidador = ".$cuidadorId);
+            $sqlAvaliacao = mysqli_query($con, "SELECT IFNULL(AVG(qtde_estrela), NULL) AS quantidadeEstrela FROM avaliacao WHERE id_cuidador = ".$cuidadorId);
 
-            if (mysqli_num_rows($sqlAvaliacao) > 0) {
-                while ($dadosAvaliacao = mysqli_fetch_assoc($sqlAvaliacao)) {
-                    $quantidadeEstrelas = $dadosAvaliacao["qtde_estrela"];
-                }
+            if ($sqlAvaliacao) {
+                $dadosAvaliacao = mysqli_fetch_assoc($sqlAvaliacao);
+                $quantidadeEstrelas = $dadosAvaliacao["quantidadeEstrela"];
             }
             ?>
             <!-- Exibe os dados do cuidador --> 
@@ -226,7 +225,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="rating">
                         <?php
-                            if (mysqli_num_rows($sqlAvaliacao) > 0) {
+                            if ($quantidadeEstrelas != null) {
                                 for ($i = 1; $i <= 5; $i++) {
                                     echo '<span class="star';
                                     if ($i <= $quantidadeEstrelas) {
@@ -234,8 +233,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     }
                                     echo '"></span>';
                                 }
-                            }else{
-                                echo"<p>Não há avaliações!</p>";
+                            }else if($quantidadeEstrelas == null){
+                                ?> <p style="font-size: 20px;">Este usuário não possui avaliações</p>
+                                <?php
                             }
                         ?>
                     </div>

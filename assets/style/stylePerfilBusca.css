@@ -33,6 +33,13 @@ body {
     order: -1; /* Move a imagem para o topo, acima do restante do conteúdo */
 }
 
+.profile-image img {
+    width: 100%; /* Garante que a imagem ocupe 100% da largura do contêiner */
+    height: 100%; /* Mantém a proporção da imagem */
+    display: block; /* Remove espaços extras abaixo da imagem */
+    margin: auto; /* Centraliza a imagem horizontalmente */
+}
+
 .profile-data {
     margin-left: 20px;
     text-align: center; /* Adiciona centralização para o texto */
@@ -123,6 +130,7 @@ td{
 #box-avaliacao {
     width: 60%; /* Ajuste conforme necessário */
     margin: auto;
+    overflow: auto; /* Adiciona barra de rolagem quando necessário */
 }
 
 .avaliacao {
