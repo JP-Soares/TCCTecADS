@@ -119,6 +119,35 @@ td{
     color: rgba(82, 113, 255);
 }
 
+
+#box-avaliacao {
+    width: 60%; /* Ajuste conforme necessário */
+    margin: auto;
+}
+
+.avaliacao {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    align-items: left; /* Alinha os itens à esquerda */
+    text-align: left;
+}
+
+.avaliacao p {
+    margin: 0;
+}
+
+.estrelas {
+    display: flex;
+    top: 10vh;
+}
+
+.comentario {
+    flex-grow: 1; /* Ocupa todo o espaço disponível à direita */
+    text-align: right; /* Alinha o comentário à direita */
+}
+
+
 /* Estilos para telas menores (até 768px) */
 @media (max-width: 768px) {
     .profile-card {

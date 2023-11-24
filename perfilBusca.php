@@ -241,13 +241,36 @@
                     ?>
                 </table>
 
+                <h1>Avaliações:</h1>
                 <div id="box-avaliacao">
                     <?php
                         //SELECIONA A QUANTIDADE DE ESTRELAS QUE POSSUI
-                        $sqlAvaliacao = mysqli_query($con, "SELECT qtde_estrela, comentario FROM avaliacao WHERE id_cuidador=".$id);
-                        while ($dadosAvaliacao = mysqli_fetch_assoc($sqlAvaliacao)) {
-                            $quantidadeEstrelasArray[] = $dadosAvaliacao["qtde_estrela"];
-                            $comentarioArray[] = $dadosAvaliacao["comentario"];
+                        $sqlAvaliacao = mysqli_query($con, "SELECT id_responsavel, qtde_estrela, comentario FROM avaliacao WHERE id_cuidador=".$id);
+                        if(mysqli_num_rows($sqlAvaliacao) > 0){
+                            while ($dadosAvaliacao = mysqli_fetch_assoc($sqlAvaliacao)) {
+                                $id_responsavel = $dadosAvaliacao["id_responsavel"];
+                                $sqlResponsavel = mysqli_query($con, "SELECT nome FROM responsavel WHERE id_responsavel = ".$id_responsavel);
+                                while ($dadosResponsavel = mysqli_fetch_assoc($sqlResponsavel)) {
+                                    $nomeResponsavel = $dadosResponsavel["nome"];
+                                }
+
+                                $quantidadeEstrela = $dadosAvaliacao["qtde_estrela"];
+                                $comentario = $dadosAvaliacao["comentario"];
+                                ?> <div class="avaliacao">
+                                    <p class="nome-responsavel"><?php echo$nomeResponsavel ?></p>
+                                        <?php for ($i = 1; $i <= 5; $i++) {
+                                            echo '<span class="star';
+                                            if ($i <= $quantidadeEstrela) {
+                                                echo ' rated';
+                                            }
+                                            echo '"></span>';
+                                        } ?>
+                                    <p><?php echo$comentario ?></p>
+                                </div>
+                            <?php
+                            }
+                        }else{
+                            ?> <p>Este cuidador não possui avaliações!</p> <?php
                         }
                     ?>
                 </div>
