@@ -26,7 +26,7 @@
         <h1>Cadastro</h1>
 
         <div>
-            <form id="form" method="POST" name="" action="assets/php/cadastroIdoso.php">
+            <form id="form" method="POST" name="" action="assets/php/cadastroIdoso.php" enctype="multipart/form-data">
                 <h3>Preencha os campos abaixo</h3>
                 
                 <div id="container-dados-pessoais">
@@ -123,7 +123,7 @@
                 let dataAtual = new Date();
                 
                 // Adiciona 60 anos à data de nascimento
-                dataNascimento.setFullYear(dataNascimento.getFullYear() + 65);
+                dataNascimento.setFullYear(dataNascimento.getFullYear() + 60);
                 
                 if (dataNascimento <= dataAtual){
                     spDtNasc.style.display = "none";

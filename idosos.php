@@ -47,7 +47,8 @@
                         <p><span>Descrição:</span> <?php echo$descricao ?></p>
 
                         <div class="tag">
-                            <a href="dadosIdoso.php?idIdoso=<?php echo$idIdoso; ?>">Verificar Dados!</a>
+                            <a href="dadosIdoso.php?idIdoso=<?php echo$idIdoso; ?>">Verificar Dados!</a><br><br>
+                            <a href="assets/php/deletarIdoso.php?idIdoso=<?php echo$idIdoso; ?>">Excluir!</a>
                         </div>
                     </div>
                 </div>

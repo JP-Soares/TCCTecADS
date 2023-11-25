@@ -35,7 +35,7 @@ if(mysqli_num_rows($verificar) == 0){
         move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
     
         $sql = "INSERT INTO idoso (id_responsavel, nome, cpf, foto, sexo, dtNasc, descricao, telefone, estado, cidade, bairro, rua, numero, complemento, enfermidades) 
-        VALUES ('".$_SESSION["id"]."', '$nome', '$cpf', '$caminhoSalvar', '$sexo', '$dtNasc', '$descricao', '$telefone', '$estado', '$cidade', '$bairro', '$rua', 
+        VALUES ('".$_SESSION["id"]."', '$nome', '$cpf', '$nomeArquivo', '$sexo', '$dtNasc', '$descricao', '$telefone', '$estado', '$cidade', '$bairro', '$rua', 
         '$numero', '$complemento', '$enfermidadesString')";
     }else{//caso não tenha inserido foto no campo de foto
         $sql = "INSERT INTO idoso (id_responsavel, nome, cpf, sexo, dtNasc, descricao, telefone, estado, cidade, bairro, rua, numero, complemento, enfermidades) 

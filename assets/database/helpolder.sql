@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/11/2023 às 18:58
--- Versão do servidor: 10.4.11-MariaDB
--- Versão do PHP: 7.4.1
+-- Tempo de geração: 25/11/2023 às 21:32
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -36,7 +35,7 @@ CREATE TABLE `agenda` (
   `turno` varchar(1) NOT NULL,
   `dia_semana` varchar(3) NOT NULL,
   `preco_turno` varchar(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `agenda`
@@ -48,7 +47,9 @@ INSERT INTO `agenda` (`id_agenda`, `id_cuidador`, `hora_inicio`, `hora_saida`, `
 (61, 1, '18:00:00', '23:00:00', 'n', 'ter', '300'),
 (62, 1, '13:00:00', '17:00:00', 't', 'qua', '80'),
 (63, 1, '13:00:00', '18:00:00', 'm', 'dom', '200'),
-(68, 2, '14:00:00', '18:00:00', 't', 'dom', '800');
+(74, 2, '05:00:00', '12:00:00', 'm', 'dom', '100'),
+(75, 2, '12:00:00', '13:00:00', 't', 'dom', '800'),
+(76, 2, '18:00:00', '19:00:00', 'n', 'seg', '400');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,7 @@ CREATE TABLE `avaliacao` (
   `id_responsavel` int(11) NOT NULL,
   `qtde_estrela` int(11) DEFAULT NULL,
   `comentario` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `avaliacao`
@@ -84,7 +85,7 @@ CREATE TABLE `consulta` (
   `id_idoso` int(11) NOT NULL,
   `id_agenda` int(11) NOT NULL,
   `statusConsulta` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `consulta`
@@ -118,7 +119,7 @@ CREATE TABLE `cuidador` (
   `rua` varchar(50) NOT NULL,
   `numero` varchar(5) NOT NULL,
   `complemento` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `cuidador`
@@ -151,14 +152,14 @@ CREATE TABLE `idoso` (
   `complemento` varchar(20) DEFAULT NULL,
   `enfermidades` varchar(180) DEFAULT NULL,
   `foto` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `idoso`
 --
 
 INSERT INTO `idoso` (`id_idoso`, `id_responsavel`, `nome`, `cpf`, `sexo`, `dtNasc`, `descricao`, `telefone`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`, `enfermidades`, `foto`) VALUES
-(2, 1, 'Romeu', '888.888.888-88', 'Masculino', '1954-10-15', 'Sou um idoso que gosta de xadrez.\r\nUso andador', '(89)8988-0958', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '1231', '', 'enfermidade2, enfermidade3', NULL),
+(2, 1, 'Romeu', '888.888.888-88', 'Masculino', '1954-10-15', 'Sou um idoso que gosta de xadrez.\r\nUso andador', '(89)8988-0958', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '1231', '', 'enfermidade2, enfermidade3', 0x69646f736f2e6a706567),
 (3, 1, 'Maria Aparecida', '963.852.741-11', 'Feminino', '1958-01-23', 'Sou uma idosa que adora flores e caminhar no parque', '(98)9898-9898', 'AM', 'Manaus', 'Bairro do Limoeiro', 'Rua dos Limões', '89', '', 'enfermidade1, enfermidade2', NULL);
 
 -- --------------------------------------------------------
@@ -183,7 +184,7 @@ CREATE TABLE `responsavel` (
   `rua` varchar(50) NOT NULL,
   `numero` varchar(5) NOT NULL,
   `complemento` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `responsavel`
@@ -193,7 +194,7 @@ INSERT INTO `responsavel` (`id_responsavel`, `nome`, `cpf`, `foto`, `sexo`, `dtN
 (1, 'Ivone', '878.945.950-89', 0x2e2e2f75706c6f6164496d672f6d756c6865722e6a7067, 'Feminino', '2000-11-02', '(31)2313-1312', 'ivone@ivone.com', '12345678', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '365', '');
 
 --
--- Índices de tabelas apagadas
+-- Índices para tabelas despejadas
 --
 
 --
@@ -241,14 +242,14 @@ ALTER TABLE `responsavel`
   ADD PRIMARY KEY (`id_responsavel`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacao`
@@ -281,7 +282,7 @@ ALTER TABLE `responsavel`
   MODIFY `id_responsavel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restrições para dumps de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --

@@ -36,10 +36,9 @@ if(mysqli_num_rows($verificar) == 0){
         if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
             $nomeArquivo = $_FILES['fotoPerfil']['name'];
             $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
-            $caminhoSalvar = 'assets/uploadImg/'.$nomeArquivo;
+            $pastaDestino = "../uploadImg/"; // Um nível acima da pasta 'php'
+            $caminhoSalvar = $pastaDestino . $nomeArquivo;
             move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
-            $pasta = "../uploadImg";
-            $diretorio = dir($pasta);
             
             $sql = "INSERT INTO cuidador (nome, cpf, foto, registroProfissional, sexo, dtNasc, descricao, telefone, email, senha, estado, cidade, bairro, rua, numero, complemento) 
             VALUES ('$nome', '$cpf', '$nomeArquivo', '$registroProfissional', '$sexo', '$dtNasc', '$descricao', '$telefone', '$email', '$senhaConfirma', '$estado', '$cidade', '$bairro', '$rua', 
@@ -55,10 +54,9 @@ if(mysqli_num_rows($verificar) == 0){
         if(isset($_FILES['fotoPerfil'])){//caso inserido foto no campo de foto
             $nomeArquivo = $_FILES['fotoPerfil']['name'];
             $caminhoAtualArquivo = $_FILES['fotoPerfil']['tmp_name'];
-            $caminhoSalvar = 'assets/uploadImg/'.$nomeArquivo;
+            $pastaDestino = "../uploadImg/"; // Um nível acima da pasta 'php'
+            $caminhoSalvar = $pastaDestino . $nomeArquivo;
             move_uploaded_file($caminhoAtualArquivo, $caminhoSalvar);
-            $pasta = "../uploadImg";
-            $diretorio = dir($pasta);
             
             $sql = "INSERT INTO responsavel (nome, cpf, foto, sexo, dtNasc, telefone, email, senha, estado, cidade, bairro, rua, numero, complemento) 
             VALUES ('$nome', '$cpf', '$nomeArquivo', '$sexo', '$dtNasc', '$telefone', '$email', '$senhaConfirma', '$estado', '$cidade', '$bairro', '$rua', 
@@ -80,7 +78,7 @@ if(mysqli_num_rows($verificar) == 0){
             while($dadosUsuario = mysqli_fetch_assoc($sqlVerify)){
                 $_SESSION["nome"] = $dadosUsuario["nome"];
                 $_SESSION["cpf"] = $dadosUsuario["cpf"];
-                $_SESSION["foto"]                 =  "assets/uploadImg/".$nomeArquivo;
+                $_SESSION["foto"] =  "assets/uploadImg/".$nomeArquivo;
                 $_SESSION["sexo"] = $dadosUsuario["sexo"];
                 $_SESSION["dtNasc"] = $dadosUsuario["dtNasc"];
                 $_SESSION["telefone"] = $dadosUsuario["telefone"];

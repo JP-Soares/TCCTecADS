@@ -24,7 +24,7 @@
         <h1>Cadastro</h1>
 
         <div>
-            <form id="form" method="POST" name="" action="assets/php/cadastro.php">
+            <form id="form" method="POST" name="" action="assets/php/cadastro.php" enctype="multipart/form-data">
                 <a class="btnVoltar" onclick="goBack();"><img class="imgBtnVoltar" src="assets/img/voltar.png" /></a>
                 <h3>Preencha os campos abaixo:</h3>
                 
