@@ -64,7 +64,7 @@
                     <tr class="dias-agenda">
                         <!--Domingo-->
                         <td id="domingo"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" class="m" id="manhaCheck0" value="manha0" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m"){?> checked <?php } } } ?>/>
-                            <div id="manha0"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[0].disabled = false; </script> <?php } } } ?> >
+                            <div id="manha0"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[0].disabled = false; </script> <?php } } } ?> 
                                 <option value="00:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "00:00:00"){ ?> selected <?php break; } } } ?>>00:00</option>
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
@@ -78,7 +78,7 @@
                                 <option value="10:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "10:00:00"){ ?> selected <?php break; } } } ?>>10:00</option>
                                 <option value="11:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "11:00:00"){ ?> selected <?php break; } } } ?>>11:00</option>
                             </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[1].disabled = false; </script> <?php } } } ?> >
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[1].disabled = false; </script> <?php } } } ?> 
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_saida[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_saida[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
                                 <option value="03:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_saida[$i] == "03:00:00"){ ?> selected <?php break; } } } ?>>03:00</option>
@@ -96,7 +96,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div><br>
                         <br>
                         <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde0" id="tardeCheck0" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t"){?> checked <?php } } } ?>/>
-                        <div id="tarde0"><label>Hora de início: </label><select class="horaSelect" disabled name="horaInicio[]" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[2].disabled = false; </script> <?php } } } ?> >
+                        <div id="tarde0"><label>Hora de início: </label><select class="horaSelect" disabled name="horaInicio[]" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[2].disabled = false; </script> <?php } } } ?> 
                             <option value="12:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t" && $hora_inicio[$i] == "12:00:00"){ ?> selected <?php break; } } } ?>>12:00</option>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t" && $hora_inicio[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                             <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t" && $hora_inicio[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
@@ -104,7 +104,7 @@
                             <option value="16:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t" && $hora_inicio[$i] == "16:00:00"){ ?> selected <?php break; } } } ?>>16:00</option>
                             <option value="17:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t" && $hora_inicio[$i] == "17:00:00"){ ?> selected <?php break; } } } ?>>17:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[3].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[3].disabled = false; </script> <?php } } } ?>
                                 <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t" && $hora_saida[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                                 <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t" && $hora_saida[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
                                 <option value="15:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "t" && $hora_saida[$i] == "15:00:00"){ ?> selected <?php break; } } } ?>>15:00</option>
@@ -116,7 +116,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite0" id="noiteCheck0" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n"){?> checked <?php } } } ?>/>
-                            <div id="noite0"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[4].disabled = false; </script> <?php } } } ?>>
+                            <div id="noite0"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[4].disabled = false; </script> <?php } } } ?>
                                 <option value="18:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n" && $hora_inicio[$i] == "18:00:00"){ ?> selected <?php break; } } } ?>>18:00</option>
                                 <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n" && $hora_inicio[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n" && $hora_inicio[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
@@ -124,7 +124,7 @@
                                 <option value="22:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n" && $hora_inicio[$i] == "22:00:00"){ ?> selected <?php break; } } } ?>>22:00</option>
                                 <option value="23:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n" && $hora_inicio[$i] == "23:00:00"){ ?> selected <?php break; } } } ?>>23:00</option>
                             </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[5].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[5].disabled = false; </script> <?php } } } ?>
                                 <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n" && $hora_saida[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n" && $hora_saida[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
                                 <option value="21:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "n" && $hora_saida[$i] == "21:00:00"){ ?> selected <?php break; } } } ?>>21:00</option>
@@ -138,7 +138,7 @@
 
                         <!--Segunda-->
                         <td id="segunda"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" class="m" id="manhaCheck1" value="manha1" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
-                        <div id="manha1"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[6].disabled = false; </script> <?php } } } ?>>
+                        <div id="manha1"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[6].disabled = false; </script> <?php } } } ?>
                             <option value="00:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m" && $hora_inicio[$i] == "00:00:00"){ ?> selected <?php break; } } } ?>>00:00</option>
                             <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m" && $hora_inicio[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                             <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m" && $hora_inicio[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
@@ -152,7 +152,7 @@
                             <option value="10:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m" && $hora_inicio[$i] == "10:00:00"){ ?> selected <?php break; } } } ?>>10:00</option>
                             <option value="11:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m" && $hora_inicio[$i] == "11:00:00"){ ?> selected <?php break; } } } ?>>11:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[7].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[7].disabled = false; </script> <?php } } } ?>
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m" && $hora_saida[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m" && $hora_saida[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
                                 <option value="03:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "m" && $hora_saida[$i] == "03:00:00"){ ?> selected <?php break; } } } ?>>03:00</option>
@@ -170,7 +170,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde1" id="tardeCheck1" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
-                            <div id="tarde1"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[8].disabled = false; </script> <?php } } } ?>>
+                            <div id="tarde1"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[8].disabled = false; </script> <?php } } } ?>
                                 <option value="12:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t" && $hora_inicio[$i] == "12:00:00"){ ?> selected <?php break; } } } ?>>12:00</option>
                                 <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t" && $hora_inicio[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                                 <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t" && $hora_inicio[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
@@ -178,7 +178,7 @@
                                 <option value="16:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t" && $hora_inicio[$i] == "16:00:00"){ ?> selected <?php break; } } } ?>>16:00</option>
                                 <option value="17:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t" && $hora_inicio[$i] == "17:00:00"){ ?> selected <?php break; } } } ?>>17:00</option>
                             </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[9].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[9].disabled = false; </script> <?php } } } ?>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t" && $hora_saida[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                                 <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t" && $hora_saida[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
                                 <option value="15:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "t" && $hora_saida[$i] == "15:00:00"){ ?> selected <?php break; } } } ?>>15:00</option>
@@ -190,7 +190,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite1" id="noiteCheck1" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
-                            <div id="noite1"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[10].disabled = false; </script> <?php } } } ?>>
+                            <div id="noite1"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[10].disabled = false; </script> <?php } } } ?>
                             <option value="18:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n" && $hora_inicio[$i] == "18:00:00"){ ?> selected <?php break; } } } ?>>18:00</option>
                                 <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n" && $hora_inicio[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n" && $hora_inicio[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
@@ -198,7 +198,7 @@
                                 <option value="22:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n" && $hora_inicio[$i] == "22:00:00"){ ?> selected <?php break; } } } ?>>22:00</option>
                                 <option value="23:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n" && $hora_inicio[$i] == "23:00:00"){ ?> selected <?php break; } } } ?>>23:00</option>
                             </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[11].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[11].disabled = false; </script> <?php } } } ?>
                             <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n" && $hora_saida[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n" && $hora_saida[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
                                 <option value="21:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "seg" && $turno[$i] == "n" && $hora_saida[$i] == "21:00:00"){ ?> selected <?php break; } } } ?>>21:00</option>
@@ -213,7 +213,7 @@
                         
                         <!--Terca-->
                         <td id="terca"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck2" value="manha2" class="m" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
-                        <div id="manha2"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[12].disabled = false; </script> <?php } } } ?>>
+                        <div id="manha2"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[12].disabled = false; </script> <?php } } } ?>
                         <option value="00:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m" && $hora_inicio[$i] == "00:00:00"){ ?> selected <?php break; } } } ?>>00:00</option>
                             <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m" && $hora_inicio[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                             <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m" && $hora_inicio[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
@@ -227,7 +227,7 @@
                             <option value="10:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m" && $hora_inicio[$i] == "10:00:00"){ ?> selected <?php break; } } } ?>>10:00</option>
                             <option value="11:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m" && $hora_inicio[$i] == "11:00:00"){ ?> selected <?php break; } } } ?>>11:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[13].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[13].disabled = false; </script> <?php } } } ?>
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m" && $hora_saida[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m" && $hora_saida[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
                                 <option value="03:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "m" && $hora_saida[$i] == "03:00:00"){ ?> selected <?php break; } } } ?>>03:00</option>
@@ -245,7 +245,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde2" id="tardeCheck2" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
-                        <div id="tarde2"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[14].disabled = false; </script> <?php } } } ?>>
+                        <div id="tarde2"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[14].disabled = false; </script> <?php } } } ?>
                         <option value="12:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t" && $hora_inicio[$i] == "12:00:00"){ ?> selected <?php break; } } } ?>>12:00</option>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t" && $hora_inicio[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                             <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t" && $hora_inicio[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
@@ -253,7 +253,7 @@
                             <option value="16:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t" && $hora_inicio[$i] == "16:00:00"){ ?> selected <?php break; } } } ?>>16:00</option>
                             <option value="17:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t" && $hora_inicio[$i] == "17:00:00"){ ?> selected <?php break; } } } ?>>17:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[15].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[15].disabled = false; </script> <?php } } } ?>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t" && $hora_saida[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                                 <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t" && $hora_saida[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
                                 <option value="15:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "t" && $hora_saida[$i] == "15:00:00"){ ?> selected <?php break; } } } ?>>15:00</option>
@@ -265,7 +265,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite2" id="noiteCheck2" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
-                        <div id="noite2"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[16].disabled = false; </script> <?php } } } ?>>
+                        <div id="noite2"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[16].disabled = false; </script> <?php } } } ?>
                         <option value="18:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n" && $hora_inicio[$i] == "18:00:00"){ ?> selected <?php break; } } } ?>>18:00</option>
                                 <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n" && $hora_inicio[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n" && $hora_inicio[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
@@ -273,7 +273,7 @@
                                 <option value="22:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n" && $hora_inicio[$i] == "22:00:00"){ ?> selected <?php break; } } } ?>>22:00</option>
                                 <option value="23:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n" && $hora_inicio[$i] == "23:00:00"){ ?> selected <?php break; } } } ?>>23:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[17].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[17].disabled = false; </script> <?php } } } ?>
                             <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n" && $hora_saida[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n" && $hora_saida[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
                                 <option value="21:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "ter" && $turno[$i] == "n" && $hora_saida[$i] == "21:00:00"){ ?> selected <?php break; } } } ?>>21:00</option>
@@ -288,7 +288,7 @@
 
                         <!--Quarta-->
                         <td id="quarta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck3" value="manha3" class="m" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
-                        <div id="manha3"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[18].disabled = false; </script> <?php } } } ?>>
+                        <div id="manha3"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[18].disabled = false; </script> <?php } } } ?>
                         <option value="00:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m" && $hora_inicio[$i] == "00:00:00"){ ?> selected <?php break; } } } ?>>00:00</option>
                             <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m" && $hora_inicio[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                             <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m" && $hora_inicio[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
@@ -302,7 +302,7 @@
                             <option value="10:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m" && $hora_inicio[$i] == "10:00:00"){ ?> selected <?php break; } } } ?>>10:00</option>
                             <option value="11:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m" && $hora_inicio[$i] == "11:00:00"){ ?> selected <?php break; } } } ?>>11:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[19].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[19].disabled = false; </script> <?php } } } ?>
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m" && $hora_saida[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m" && $hora_saida[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
                                 <option value="03:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m" && $hora_saida[$i] == "03:00:00"){ ?> selected <?php break; } } } ?>>03:00</option>
@@ -319,8 +319,8 @@
                             <label>Preço (R$):</label><input type="number" class="preco" name="preco[]" value="<?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "m"){ echo$preco[$i]; } } } ?>"/>
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
-                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde3" id="tardeCheck3" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t"){?> checked <?php } } } ?>"/>    
-                        <div id="tarde3"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[20].disabled = false; </script> <?php } } } ?>>
+                        <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde3" id="tardeCheck3" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t"){?> checked <?php } } } ?> />    
+                        <div id="tarde3"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[20].disabled = false; </script> <?php } } } ?>
                         <option value="12:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t" && $hora_inicio[$i] == "12:00:00"){ ?> selected <?php break; } } } ?>>12:00</option>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t" && $hora_inicio[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                             <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t" && $hora_inicio[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
@@ -328,7 +328,7 @@
                             <option value="16:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t" && $hora_inicio[$i] == "16:00:00"){ ?> selected <?php break; } } } ?>>16:00</option>
                             <option value="17:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t" && $hora_inicio[$i] == "17:00:00"){ ?> selected <?php break; } } } ?>>17:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[21].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[21].disabled = false; </script> <?php } } } ?>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t" && $hora_saida[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                                 <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t" && $hora_saida[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
                                 <option value="15:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "t" && $hora_saida[$i] == "15:00:00"){ ?> selected <?php break; } } } ?>>15:00</option>
@@ -340,7 +340,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Noite<label><input type="checkbox" value="noite3" id="noiteCheck3" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
-                        <div id="noite3"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[22].disabled = false; </script> <?php } } } ?>>
+                        <div id="noite3"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[22].disabled = false; </script> <?php } } } ?>
                         <option value="18:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n" && $hora_inicio[$i] == "18:00:00"){ ?> selected <?php break; } } } ?>>18:00</option>
                                 <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n" && $hora_inicio[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n" && $hora_inicio[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
@@ -348,7 +348,7 @@
                                 <option value="22:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n" && $hora_inicio[$i] == "22:00:00"){ ?> selected <?php break; } } } ?>>22:00</option>
                                 <option value="23:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n" && $hora_inicio[$i] == "23:00:00"){ ?> selected <?php break; } } } ?>>23:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[23].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[23].disabled = false; </script> <?php } } } ?>
                             <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n" && $hora_saida[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n" && $hora_saida[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
                                 <option value="21:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qua" && $turno[$i] == "n" && $hora_saida[$i] == "21:00:00"){ ?> selected <?php break; } } } ?>>21:00</option>
@@ -363,7 +363,7 @@
 
                         <!--Quinta-->
                         <td id="quinta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck4" value="manha4" class="m" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
-                        <div id="manha4"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[24].disabled = false; </script> <?php } } } ?>>
+                        <div id="manha4"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[24].disabled = false; </script> <?php } } } ?>
                         <option value="00:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m" && $hora_inicio[$i] == "00:00:00"){ ?> selected <?php break; } } } ?>>00:00</option>
                             <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m" && $hora_inicio[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                             <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m" && $hora_inicio[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
@@ -377,7 +377,7 @@
                             <option value="10:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m" && $hora_inicio[$i] == "10:00:00"){ ?> selected <?php break; } } } ?>>10:00</option>
                             <option value="11:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m" && $hora_inicio[$i] == "11:00:00"){ ?> selected <?php break; } } } ?>>11:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[25].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[25].disabled = false; </script> <?php } } } ?>
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m" && $hora_saida[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m" && $hora_saida[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
                                 <option value="03:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "m" && $hora_saida[$i] == "03:00:00"){ ?> selected <?php break; } } } ?>>03:00</option>
@@ -395,7 +395,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" id="tardeCheck4" value="tarde4" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
-                        <div id="tarde4"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[26].disabled = false; </script> <?php } } } ?>>
+                        <div id="tarde4"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[26].disabled = false; </script> <?php } } } ?>
                         <option value="12:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t" && $hora_inicio[$i] == "12:00:00"){ ?> selected <?php break; } } } ?>>12:00</option>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t" && $hora_inicio[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                             <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t" && $hora_inicio[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
@@ -403,7 +403,7 @@
                             <option value="16:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t" && $hora_inicio[$i] == "16:00:00"){ ?> selected <?php break; } } } ?>>16:00</option>
                             <option value="17:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t" && $hora_inicio[$i] == "17:00:00"){ ?> selected <?php break; } } } ?>>17:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[27].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[27].disabled = false; </script> <?php } } } ?>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t" && $hora_saida[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                                 <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t" && $hora_saida[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
                                 <option value="15:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "t" && $hora_saida[$i] == "15:00:00"){ ?> selected <?php break; } } } ?>>15:00</option>
@@ -415,7 +415,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" id="noiteCheck4" value="noite4" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
-                        <div id="noite4"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[28].disabled = false; </script> <?php } } } ?>>
+                        <div id="noite4"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[28].disabled = false; </script> <?php } } } ?>
                         <option value="18:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n" && $hora_inicio[$i] == "18:00:00"){ ?> selected <?php break; } } } ?>>18:00</option>
                                 <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n" && $hora_inicio[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n" && $hora_inicio[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
@@ -423,7 +423,7 @@
                                 <option value="22:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n" && $hora_inicio[$i] == "22:00:00"){ ?> selected <?php break; } } } ?>>22:00</option>
                                 <option value="23:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n" && $hora_inicio[$i] == "23:00:00"){ ?> selected <?php break; } } } ?>>23:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[29].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[29].disabled = false; </script> <?php } } } ?>
                             <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n" && $hora_saida[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n" && $hora_saida[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
                                 <option value="21:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "qui" && $turno[$i] == "n" && $hora_saida[$i] == "21:00:00"){ ?> selected <?php break; } } } ?>>21:00</option>
@@ -438,7 +438,7 @@
 
                         <!--Sexta-->
                         <td id="sexta"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck5" class="m" value="manha5" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
-                        <div id="manha5"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[30].disabled = false; </script> <?php } } } ?>>
+                        <div id="manha5"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[30].disabled = false; </script> <?php } } } ?>
                         <option value="00:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m" && $hora_inicio[$i] == "00:00:00"){ ?> selected <?php break; } } } ?>>00:00</option>
                             <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m" && $hora_inicio[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                             <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m" && $hora_inicio[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
@@ -452,7 +452,7 @@
                             <option value="10:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m" && $hora_inicio[$i] == "10:00:00"){ ?> selected <?php break; } } } ?>>10:00</option>
                             <option value="11:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m" && $hora_inicio[$i] == "11:00:00"){ ?> selected <?php break; } } } ?>>11:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[31].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[31].disabled = false; </script> <?php } } } ?>
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m" && $hora_saida[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m" && $hora_saida[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
                                 <option value="03:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "m" && $hora_saida[$i] == "03:00:00"){ ?> selected <?php break; } } } ?>>03:00</option>
@@ -470,7 +470,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" id="tardeCheck5" value="tarde5" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
-                        <div id="tarde5"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "y"){ ?> <script> document.querySelectorAll('.horaSelect')[32].disabled = false; </script> <?php } } } ?>>
+                        <div id="tarde5"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "y"){ ?> <script> document.querySelectorAll('.horaSelect')[32].disabled = false; </script> <?php } } } ?>
                         <option value="12:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t" && $hora_inicio[$i] == "12:00:00"){ ?> selected <?php break; } } } ?>>12:00</option>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t" && $hora_inicio[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                             <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t" && $hora_inicio[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
@@ -478,7 +478,7 @@
                             <option value="16:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t" && $hora_inicio[$i] == "16:00:00"){ ?> selected <?php break; } } } ?>>16:00</option>
                             <option value="17:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t" && $hora_inicio[$i] == "17:00:00"){ ?> selected <?php break; } } } ?>>17:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "y"){ ?> <script> document.querySelectorAll('.horaSelect')[33].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "y"){ ?> <script> document.querySelectorAll('.horaSelect')[33].disabled = false; </script> <?php } } } ?>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t" && $hora_saida[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                                 <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t" && $hora_saida[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
                                 <option value="15:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "t" && $hora_saida[$i] == "15:00:00"){ ?> selected <?php break; } } } ?>>15:00</option>
@@ -490,7 +490,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" id="noiteCheck5" value="noite5" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
-                        <div id="noite5"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[34].disabled = false; </script> <?php } } } ?>>
+                        <div id="noite5"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[34].disabled = false; </script> <?php } } } ?>
                         <option value="18:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n" && $hora_inicio[$i] == "18:00:00"){ ?> selected <?php break; } } } ?>>18:00</option>
                                 <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n" && $hora_inicio[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n" && $hora_inicio[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
@@ -498,7 +498,7 @@
                                 <option value="22:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n" && $hora_inicio[$i] == "22:00:00"){ ?> selected <?php break; } } } ?>>22:00</option>
                                 <option value="23:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n" && $hora_inicio[$i] == "23:00:00"){ ?> selected <?php break; } } } ?>>23:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[35].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[35].disabled = false; </script> <?php } } } ?>
                             <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n" && $hora_saida[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n" && $hora_saida[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
                                 <option value="21:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sex" && $turno[$i] == "n" && $hora_saida[$i] == "21:00:00"){ ?> selected <?php break; } } } ?>>21:00</option>
@@ -513,7 +513,7 @@
 
                         <!--Sabado-->
                         <td id="sabado"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" id="manhaCheck6" class="m" value="manha6" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m"){?> checked <?php } } } ?>/>    
-                        <div id="manha6"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[36].disabled = false; </script> <?php } } } ?>>
+                        <div id="manha6"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[36].disabled = false; </script> <?php } } } ?>
                         <option value="00:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m" && $hora_inicio[$i] == "00:00:00"){ ?> selected <?php break; } } } ?>>00:00</option>
                             <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m" && $hora_inicio[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                             <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m" && $hora_inicio[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
@@ -527,7 +527,7 @@
                             <option value="10:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m" && $hora_inicio[$i] == "10:00:00"){ ?> selected <?php break; } } } ?>>10:00</option>
                             <option value="11:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m" && $hora_inicio[$i] == "11:00:00"){ ?> selected <?php break; } } } ?>>11:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[37].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[37].disabled = false; </script> <?php } } } ?>
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m" && $hora_saida[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m" && $hora_saida[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
                                 <option value="03:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "m" && $hora_saida[$i] == "03:00:00"){ ?> selected <?php break; } } } ?>>03:00</option>
@@ -545,7 +545,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Tarde<label><input name="turnoTrabalho[]" type="checkbox" value="tarde6" id="tardeCheck6" class="t" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t"){?> checked <?php } } } ?>/>    
-                        <div id="tarde6"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[38].disabled = false; </script> <?php } } } ?>>
+                        <div id="tarde6"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[38].disabled = false; </script> <?php } } } ?>
                         <option value="12:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t" && $hora_inicio[$i] == "12:00:00"){ ?> selected <?php break; } } } ?>>12:00</option>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t" && $hora_inicio[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                             <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t" && $hora_inicio[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
@@ -553,7 +553,7 @@
                             <option value="16:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t" && $hora_inicio[$i] == "16:00:00"){ ?> selected <?php break; } } } ?>>16:00</option>
                             <option value="17:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t" && $hora_inicio[$i] == "17:00:00"){ ?> selected <?php break; } } } ?>>17:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[39].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "t"){ ?> <script> document.querySelectorAll('.horaSelect')[39].disabled = false; </script> <?php } } } ?>
                             <option value="13:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t" && $hora_saida[$i] == "13:00:00"){ ?> selected <?php break; } } } ?>>13:00</option>
                                 <option value="14:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t" && $hora_saida[$i] == "14:00:00"){ ?> selected <?php break; } } } ?>>14:00</option>
                                 <option value="15:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "t" && $hora_saida[$i] == "15:00:00"){ ?> selected <?php break; } } } ?>>15:00</option>
@@ -565,7 +565,7 @@
                             <span class="spnPreco" oninput="validarPreco();">Digite um valor válido!</span></div>
                         <br>
                         <label>Noite<label><input name="turnoTrabalho[]" type="checkbox" value="noite6" id="noiteCheck6" class="n" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n"){?> checked <?php } } } ?>/>    
-                        <div id="noite6"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[40].disabled = false; </script> <?php } } } ?>>
+                        <div id="noite6"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[40].disabled = false; </script> <?php } } } ?>
                         <option value="18:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n" && $hora_inicio[$i] == "18:00:00"){ ?> selected <?php break; } } } ?>>18:00</option>
                                 <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n" && $hora_inicio[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n" && $hora_inicio[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
@@ -573,7 +573,7 @@
                                 <option value="22:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n" && $hora_inicio[$i] == "22:00:00"){ ?> selected <?php break; } } } ?>>22:00</option>
                                 <option value="23:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n" && $hora_inicio[$i] == "23:00:00"){ ?> selected <?php break; } } } ?>>23:00</option>
                         </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[41].disabled = false; </script> <?php } } } ?>>
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] != "n"){ ?> <script> document.querySelectorAll('.horaSelect')[41].disabled = false; </script> <?php } } } ?>
                             <option value="19:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n" && $hora_saida[$i] == "19:00:00"){ ?> selected <?php break; } } } ?>>19:00</option>
                                 <option value="20:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n" && $hora_saida[$i] == "20:00:00"){ ?> selected <?php break; } } } ?>>20:00</option>
                                 <option value="21:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "sab" && $turno[$i] == "n" && $hora_saida[$i] == "21:00:00"){ ?> selected <?php break; } } } ?>>21:00</option>
@@ -854,6 +854,16 @@
         </script>
 
         <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            // Verificar estado inicial dos checkboxes e chamar a função turno se necessário
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                    if (checkbox.checked) {
+                        turno(checkbox);
+                    }
+                });
+            });
+
             function turno(checkbox){
                 const turno = document.getElementById(checkbox.value);
 
@@ -863,11 +873,10 @@
                 const quarta = document.getElementById("quarta");
                 const quinta = document.getElementById("quinta");
                 const sexta = document.getElementById("sexta");
-                const sabado = document.getElementById("domingo");
+                const sabado = document.getElementById("sabado");
 
                 if(checkbox.checked){
                     turno.style.visibility = "visible";
-
                     //domingo
                     if(checkbox.value == "manha0" && domingo.contains(turno)){
                         document.querySelectorAll('.horaSelect')[0].disabled = false;
