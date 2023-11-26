@@ -24,6 +24,7 @@
             while($dadosIdoso = mysqli_fetch_assoc($buscaIdoso)){
                 $nome = $dadosIdoso["nome"];
                 $cpf = $dadosIdoso["cpf"];
+                $foto = $dadosIdoso["foto"];
                 $sexo = $dadosIdoso["sexo"];
                 $dtNasc = $dadosIdoso["dtNasc"];
                 $descricao = $dadosIdoso["descricao"];
@@ -60,7 +61,7 @@
                     <input type="text" id="txtCpf" name="cpf" placeholder="___.___.___-__" value="<?php echo$cpf; ?>" maxlength="14" oninput="formatCpf();" required /><br><br>
                     <label class="file-input-wrapper">
                         <input type="file" name="fotoPerfil" id="foto" />
-                        <img id="imagemPreview" name="imgPrev" src="" alt="Clique aqui!" style="max-width: 100%;">
+                        <img id="imagemPreview" name="imgPrev" src="<?php echo "assets/uploadImg/" . $foto; ?>" alt="Clique aqui!" style="max-width: 100%;">
                     </label><br><br>
                     <label>Sexo:</label><br>
                     <label>Masculino</label><input type="radio" name="sexo" value="Masculino" <?php if($sexo == "Masculino"){ ?>checked <?php } ?> required />
@@ -126,7 +127,7 @@
                     <label>Complemento:</label>
                     <input type="text" name="complemento" placeholder="Digite o complemento aqui" value="<?php echo$complemento; ?>" /><br><br>
                         
-                    <button id="btnEnviar" type="submit">Cadastrar!</button>
+                    <button id="btnEnviar" type="submit">Atualizar!</button>
                 </div>
 
             </form>

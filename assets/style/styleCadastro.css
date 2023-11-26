@@ -75,7 +75,16 @@ button:hover{
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto 20px;
+}
+
+.file-input-wrapper img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
     border: 1px solid black;
+    text-align: center;
 }
   
 .file-input-wrapper {

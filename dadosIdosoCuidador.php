@@ -24,6 +24,7 @@
             while($dadosIdoso = mysqli_fetch_assoc($buscaIdoso)){
                 $nome = $dadosIdoso["nome"];
                 $cpf = $dadosIdoso["cpf"];
+                $foto = $dadosIdoso["foto"];
                 $sexo = $dadosIdoso["sexo"];
                 $dtNasc = $dadosIdoso["dtNasc"];
                 $descricao = $dadosIdoso["descricao"];
@@ -139,7 +140,7 @@
 
         <div class="profile-card">
             <div class="profile-image">
-                <img src="<?php echo$foto; ?>" alt="Imagem de perfil">
+                <img src="<?php echo"assets/uploadImg/".$foto; ?>" alt="Imagem de perfil">
             </div>
             <div class="profile-data">
                 <p><span>Nome Completo:</span> <?php echo$nome ?></p>

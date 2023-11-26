@@ -151,7 +151,7 @@
                         <?php
                     }
                 ?>
-                <div class="menu-left"><li class="itens-menu"><a href="#">Ajuda</a></li></div>
+                <div class="menu-left"><li class="itens-menu"><a href="ajuda.html">Ajuda</a></li></div>
             </ul>
         </nav>
 

@@ -43,8 +43,8 @@
                     <?php if($_SESSION["usuario"] == "cuidador"){ ?><label>Registro Profissional (Exemplo: CRM):</label>
                     <input type="text" name="registroProfissional" placeholder="Digite os números aqui" value="<?php echo$_SESSION["registroProfissional"]; ?>" required /><br><br><?php } ?>
                     <label class="file-input-wrapper">
-                        <input type="file" name="fotoPerfil" id="foto" />
-                        <img id="imagemPreview" name="imgPrev" src="" alt="Clique aqui!" style="max-width: 100%;">
+                        <input type="file" name="fotoPerfil" id="foto" value="<?php echo $_SESSION["foto"]; ?>" />
+                        <img id="imagemPreview" name="imgPrev" src="<?php echo $_SESSION["foto"]; ?>" alt="Clique aqui!" style="max-width: 100%;">
                     </label><br><br>
                     <label>Sexo:</label><br>
                     <label>Masculino</label><input type="radio" name="sexo" value="Masculino" <?php if($_SESSION["sexo"] == "Masculino"){ ?> checked <?php } ?> required />

@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajuda</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agdasima&family=M+PLUS+Rounded+1c:wght@900&family=Mitr:wght@300&display=swap" rel="stylesheet">
+    
+    <script src="assets/js/btnVoltar.js"></script>
+    <link rel="stylesheet" href="assets/style/btnVoltar.css" />
+
+    <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+    <title>HelpOlder||Ajuda</title>
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Agdasima', sans-serif;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-family: 'Mitr', sans-serif;
             margin: 20px;
         }
 
@@ -20,13 +32,31 @@
             margin: 0 auto;
         }
 
-        h2 {
-            color: #333;
+        .topico {
+            margin-bottom: 20px;
+            position: relative;
+            border: 1px solid black;
+            padding: 2%;
         }
 
-        p {
+        .seta {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .topico h2 {
+            color: #333;
+            cursor: pointer;
+        }
+
+        .conteudo {
             line-height: 1.6;
             color: #666;
+            display: none;
         }
 
         ul {
@@ -46,38 +76,84 @@
         a:hover {
             text-decoration: underline;
         }
+
+        .seta.subindo {
+            transform: translateY(-50%) rotate(180deg);
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
-
+    <a class="btnVoltar" onclick="goBack();"><img class="imgBtnVoltar" src="assets/img/voltar.png" /></a>
     <header>
         <h1>Ajuda</h1>
     </header>
 
     <section>
-        <h2>1. Como usar nosso serviço</h2>
-        <p>Se você é novo por aqui, siga estas instruções para começar:</p>
-        <ul>
-            <li><strong>Passo 1:</strong> [Instruções detalhadas]</li>
-            <li><strong>Passo 2:</strong> [Instruções detalhadas]</li>
-            <li><strong>Passo 3:</strong> [Instruções detalhadas]</li>
-        </ul>
+        <div class="topico" onclick="toggleContent('como-usar')">
+            <h2>1. Quem pode utilziar nossa plataforma?</h2>
+            <div class="seta" id="seta-como-usar">➔</div>
+            <div class="conteudo" id="como-usar-conteudo">
+                <p>Para adentrar em nossa plataforma e usufruir de nossas funcionaliadade, deve atender aos seguintes requisitos:</p>
+                <ul>
+                    <li><strong>Cuidador: </strong> Possuir maior idade (18 anos completos), possui formação na área de enfermagem, medicina, ou certificação em curso 
+                        profissionalizante para cuidador de idosos.</li>
+                    <li><strong>Responsável:</strong> Possuir maior idade (18 anos).</li>
+                    <li><strong>Idoso:</strong>Para cadastrar um idoso, o mesmo deve possui a idade mínima (60 anos).</li>
+                </ul>
+            </div>
+        </div>
 
-        <h2>2. Problemas comuns</h2>
-        <p>Se você encontrar algum problema, consulte as soluções abaixo:</p>
-        <ul>
-            <li><strong>Problema 1:</strong> [Solução detalhada]</li>
-            <li><strong>Problema 2:</strong> [Solução detalhada]</li>
-            <li><strong>Problema 3:</strong> [Solução detalhada]</li>
-        </ul>
+        <div class="topico" onclick="toggleContent('problemas-comuns')">
+            <h2>2. Funcionalidades</h2>
+            <div class="seta" id="seta-problemas-comuns">➔</div>
+            <div class="conteudo" id="problemas-comuns-conteudo">
+                <p>As funcionalidades básicas do sistema encontram-se abaixo:</p>
+                <ul>
+                    <li><strong>Cadastro:</strong> Para ambos usuário da plataforma (responsável ou cuidador), deve realizar um cadastro para acessar e utilizar a plataforma.</li>
+                    <li><strong>Cadastrar idosos:</strong> Para cadastrar idosos, deve-se primeiramente, o responsável se cadastrar dentro da plataforma. Após, o mesmo deve seguir
+                    do seu perfil pessoal e selecionar a opção "Gerenciar idosos", com isso, selecionar a opção "Cadastrar idoso" e preencher as informações necessárias.</li>
+                    <li><strong>Agendar consulta:</strong> Para agendar uma consulta com um dos profissionais cadastrados, deve realizar o login dentro da plataforma como reponsável,
+                    direcionar-se à tela de pesquisa, e buscar pelo profissional utilizando os filtros de buscar para melhorar e facilitar a sua procura. Após, selecione o 
+                profissional de sua preferência e consulte sua agenda, caso seja de seu interesse, basta selecionar o hoário previsto e selecionar o idoso.</li>
+                </ul>
+            </div>
+        </div>
 
-        <h2>3. Contate-nos</h2>
-        <p>Se você não encontrar a ajuda que precisa, entre em contato conosco:</p>
-        <ul>
-            <li>Email: <a href="mailto:suporte@exemplo.com">suporte@exemplo.com</a></li>
-            <li>Telefone: [Número de telefone]</li>
-        </ul>
+        <div class="topico" onclick="toggleContent('contate-nos')">
+            <h2>3. Contate-nos</h2>
+            <div class="seta" id="seta-contate-nos">➔</div>
+            <div class="conteudo" id="contate-nos-conteudo">
+                <p>Se você não encontrar a ajuda que precisa, entre em contato conosco:</p>
+                <ul>
+                    <li>Email: <a href="helpolder@gmail.com">helpolder@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Ocultar todos os conteúdos iniciais
+            var conteudos = document.querySelectorAll('.conteudo');
+            for (var i = 0; i < conteudos.length; i++) {
+                conteudos[i].style.display = 'none';
+            }
+        });
+
+        function toggleContent(id) {
+            var conteudo = document.getElementById(id + '-conteudo');
+            var seta = document.getElementById('seta-' + id);
+
+            if (conteudo.style.display === "none" || conteudo.style.display === "") {
+                conteudo.style.display = "block";
+                seta.classList.add('subindo');
+            } else {
+                conteudo.style.display = "none";
+                seta.classList.remove('subindo');
+            }
+        }
+    </script>
 
 </body>
 </html>
