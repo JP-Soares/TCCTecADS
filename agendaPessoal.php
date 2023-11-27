@@ -43,6 +43,21 @@
     
                 } 
             }
+            
+
+            // Array para armazenar os IDs de agenda cadastrados na tabela consulta
+            $idsAgendaCadastrados = array();
+
+            // Consulta para obter os IDs de agenda cadastrados na tabela consulta
+            $sqlConsulta = "SELECT id_agenda FROM consulta WHERE id_cuidador = " . $_SESSION['id'];
+            $resultConsulta = $con->query($sqlConsulta);
+
+            // Verifica se a consulta foi bem-sucedida e preenche o array
+            if ($resultConsulta) {
+                while ($row = $resultConsulta->fetch_assoc()) {
+                    $idsAgendaCadastrados[] = $row['id_agenda'];
+                }
+            }
 
         ?>
 
@@ -64,7 +79,7 @@
                     <tr class="dias-agenda">
                         <!--Domingo-->
                         <td id="domingo"><label>Manhã<label><input name="turnoTrabalho[]" type="checkbox" class="m" id="manhaCheck0" value="manha0" onclick = "turno(this);" <?php if(!empty($turno)){for($i = 0; $i < count($turno); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m"){?> checked <?php } } } ?>/>
-                            <div id="manha0"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[0].disabled = false; </script> <?php } } } ?> 
+                            <div id="manha0"><label>Hora de início: </label><select class="horaSelect" name="horaInicio[]" disabled > 
                                 <option value="00:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "00:00:00"){ ?> selected <?php break; } } } ?>>00:00</option>
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
@@ -78,7 +93,7 @@
                                 <option value="10:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "10:00:00"){ ?> selected <?php break; } } } ?>>10:00</option>
                                 <option value="11:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_inicio[$i] == "11:00:00"){ ?> selected <?php break; } } } ?>>11:00</option>
                             </select>
-                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] != "m"){ ?> <script> document.querySelectorAll('.horaSelect')[1].disabled = false; </script> <?php } } } ?> 
+                            <label>Hora de saída: </label><select class="horaSelect" name="horaSaida[]" disabled >
                                 <option value="01:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_saida[$i] == "01:00:00"){ ?> selected <?php break; } } } ?>>01:00</option>
                                 <option value="02:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_saida[$i] == "02:00:00"){ ?> selected <?php break; } } } ?>>02:00</option>
                                 <option value="03:00" <?php if(!empty($dia)){for($i = 0; $i < count($dia); $i++){ if($dia[$i] == "dom" && $turno[$i] == "m" && $hora_saida[$i] == "03:00:00"){ ?> selected <?php break; } } } ?>>03:00</option>
@@ -1076,6 +1091,7 @@
                     }
                 }
             }
+
         </script>
 
     </body>
