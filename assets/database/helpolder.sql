@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/11/2023 às 03:41
+-- Tempo de geração: 29/11/2023 às 03:01
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -42,14 +42,13 @@ CREATE TABLE `agenda` (
 --
 
 INSERT INTO `agenda` (`id_agenda`, `id_cuidador`, `hora_inicio`, `hora_saida`, `turno`, `dia_semana`, `preco_turno`) VALUES
-(59, 1, '06:00:00', '12:00:00', 'm', 'dom', '200'),
-(60, 1, '13:00:00', '17:00:00', 't', 'seg', '200'),
-(61, 1, '18:00:00', '23:00:00', 'n', 'ter', '300'),
-(62, 1, '13:00:00', '17:00:00', 't', 'qua', '80'),
-(63, 1, '13:00:00', '18:00:00', 'm', 'dom', '200'),
 (74, 2, '05:00:00', '12:00:00', 'm', 'dom', '100'),
-(145, 2, '12:00:00', '13:00:00', 'n', 'dom', '210'),
-(146, 2, '19:00:00', '23:00:00', 't', 'seg', '300');
+(153, 2, '05:00:00', '12:00:00', 'm', 'dom', '120'),
+(154, 2, '13:00:00', '18:00:00', 't', 'dom', '500'),
+(155, 2, '18:00:00', '23:00:00', 'n', 'dom', '200'),
+(156, 2, '13:00:00', '17:00:00', 't', 'ter', '50'),
+(171, 1, '06:00:00', '12:00:00', 'm', 'dom', '100'),
+(172, 1, '06:00:00', '12:00:00', 'm', 'seg', '100');
 
 -- --------------------------------------------------------
 
@@ -71,7 +70,8 @@ CREATE TABLE `avaliacao` (
 
 INSERT INTO `avaliacao` (`id_avaliacao`, `id_cuidador`, `id_responsavel`, `qtde_estrela`, `comentario`) VALUES
 (2, 1, 1, 4, 'Exclente profissional! Recomendo!'),
-(3, 2, 3, 4, 'Exclente profissional, cuidou muito bem do meu avô!\r\nRecomendo muito!');
+(3, 2, 3, 4, 'Exclente profissional, cuidou muito bem do meu avô!\r\nRecomendo muito!'),
+(4, 2, 3, 3, 'Muito bom! Recomendo');
 
 -- --------------------------------------------------------
 
@@ -93,9 +93,9 @@ CREATE TABLE `consulta` (
 --
 
 INSERT INTO `consulta` (`id_consulta`, `id_cuidador`, `id_responsavel`, `id_idoso`, `id_agenda`, `statusConsulta`) VALUES
-(4, 1, 1, 3, 61, 1),
-(5, 1, 1, 3, 59, 0),
-(6, 2, 3, 5, 74, 0);
+(6, 2, 3, 5, 74, 1),
+(7, 1, 3, 5, 171, 1),
+(8, 2, 3, 5, 154, 0);
 
 -- --------------------------------------------------------
 
@@ -128,7 +128,7 @@ CREATE TABLE `cuidador` (
 --
 
 INSERT INTO `cuidador` (`id_cuidador`, `nome`, `cpf`, `foto`, `registroProfissional`, `sexo`, `dtNasc`, `descricao`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
-(1, 'Ana', '123.456.789-11', '', '753', 'Feminino', '2000-06-07', 'Sou uma ótima cuidadora de idosa', '(12)3456-7898', 'ana@ana.com', '12345678', 'AC', 'Cidade', 'Bairro', 'Rua', '89', 'Apt 234 Bloco 3'),
+(1, 'Ana', '123.456.789-11', 0x6d756c686572322e6a7067, '753', 'Feminino', '2000-06-07', 'Sou uma ótima cuidadora de idosa', '(12)3456-7898', 'ana@ana.com', '12345678', 'AC', 'Cidade', 'Bairro', 'Rua', '89', 'Apt 234 Bloco 3'),
 (2, 'Joel da Silva', '888.888.888-88', 0x686f6d656d2e6a7067, '563', 'Masculino', '1998-05-06', 'Sou um ótimo cuidador com uma vasta experiência', '(99)9999-9999', 'joel@joel.com', '12345678', 'RS', 'Cidade', 'Bairro', 'Rua', '86', '');
 
 -- --------------------------------------------------------
@@ -195,7 +195,7 @@ CREATE TABLE `responsavel` (
 
 INSERT INTO `responsavel` (`id_responsavel`, `nome`, `cpf`, `foto`, `sexo`, `dtNasc`, `telefone`, `email`, `senha`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`) VALUES
 (1, 'Ivone', '878.945.950-89', 0x2e2e2f75706c6f6164496d672f6d756c6865722e6a7067, 'Feminino', '2000-11-02', '(31)2313-1312', 'ivone@ivone.com', '12345678', 'AC', 'Cidade do Norte', 'Bairro do Norte', 'Rua do Norte', '365', ''),
-(3, 'Leonardo da Silva', '856.822.145-00', 0x686f6d656d526573702e706e67, 'Masculino', '1998-06-12', '(99)6660-9090', 'leornado@leonardo.com', '12345678', 'AC', 'Porto Alegre', 'Bairro de Porto Alegre', 'Rua de Porto Alegre', '852', '');
+(3, 'Leonardo da Silva', '856.822.145-00', 0x686f6d656d526573702e706e67, 'Masculino', '1998-06-12', '(99)6660-9090', 'leonardo@leonardo.com', '12345678', 'AC', 'Porto Alegre', 'Bairro de Porto Alegre', 'Rua de Porto Alegre', '852', '');
 
 --
 -- Índices para tabelas despejadas
@@ -253,19 +253,19 @@ ALTER TABLE `responsavel`
 -- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
-  MODIFY `id_avaliacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_avaliacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `cuidador`
