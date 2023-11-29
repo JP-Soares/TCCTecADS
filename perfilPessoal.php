@@ -220,21 +220,15 @@
                 <?php
                 //pega os dados da consulta
                 while($dadosConsulta = mysqli_fetch_assoc($sqlVerificarConsulta)){
-                    $id_consulta[] = $dadosConsulta["id_consulta"];
-                    $id_agenda[] = $dadosConsulta["id_agenda"];
-                    $id_cuidador[] = $dadosConsulta["id_cuidador"];
-                    $id_idoso[] = $dadosConsulta["id_idoso"];
-                    $id_responsavel[] = $dadosConsulta["id_responsavel"];
+                    $id_consulta = $dadosConsulta["id_consulta"];
+                    $id_agenda = $dadosConsulta["id_agenda"];
+                    $id_cuidador = $dadosConsulta["id_cuidador"];
+                    $id_idoso = $dadosConsulta["id_idoso"];
+                    $id_responsavel = $dadosConsulta["id_responsavel"];
                     $status = $dadosConsulta["statusConsulta"];
 
-                    $id_agenda_list = implode(',', $id_agenda);
-                    $id_idoso_list = implode(',', $id_idoso);
-                    $id_cuidador_list = implode(',', $id_cuidador);
-                    $id_responsavel_list = implode(',', $id_responsavel);
-                    $id_consulta_list = implode(',', $id_consulta);
-
                     //pega os dados da agenda
-                    $sqlAgenda = mysqli_query($con, "SELECT * FROM agenda WHERE id_agenda IN ($id_agenda_list)");
+                    $sqlAgenda = mysqli_query($con, "SELECT * FROM agenda WHERE id_agenda IN ($id_agenda)");
                     while($dadosAgenda = mysqli_fetch_assoc($sqlAgenda)){
                         $hora_inicio = $dadosAgenda["hora_inicio"];
                         $hora_saida = $dadosAgenda["hora_saida"];
@@ -288,7 +282,7 @@
 
 
                     //Pega os dados do idoso
-                    $sqlIdoso = mysqli_query($con, "SELECT id_idoso, nome FROM idoso WHERE id_idoso IN ($id_idoso_list)");
+                    $sqlIdoso = mysqli_query($con, "SELECT id_idoso, nome FROM idoso WHERE id_idoso IN ($id_idoso)");
                     while($dadosIdoso = mysqli_fetch_assoc($sqlIdoso)){
                         $nome_idoso = $dadosIdoso["nome"];
                         $id_idoso_geral = $dadosIdoso["id_idoso"];
@@ -296,7 +290,7 @@
 
                     //Pega os dados do cuidador
                     if($_SESSION["usuario"] == "responsavel"){
-                        $sqlCuidador = mysqli_query($con, "SELECT nome FROM cuidador WHERE id_cuidador IN ($id_cuidador_list)");
+                        $sqlCuidador = mysqli_query($con, "SELECT nome FROM cuidador WHERE id_cuidador IN ($id_cuidador)");
                         while($dadosCuidador = mysqli_fetch_assoc($sqlCuidador)){
                             $nome_cuidador = $dadosCuidador["nome"];
                         }
@@ -305,7 +299,7 @@
 
                     //Pega os dados do responsavel
                     if($_SESSION["usuario"] == "cuidador"){
-                        $sqlresponsavel = mysqli_query($con, "SELECT nome FROM responsavel WHERE id_responsavel IN ($id_responsavel_list)");
+                        $sqlresponsavel = mysqli_query($con, "SELECT nome FROM responsavel WHERE id_responsavel IN ($id_responsavel)");
                         while($dadosresponsavel = mysqli_fetch_assoc($sqlresponsavel)){
                             $nome_responsavel = $dadosresponsavel["nome"];
                         }
@@ -313,24 +307,28 @@
                 ?>
     
                             <tr>
-                                <td><p><?php echo $nome_idoso; ?></p></td>
-                                <td><p><?php if($_SESSION["usuario"] == "responsavel"){ echo $nome_cuidador; } else{ echo $nome_responsavel; } ?></p></td>
-                                <td><p><?php echo $turno; ?></p></td>
-                                <td><p><?php echo $diaSemana; ?></p></td>
-                                <td><p><?php echo $hora_inicio; ?></p></td>
-                                <td><p><?php echo $hora_saida; ?></p></td>
-                                <td><?php echo$precoTurno; ?></p></td>
+                                    
+                                    <td><p><?php echo $nome_idoso; ?></p></td>
+                                    <td><p><?php if($_SESSION["usuario"] == "responsavel"){ echo $nome_cuidador; } else{ echo $nome_responsavel; } ?></p></td>
+                                    <td><p><?php echo $turno; ?></p></td>
+                                    <td><p><?php echo $diaSemana; ?></p></td>
+                                    <td><p><?php echo $hora_inicio; ?></p></td>
+                                    <td><p><?php echo $hora_saida; ?></p></td>
+                                    <td><?php echo$precoTurno; ?></p></td>
 
+                                    
                                 <!-- FAZER ISSO AQUI -->
                                 <?php
+                                
+
                                     if($_SESSION["usuario"] == "cuidador"){//mostra a oção de verificar os dados do idoso e os botões para aceitar ou não a consulta
                                         ?> <td><p><a class="verificarDadosIdoso" href="dadosIdosoCuidador.php?idIdoso=<?php echo$id_idoso_geral; ?>">Verificar Dados</a></p></td>
                                         <?php
-                                        if($status == 0){//se a consulta ainda não foi aceita
+                                        if($dadosConsulta["statusConsulta"] == 0){//se a consulta ainda não foi aceita
                                         ?>
                                            <form method="POST" action="" name="">
-                                                <td><p><a class="btnStatus" href="assets/php/statusConsulta.php?idConsulta=<?php echo$id_consulta_list; ?>&status=1"><img class="imgBtnStatus" src="assets/img/check.png" /></a></p></td>
-                                                <td><p><a class="btnStatus" href="assets/php/statusConsulta.php?idConsulta=<?php echo$id_consulta_list; ?>&status=0"><img class="imgBtnStatus" src="assets/img/close.png" /></a></p></td>
+                                                <td><p><a class="btnStatus" href="assets/php/statusConsulta.php?idConsulta=<?php echo$id_consulta; ?>&status=1"><img class="imgBtnStatus" src="assets/img/check.png" /></a></p></td>
+                                                <td><p><a class="btnStatus" href="assets/php/statusConsulta.php?idConsulta=<?php echo$id_consulta; ?>&status=0"><img class="imgBtnStatus" src="assets/img/close.png" /></a></p></td>
                                            </form>
                                     <?php } else{ //se a consulta foi aceita
                                         ?>
@@ -339,10 +337,13 @@
                                     } }
 
                                     if($_SESSION["usuario"] == "responsavel"){
-                                        ?><td><p>Consulta aceita!</p></td>
-                                            <td><p><a href="avaliar.php?id_cuidador=<?php echo$id_cuidador_list; ?>&id_responsavel=<?php echo$_SESSION["id"]; ?>">Avaliar Cuidador</a></p></td>
-
-                                    <?php
+                                        if($dadosConsulta["statusConsulta"] == 0){//se a consulta ainda não foi aceita
+                                        ?><td><p>Consulta em espera!</p></td>
+                                            <?php }
+                                            else{
+                                                ?> <td><p><a href="avaliar.php?id_cuidador=<?php echo$id_cuidador; ?>&id_responsavel=<?php echo$_SESSION["id"]; ?>">Avaliar Cuidador</a></p></td>
+                                                <?php
+                                            }
                                     }
                                 ?>
                             </tr>
